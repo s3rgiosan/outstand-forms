@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "outstand-forms/form",
+  "version": "0.1.0",
+  "title": "Form",
+  "category": "common",
+  "icon": "",
+  "description": "",
+  "keywords": [
+    "outstand",
+    "form",
+    "feedback"
+  ],
+  "textdomain": "outstand-forms",
+  "attributes": {},
+  "allowedBlocks": [
+    "core/paragraph",
+    "core/heading",
+    "core/group",
+    "core/columns",
+    "core/media-text",
+    "outstand-forms/text"
+  ],
+  "supports": {
+    "html": false,
+    "color": {
+      "gradients": true,
+      "link": true,
+      "__experimentalDefaultControls": {
+        "background": true,
+        "text": true,
+        "link": true
+      }
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalTextDecoration": true,
+      "__experimentalFontStyle": true,
+      "__experimentalFontWeight": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalTextTransform": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
+    },
+    "interactivity": true
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

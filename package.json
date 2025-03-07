@@ -1,0 +1,29 @@
+{
+  "name": "outstand-forms",
+  "version": "0.1.0",
+  "description": "",
+  "contributors": [
+    {
+      "name": "Sérgio Santos",
+      "url": "https://s3rgiosan.dev"
+    }
+  ],
+  "license": "GPL-2.0-or-later",
+  "main": "build/blocks/form/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js",
+    "packages-update": "wp-scripts packages-update",
+    "plugin-zip": "wp-scripts plugin-zip",
+    "start": "wp-scripts start"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^30.12.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "remove-accents": "^0.5.0"
+  }
+}

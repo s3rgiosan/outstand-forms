@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "outstand-forms/text",
+  "version": "0.1.0",
+  "title": "Text",
+  "category": "outstand-forms",
+  "icon": "",
+  "description": "",
+  "keywords": [
+    "field",
+    "input",
+    "text"
+  ],
+  "textdomain": "outstand-forms",
+  "ancestor": [
+    "outstand-forms/form"
+  ],
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "labelPosition": {
+      "type": "string",
+      "default": "top"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultValue": {
+      "type": "string",
+      "default": ""
+    },
+    "placeholder": {
+      "type": "string",
+      "default": ""
+    },
+    "autocomplete": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "descriptionPosition": {
+      "type": "string",
+      "default": "bottom"
+    },
+    "minLength": {
+      "type": "number",
+      "default": 0
+    },
+    "maxLength": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "__experimentalBorder": {
+      "radius": true,
+      "__experimentalSkipSerialization": true,
+      "__experimentalDefaultControls": {
+        "radius": true
+      }
+    },
+    "interactivity": true
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
