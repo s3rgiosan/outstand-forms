@@ -13,8 +13,8 @@ use function Outstand\Forms\get_field_description_id;
 use function Outstand\Forms\get_field_id;
 use function Outstand\Forms\get_field_label_id;
 
-$form_idx   = 1; // @todo
-$field_idx  = 8; // @todo
+$form_idx  = 1; // @todo
+$field_idx = 8; // @todo
 
 $field_id   = get_field_id( $form_idx, $field_idx );
 $field_name = $field_id; // @todo
@@ -25,6 +25,7 @@ $required             = $attributes['required'] ?? false;
 $default_value        = $attributes['defaultValue'] ?? '';
 $placeholder          = $attributes['placeholder'] ?? '';
 $autocomplete         = $attributes['autocomplete'] ?? '';
+$aria_label           = $attributes['ariaLabel'] ?? '';
 $description          = $attributes['description'] ?? '';
 $description_position = $attributes['descriptionPosition'] ?? 'bottom';
 $min_length           = $attributes['minLength'] ?? 0;
@@ -68,6 +69,7 @@ $input_field = sprintf(
 		%8$s
 		%9$s
 		%10$s
+		%11$s
 		class="outstand-forms__field-input outstand-forms__field-input--text"
 	/>',
 	esc_attr( $field_id ),
@@ -78,6 +80,7 @@ $input_field = sprintf(
 	$min_length ? sprintf( ' minlength="%s"', esc_attr( $min_length ) ) : '',
 	$max_length ? sprintf( ' maxlength="%s"', esc_attr( $max_length ) ) : '',
 	$required ? ' required' : '',
+	$aria_label ? sprintf( ' aria-label="%s"', esc_attr( $aria_label ) ) : '',
 	$label_id ? sprintf( ' aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
 	$description_id ? sprintf( ' aria-describedby="%s"', esc_attr( $description_id ) ) : ''
 );

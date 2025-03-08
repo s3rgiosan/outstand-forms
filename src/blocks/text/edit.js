@@ -30,8 +30,12 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { DESCRIPTION_ALLOWED_FORMATS, LABEL_ALLOWED_FORMATS } from './constants';
-import { labelPositionOptions, descriptionPositionOptions, autocompleteOptions } from './options';
+import { DESCRIPTION_ALLOWED_FORMATS, LABEL_ALLOWED_FORMATS } from './../../constants';
+import {
+	labelPositionOptions,
+	descriptionPositionOptions,
+	autocompleteOptions,
+} from './../../options';
 
 export default function TextFieldEdit({ attributes, setAttributes }) {
 	const {
@@ -41,6 +45,7 @@ export default function TextFieldEdit({ attributes, setAttributes }) {
 		defaultValue,
 		placeholder,
 		autocomplete,
+		ariaLabel,
 		description,
 		descriptionPosition,
 		minLength,
@@ -76,6 +81,10 @@ export default function TextFieldEdit({ attributes, setAttributes }) {
 
 	const onPlaceholderChange = (value) => {
 		setAttributes({ placeholder: value });
+	};
+
+	const onAriaLabelChange = (value) => {
+		setAttributes({ ariaLabel: value });
 	};
 
 	const onAutocompleteChange = (value) => {
@@ -203,6 +212,14 @@ export default function TextFieldEdit({ attributes, setAttributes }) {
 						options={autocompleteOptions}
 						onChange={onAutocompleteChange}
 						help={__('Define how browsers autofill this field.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+					<TextControl
+						label={__('ARIA Label', 'outstand-forms')}
+						value={ariaLabel}
+						onChange={onAriaLabelChange}
+						autoComplete="off"
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>

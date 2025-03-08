@@ -56,6 +56,10 @@
     "maxLength": {
       "type": "number",
       "default": 0
+    },
+    "ariaLabel": {
+      "type": "string",
+      "default": ""
     }
   },
   "supports": {

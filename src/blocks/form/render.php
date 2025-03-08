@@ -16,6 +16,8 @@ wp_interactivity_state(
 
 $block_attributes = get_block_wrapper_attributes(
 	[
+		'method'              => 'post',
+		'action'              => '',
 		'class'               => 'outstand-forms__form',
 		'data-wp-interactive' => 'outstand-forms/form',
 	]
