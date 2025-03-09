@@ -10,6 +10,15 @@
 	}
 }
 
+.outstand-forms__field {
+
+	&.outstand-forms__field--label-left,
+	&.outstand-forms__field--label-right {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
 .outstand-forms__field-label {
 	display: block;
 }
@@ -23,14 +32,5 @@
 }
 
 .outstand-forms__field-description {}
-
-.outstand-forms__field {
-
-	&.outstand-forms__field--label-left,
-	&.outstand-forms__field--label-right {
-		display: flex;
-		flex-direction: row;
-	}
-}
 
 .outstand-forms__field-wrapper {}

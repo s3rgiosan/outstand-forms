@@ -1,6 +1,6 @@
 <?php
 /**
- * Form
+ * Field: Submit
  *
  * @var array     $attributes Block attributes.
  * @var string    $content    Block default content.
@@ -9,22 +9,14 @@
  * @package Outstand\Forms
  */
 
-wp_interactivity_state(
-	'outstand-forms/form',
-	[]
-);
-
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'method'              => 'post',
-		'action'              => '',
-		'class'               => 'outstand-forms__form',
-		'data-wp-interactive' => 'outstand-forms/form',
+		'class' => 'outstand-forms__field',
 	]
 );
 
 ?>
 
-<form <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-</form>
+</div>

@@ -30,14 +30,14 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { DESCRIPTION_ALLOWED_FORMATS, LABEL_ALLOWED_FORMATS } from './../../constants';
+import { DESCRIPTION_ALLOWED_FORMATS } from './../../constants';
 import {
 	labelPositionOptions,
 	descriptionPositionOptions,
 	autocompleteOptions,
 } from './../../options';
 
-export default function TextFieldEdit({ attributes, setAttributes }) {
+export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
 		label,
 		labelPosition,
@@ -122,12 +122,12 @@ export default function TextFieldEdit({ attributes, setAttributes }) {
 
 	const labelField = (
 		<RichText
-			tagName="span"
+			tagName="label"
 			value={label}
 			onChange={onChangeLabel}
 			aria-label={label ? __('Label', 'outstand-forms') : __('Empty label', 'outstand-forms')}
 			placeholder={__('Type a label', 'outstand-forms')}
-			allowedFormats={LABEL_ALLOWED_FORMATS}
+			allowedFormats={[]}
 			className="outstand-forms__field-label"
 		/>
 	);

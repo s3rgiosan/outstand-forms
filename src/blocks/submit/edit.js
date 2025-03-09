@@ -6,22 +6,28 @@ import { __ } from '@wordpress/i18n';
 
 const TEMPLATE = [
 	[
-		'outstand-forms/text',
-		{
-			label: __('Name', 'outstand-forms'),
-			required: true,
-		},
+		'core/buttons',
+		{},
+		[
+			[
+				'core/button',
+				{
+					text: __('Submit', 'outstand-forms'),
+					tagName: 'button',
+					type: 'submit',
+				},
+			],
+		],
 	],
-	['outstand-forms/submit', {}],
 ];
 
-export default function FormEdit() {
+export default function FieldSubmitEdit() {
 	const blockProps = useBlockProps({
-		className: 'outstand-forms__form',
+		className: 'outstand-forms__field',
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
-		__experimentalCaptureToolbars: true,
 		template: TEMPLATE,
+		templateLock: 'all',
 	});
 
 	return <div {...innerBlocksProps} />;

@@ -20,7 +20,8 @@
     "core/group",
     "core/columns",
     "core/media-text",
-    "outstand-forms/text"
+    "outstand-forms/text",
+    "outstand-forms/submit"
   ],
   "supports": {
     "html": false,

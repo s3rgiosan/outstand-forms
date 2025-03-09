@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "outstand-forms/submit",
+  "version": "0.1.0",
+  "title": "Submit",
+  "category": "outstand-forms",
+  "icon": "",
+  "description": "",
+  "keywords": [
+    "submit",
+    "button"
+  ],
+  "textdomain": "outstand-forms",
+  "ancestor": [
+    "outstand-forms/form"
+  ],
+  "attributes": {},
+  "allowedBlocks": [
+    "core/button",
+    "core/buttons"
+  ],
+  "supports": {
+    "html": false,
+    "multiple": false,
+    "spacing": {
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "__experimentalBorder": {
+      "radius": true,
+      "__experimentalSkipSerialization": true,
+      "__experimentalDefaultControls": {
+        "radius": true
+      }
+    },
+    "interactivity": true
+  },
+  "editorScript": "file:./index.js",
+  "viewScriptModule": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
