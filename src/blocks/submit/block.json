@@ -29,13 +29,6 @@
         "bottom"
       ]
     },
-    "__experimentalBorder": {
-      "radius": true,
-      "__experimentalSkipSerialization": true,
-      "__experimentalDefaultControls": {
-        "radius": true
-      }
-    },
     "interactivity": true
   },
   "editorScript": "file:./index.js",

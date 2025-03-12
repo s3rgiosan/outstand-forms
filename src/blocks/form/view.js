@@ -9,5 +9,9 @@ const { state } = store('outstand-forms/form', {
 			return true;
 		},
 	},
-	actions: {},
+	actions: {
+		validate() {
+			return true;
+		},
+	},
 });

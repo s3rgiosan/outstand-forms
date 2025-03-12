@@ -27,6 +27,8 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Outstand\\Forms\\AbstractModule' => __DIR__ . '/../..' . '/includes/classes/AbstractModule.php',
+        'Outstand\\Forms\\Blocks\\Submit' => __DIR__ . '/../..' . '/includes/classes/Blocks/Submit.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
     );
 

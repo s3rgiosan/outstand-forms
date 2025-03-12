@@ -9,8 +9,8 @@
   "description": "",
   "keywords": [
     "field",
-    "input",
-    "text"
+    "text",
+    "input"
   ],
   "textdomain": "outstand-forms",
   "ancestor": [

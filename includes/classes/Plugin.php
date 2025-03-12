@@ -2,6 +2,8 @@
 
 namespace Outstand\Forms;
 
+use Outstand\Forms\Blocks\Submit;
+
 class Plugin {
 
 	/**
@@ -29,6 +31,17 @@ class Plugin {
 	 * @return void
 	 */
 	public function setup() {
+
+		$modules = [
+			new Submit(),
+		];
+
+		foreach ( $modules as $module ) {
+			if ( method_exists( $module, 'register' ) ) {
+				$module->register();
+			}
+		}
+
 		add_action( 'init', array( $this, 'register_blocks' ) );
 		add_filter( 'block_categories_all', array( $this, 'register_block_categories' ) );
 	}

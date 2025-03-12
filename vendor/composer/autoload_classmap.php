@@ -7,5 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Outstand\\Forms\\AbstractModule' => $baseDir . '/includes/classes/AbstractModule.php',
+    'Outstand\\Forms\\Blocks\\Submit' => $baseDir . '/includes/classes/Blocks/Submit.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
 );

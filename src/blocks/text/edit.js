@@ -30,12 +30,12 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { DESCRIPTION_ALLOWED_FORMATS } from './../../constants';
+import { DESCRIPTION_ALLOWED_FORMATS } from '../../constants';
 import {
 	labelPositionOptions,
 	descriptionPositionOptions,
 	autocompleteOptions,
-} from './../../options';
+} from '../../options';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {

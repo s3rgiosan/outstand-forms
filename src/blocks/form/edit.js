@@ -12,7 +12,7 @@ const TEMPLATE = [
 			required: true,
 		},
 	],
-	['outstand-forms/submit', {}],
+	['outstand-forms/submit'],
 ];
 
 export default function FormEdit() {
