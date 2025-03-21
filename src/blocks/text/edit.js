@@ -36,6 +36,7 @@ import {
 	descriptionPositionOptions,
 	autocompleteOptions,
 } from '../../options';
+import FieldLayout from '../../components/FieldLayout';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
@@ -144,9 +145,6 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		/>
 	);
 
-	const topDescriptionField = descriptionPosition === 'top' && descriptionField;
-	const bottomDescriptionField = descriptionPosition === 'bottom' && descriptionField;
-
 	const blockProps = useBlockProps({
 		className: clsx(
 			'outstand-forms__field',
@@ -163,19 +161,18 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 	return (
 		<>
 			<div {...blockProps}>
-				{(labelPosition === 'top' || labelPosition === 'left') && labelField}
-				{labelPosition !== 'left' && labelPosition !== 'right' && topDescriptionField}
-				{labelPosition === 'left' || labelPosition === 'right' ? (
-					<div className="outstand-forms__field-wrapper">
-						{topDescriptionField}
-						{inputField}
-						{bottomDescriptionField}
-					</div>
-				) : (
-					inputField
-				)}
-				{labelPosition !== 'left' && labelPosition !== 'right' && bottomDescriptionField}
-				{(labelPosition === 'bottom' || labelPosition === 'right') && labelField}
+				<FieldLayout
+					slots={{
+						labelTop: labelPosition === 'top' ? labelField : null,
+						labelLeft: labelPosition === 'left' ? labelField : null,
+						labelRight: labelPosition === 'right' ? labelField : null,
+						labelBottom: labelPosition === 'bottom' ? labelField : null,
+						descriptionTop: descriptionPosition === 'top' ? descriptionField : null,
+						descriptionBottom:
+							descriptionPosition === 'bottom' ? descriptionField : null,
+						input: inputField,
+					}}
+				/>
 			</div>
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'outstand-forms')}>
