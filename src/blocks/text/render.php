@@ -12,13 +12,14 @@
 use function Outstand\Forms\get_field_description_id;
 use function Outstand\Forms\get_field_id;
 use function Outstand\Forms\get_field_label_id;
+use function Outstand\Forms\render_form_field;
 
-$form_idx  = 1; // @todo
-$field_idx = 8; // @todo
+if ( empty( $block->context['outstand-forms/formId'] ) || empty( $attributes['fieldId'] ) ) {
+	return;
+}
 
-$field_id   = get_field_id( $form_idx, $field_idx );
-$field_name = $field_id; // @todo
-
+$form_id              = $block->context['outstand-forms/formId'];
+$field_id             = $attributes['fieldId'];
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
 $required             = $attributes['required'] ?? false;
@@ -31,27 +32,30 @@ $description_position = $attributes['descriptionPosition'] ?? 'bottom';
 $min_length           = $attributes['minLength'] ?? 0;
 $max_length           = $attributes['maxLength'] ?? 0;
 
-$label_id    = '';
-$label_field = '';
+$field_id_attr = get_field_id( $form_id, $field_id );
+$field_name    = $field_id_attr; // @todo
+
+$label_id_attr = '';
+$label_field   = '';
 
 if ( ! empty( $label ) ) {
-	$label_id    = get_field_label_id( $form_idx, $field_idx );
-	$label_field = sprintf(
+	$label_id_attr = get_field_label_id( $form_id, $field_id );
+	$label_field   = sprintf(
 		'<label id="%1$s" for="%2$s" class="outstand-forms__field-label">%3$s</label>',
-		esc_attr( $label_id ),
-		esc_attr( $field_id ),
+		esc_attr( $label_id_attr ),
+		esc_attr( $field_id_attr ),
 		wp_kses_post( $label )
 	);
 }
 
-$description_id    = '';
-$description_field = '';
+$description_id_attr = '';
+$description_field   = '';
 
 if ( ! empty( $description ) ) {
-	$description_id    = get_field_description_id( $form_idx, $field_idx );
-	$description_field = sprintf(
+	$description_id_attr = get_field_description_id( $form_id, $field_id );
+	$description_field   = sprintf(
 		'<div id="%1$s" class="outstand-forms__field-description">%2$s</div>',
-		esc_attr( $description_id ),
+		esc_attr( $description_id_attr ),
 		wp_kses_post( $description )
 	);
 }
@@ -72,7 +76,7 @@ $input_field = sprintf(
 		%11$s
 		class="outstand-forms__field-input outstand-forms__field-input--text"
 	/>',
-	esc_attr( $field_id ),
+	esc_attr( $field_id_attr ),
 	esc_attr( $field_name ),
 	esc_attr( $default_value ),
 	$placeholder ? sprintf( ' placeholder="%s"', esc_attr( $placeholder ) ) : '',
@@ -81,12 +85,9 @@ $input_field = sprintf(
 	$max_length ? sprintf( ' maxlength="%s"', esc_attr( $max_length ) ) : '',
 	$required ? ' required' : '',
 	$aria_label ? sprintf( ' aria-label="%s"', esc_attr( $aria_label ) ) : '',
-	$label_id ? sprintf( ' aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
-	$description_id ? sprintf( ' aria-describedby="%s"', esc_attr( $description_id ) ) : ''
+	$label_id_attr ? sprintf( ' aria-labelledby="%s"', esc_attr( $label_id_attr ) ) : '',
+	$description_id_attr ? sprintf( ' aria-describedby="%s"', esc_attr( $description_id_attr ) ) : ''
 );
-
-$top_description_field    = $description_position === 'top' ? $description_field : '';
-$bottom_description_field = $description_position === 'bottom' ? $description_field : '';
 
 $wrapper_classes = [
 	'outstand-forms__field',
@@ -108,31 +109,17 @@ $wrapper_attributes = get_block_wrapper_attributes(
 ?>
 
 <div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-
-	<?php if ( ( 'top' === $label_position || 'left' === $label_position ) && $label_field ) : ?>
-		<?php echo $label_field;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php endif; ?>
-
-	<?php if ( 'left' !== $label_position && 'right' !== $label_position && $top_description_field ) : ?>
-		<?php echo $top_description_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php endif; ?>
-
-	<?php if ( ( 'left' === $label_position || 'right' === $label_position ) ) : ?>
-		<div class="outstand-forms__field-input-wrapper">
-			<?php echo $top_description_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php echo $input_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-			<?php echo $bottom_description_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-		</div>
-	<?php else : ?>
-		<?php echo $input_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php endif; ?>
-
-	<?php if ( 'left' !== $label_position && 'right' !== $label_position && $bottom_description_field ) : ?>
-		<?php echo $bottom_description_field; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php endif; ?>
-
-	<?php if ( ( 'bottom' === $label_position || 'right' === $label_position ) && $label_field ) : ?>
-		<?php echo $label_field;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php endif; ?>
-
+	<?php
+	render_form_field(
+		[
+			'label_top'          => $label_position === 'top' ? $label_field : '',
+			'label_left'         => $label_position === 'left' ? $label_field : '',
+			'label_right'        => $label_position === 'right' ? $label_field : '',
+			'label_bottom'       => $label_position === 'bottom' ? $label_field : '',
+			'description_top'    => $description_position === 'top' ? $description_field : '',
+			'description_bottom' => $description_position === 'bottom' ? $description_field : '',
+			'input'              => $input_field,
+		]
+	);
+	?>
 </div>
