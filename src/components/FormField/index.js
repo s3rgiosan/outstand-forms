@@ -1,4 +1,4 @@
-export default function FieldLayout({ slots = {} }) {
+export default function FormField({ slots = {} }) {
 	const {
 		labelTop,
 		labelLeft,

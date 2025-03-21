@@ -36,7 +36,7 @@ import {
 	descriptionPositionOptions,
 	autocompleteOptions,
 } from '../../options';
-import FieldLayout from '../../components/FieldLayout';
+import FormField from '../../components/FormField';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
@@ -161,7 +161,7 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 	return (
 		<>
 			<div {...blockProps}>
-				<FieldLayout
+				<FormField
 					slots={{
 						labelTop: labelPosition === 'top' ? labelField : null,
 						labelLeft: labelPosition === 'left' ? labelField : null,
