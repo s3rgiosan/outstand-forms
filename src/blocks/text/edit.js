@@ -13,6 +13,7 @@ import {
 	InspectorControls,
 	InspectorAdvancedControls,
 	RichText,
+	store as blockEditorStore,
 	__experimentalUseBorderProps as useBorderProps,
 	__experimentalUseColorProps as useColorProps,
 } from '@wordpress/block-editor';
@@ -25,6 +26,9 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
+import { useEffect } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
+import { useInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -40,6 +44,7 @@ import FormField from '../../components/FormField';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
+		fieldId,
 		label,
 		labelPosition,
 		required,
@@ -52,6 +57,16 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		minLength,
 		maxLength,
 	} = attributes;
+
+	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch(blockEditorStore);
+	const instanceId = useInstanceId(FieldTextEdit);
+
+	useEffect(() => {
+		if (!Number.isFinite(fieldId)) {
+			__unstableMarkNextChangeAsNotPersistent();
+			setAttributes({ fieldId: instanceId });
+		}
+	}, [fieldId, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
 
 	const borderProps = useBorderProps(attributes);
 	const colorProps = useColorProps(attributes);

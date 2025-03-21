@@ -17,6 +17,9 @@
     "outstand-forms/form"
   ],
   "attributes": {
+    "fieldId": {
+      "type": "number"
+    },
     "label": {
       "type": "string",
       "default": ""
