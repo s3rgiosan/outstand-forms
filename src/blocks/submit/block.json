@@ -16,6 +16,9 @@
     "outstand-forms/form"
   ],
   "attributes": {},
+  "usesContext": [
+    "outstand-forms/formId"
+  ],
   "allowedBlocks": [
     "core/button",
     "core/buttons"

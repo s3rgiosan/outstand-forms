@@ -13,7 +13,19 @@
     "feedback"
   ],
   "textdomain": "outstand-forms",
-  "attributes": {},
+  "attributes": {
+    "formId": {
+      "type": "string"
+    },
+    "formType": {
+      "type": "string",
+      "default": "inline",
+      "enum": ["inline", "reference"]
+    }
+  },
+  "providesContext": {
+    "outstand-forms/formId": "formId"
+  },
   "allowedBlocks": [
     "core/paragraph",
     "core/heading",
