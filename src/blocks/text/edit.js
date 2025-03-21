@@ -56,6 +56,19 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 	const borderProps = useBorderProps(attributes);
 	const colorProps = useColorProps(attributes);
 
+	const blockProps = useBlockProps({
+		className: clsx(
+			'outstand-forms__field',
+			`outstand-forms__field--label-${labelPosition}`,
+			`outstand-forms__field--description-${descriptionPosition}`,
+			{
+				'outstand-forms__field--required': required,
+				'outstand-forms__field--has-label': !!label,
+				'outstand-forms__field--has-description': !!description,
+			},
+		),
+	});
+
 	const onChangeLabel = (value) => {
 		setAttributes({ label: value.trim() });
 	};
@@ -144,19 +157,6 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 			className="outstand-forms__field-description"
 		/>
 	);
-
-	const blockProps = useBlockProps({
-		className: clsx(
-			'outstand-forms__field',
-			`outstand-forms__field--label-${labelPosition}`,
-			`outstand-forms__field--description-${descriptionPosition}`,
-			{
-				'outstand-forms__field--required': required,
-				'outstand-forms__field--has-label': !!label,
-				'outstand-forms__field--has-description': !!description,
-			},
-		),
-	});
 
 	return (
 		<>
