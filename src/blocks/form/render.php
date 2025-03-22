@@ -9,8 +9,14 @@
  * @package Outstand\Forms
  */
 
-$form_id   = $attributes['formId'] ?? '';
-$form_type = $attributes['formType'] ?? 'inline';
+if ( empty( $attributes['id'] ) ) {
+	return;
+}
+
+$form_id     = $attributes['id'] ?? '';
+$form_type   = $attributes['type'] ?? 'inline';
+$form_method = $attributes['method'] ?? 'post';
+$form_action = $attributes['action'] ?? '';
 
 wp_interactivity_state(
 	'osf/form',
@@ -30,8 +36,8 @@ $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'method'              => 'post',
-		'action'              => '',
+		'method'              => $form_method,
+		'action'              => esc_url( $form_action ),
 		'class'               => implode( ' ', $wrapper_classes ),
 		'data-wp-interactive' => 'osf/form',
 	]

@@ -14,20 +14,27 @@
   ],
   "textdomain": "outstand-forms",
   "attributes": {
-    "formId": {
+    "id": {
       "type": "string"
     },
-    "formType": {
+    "type": {
       "type": "string",
       "default": "inline",
       "enum": [
         "inline",
         "reference"
       ]
+    },
+    "method": {
+      "type": "string",
+      "default": "post"
+    },
+    "action": {
+      "type": "string"
     }
   },
   "providesContext": {
-    "osf/formId": "formId"
+    "osf/formId": "id"
   },
   "allowedBlocks": [
     "core/paragraph",
