@@ -9,5 +9,5 @@ abstract class AbstractModule {
 	 *
 	 * @return void
 	 */
-	abstract public function register();
+	abstract public function register(): void;
 }

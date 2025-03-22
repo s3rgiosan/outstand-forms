@@ -2,6 +2,7 @@
 
 namespace Outstand\Forms;
 
+use Outstand\Forms\Blocks\Form;
 use Outstand\Forms\Blocks\Submit;
 
 class Plugin {
@@ -18,7 +19,7 @@ class Plugin {
 	 *
 	 * @return Plugin The plugin instance.
 	 */
-	public static function get_instance() {
+	public static function get_instance(): Plugin {
 		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
@@ -30,9 +31,10 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function setup() {
+	public function setup(): void {
 
 		$modules = [
+			new Form(),
 			new Submit(),
 		];
 
@@ -51,7 +53,7 @@ class Plugin {
 	 *
 	 * @return void
 	 */
-	public function register_blocks() {
+	public function register_blocks(): void {
 
 		$block_json_files = glob( OUTSTAND_FORMS_PATH . 'build/blocks/*/block.json' );
 
@@ -78,7 +80,7 @@ class Plugin {
 	 * @param  array $categories The block categories.
 	 * @return array The updated block categories.
 	 */
-	public function register_block_categories( $categories ) {
+	public function register_block_categories( $categories ): array {
 
 		$categories[] = array(
 			'slug'  => 'osf',

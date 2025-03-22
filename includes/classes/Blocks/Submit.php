@@ -2,15 +2,20 @@
 
 namespace Outstand\Forms\Blocks;
 
-use Outstand\Forms\AbstractModule;
-
-class Submit extends AbstractModule {
+class Submit extends AbstractBlock {
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function register() {
-		add_filter( 'render_block_outstand-forms/submit', [ $this, 'render_block_submit' ] );
+	public function get_name(): string {
+		return 'osf/submit';
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function register(): void {
+		add_filter( "render_block_{$this->get_name()}", [ $this, 'render_block' ] );
 	}
 
 	/**
@@ -19,7 +24,7 @@ class Submit extends AbstractModule {
 	 * @param string $block_content The block content.
 	 * @return string The updated block content.
 	 */
-	public function render_block_submit( $block_content ) {
+	public function render_block( $block_content ): string {
 
 		$processor = new \WP_HTML_Tag_Processor( $block_content );
 
