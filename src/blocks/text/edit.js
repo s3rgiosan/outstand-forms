@@ -44,7 +44,8 @@ import FormField from '../../components/FormField';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
-		fieldId,
+		id,
+		name,
 		label,
 		labelPosition,
 		required,
@@ -62,11 +63,11 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 	const instanceId = useInstanceId(FieldTextEdit);
 
 	useEffect(() => {
-		if (!Number.isFinite(fieldId)) {
+		if (!Number.isFinite(id)) {
 			__unstableMarkNextChangeAsNotPersistent();
-			setAttributes({ fieldId: instanceId });
+			setAttributes({ id: instanceId });
 		}
-	}, [fieldId, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
+	}, [id, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
 
 	const borderProps = useBorderProps(attributes);
 	const colorProps = useColorProps(attributes);
@@ -83,6 +84,10 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 			},
 		),
 	});
+
+	const onChangeName = (value) => {
+		setAttributes({ name: value.trim() });
+	};
 
 	const onChangeLabel = (value) => {
 		setAttributes({ label: value.trim() });
@@ -195,6 +200,7 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 						label={__('Required', 'outstand-forms')}
 						checked={required}
 						onChange={onChangeRequired}
+						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
 					<TextControl
@@ -238,6 +244,14 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<InspectorAdvancedControls>
+				<TextControl
+					label={__('Name', 'outstand-forms')}
+					value={name || `field_${id}`}
+					onChange={onChangeName}
+					autoComplete="off"
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+				/>
 				<ToggleGroupControl
 					label={__('Label Position', 'outstand-forms')}
 					value={labelPosition}

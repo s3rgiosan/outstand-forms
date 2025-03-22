@@ -17,8 +17,12 @@
     "osf/form"
   ],
   "attributes": {
-    "fieldId": {
+    "id": {
       "type": "number"
+    },
+    "name": {
+      "type": "string",
+      "default": ""
     },
     "label": {
       "type": "string",

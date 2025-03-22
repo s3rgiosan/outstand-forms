@@ -1,3 +1,13 @@
+/**
+ * FormField component.
+ *
+ * This component is used to render a form field.
+ *
+ * @param {Object} props       Component props.
+ * @param {Object} props.slots Component slots.
+ *
+ * @return {Object} FormField component.
+ */
 export default function FormField({ slots = {} }) {
 	const {
 		labelTop,

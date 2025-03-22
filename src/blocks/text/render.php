@@ -14,12 +14,13 @@ use function Outstand\Forms\get_field_id;
 use function Outstand\Forms\get_field_label_id;
 use function Outstand\Forms\render_form_field;
 
-if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) ) {
+if ( empty( $block->context['osf/formId'] ) || empty( $attributes['id'] ) ) {
 	return;
 }
 
 $form_id              = $block->context['osf/formId'];
-$field_id             = $attributes['fieldId'];
+$field_id             = $attributes['id'];
+$field_name           = $attributes['name'];
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
 $required             = $attributes['required'] ?? false;
@@ -32,8 +33,8 @@ $description_position = $attributes['descriptionPosition'] ?? 'bottom';
 $min_length           = $attributes['minLength'] ?? 0;
 $max_length           = $attributes['maxLength'] ?? 0;
 
-$field_id_attr = get_field_id( $form_id, $field_id );
-$field_name    = $field_id_attr; // @todo
+$field_id_attr   = get_field_id( $form_id, $field_id );
+$field_name_attr = ! empty( $field_name ) ? $field_name : 'field_' . $field_id;
 
 $label_id_attr = '';
 $label_field   = '';
@@ -77,7 +78,7 @@ $input_field = sprintf(
 		class="osf__field-input osf__field-input--text"
 	/>',
 	esc_attr( $field_id_attr ),
-	esc_attr( $field_name ),
+	esc_attr( $field_name_attr ),
 	esc_attr( $default_value ),
 	$placeholder ? sprintf( ' placeholder="%s"', esc_attr( $placeholder ) ) : '',
 	$autocomplete ? sprintf( ' autocomplete="%s"', esc_attr( $autocomplete ) ) : '',

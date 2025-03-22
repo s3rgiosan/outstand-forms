@@ -20,7 +20,10 @@
     "formType": {
       "type": "string",
       "default": "inline",
-      "enum": ["inline", "reference"]
+      "enum": [
+        "inline",
+        "reference"
+      ]
     }
   },
   "providesContext": {

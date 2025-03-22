@@ -3,6 +3,11 @@
  */
 import { __ } from '@wordpress/i18n';
 
+/**
+ * Options for the field label position.
+ *
+ * @type {Array}
+ */
 export const labelPositionOptions = [
 	{
 		value: 'top',
@@ -18,6 +23,11 @@ export const labelPositionOptions = [
 	},
 ];
 
+/**
+ * Options for the field description position.
+ *
+ * @type {Array}
+ */
 export const descriptionPositionOptions = [
 	{
 		value: 'bottom',
@@ -29,6 +39,13 @@ export const descriptionPositionOptions = [
 	},
 ];
 
+/**
+ * Options for the field autocomplete.
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete
+ *
+ * @type {Array}
+ */
 export const autocompleteOptions = [
 	{
 		label: '',
