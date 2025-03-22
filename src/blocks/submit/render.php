@@ -11,7 +11,7 @@
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'outstand-forms__field',
+		'class' => 'osf__field',
 	]
 );
 

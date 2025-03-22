@@ -73,13 +73,13 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 
 	const blockProps = useBlockProps({
 		className: clsx(
-			'outstand-forms__field',
-			`outstand-forms__field--label-${labelPosition}`,
-			`outstand-forms__field--description-${descriptionPosition}`,
+			'osf__field',
+			`osf__field--label-${labelPosition}`,
+			`osf__field--description-${descriptionPosition}`,
 			{
-				'outstand-forms__field--required': required,
-				'outstand-forms__field--has-label': !!label,
-				'outstand-forms__field--has-description': !!description,
+				'osf__field--required': required,
+				'osf__field--has-label': !!label,
+				'osf__field--has-description': !!description,
 			},
 		),
 	});
@@ -132,8 +132,8 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		<input
 			type="text"
 			className={clsx(
-				'outstand-forms__field-input',
-				'outstand-forms__field-input--text',
+				'osf__field-input',
+				'osf__field-input--text',
 				colorProps.className,
 				borderProps.className,
 			)}
@@ -157,7 +157,7 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 			aria-label={label ? __('Label', 'outstand-forms') : __('Empty label', 'outstand-forms')}
 			placeholder={__('Type a label', 'outstand-forms')}
 			allowedFormats={[]}
-			className="outstand-forms__field-label"
+			className="osf__field-label"
 		/>
 	);
 
@@ -169,7 +169,7 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 			aria-label={__('Optional description…', 'outstand-forms')}
 			placeholder={__('Add a short description', 'outstand-forms')}
 			allowedFormats={DESCRIPTION_ALLOWED_FORMATS}
-			className="outstand-forms__field-description"
+			className="osf__field-description"
 		/>
 	);
 

@@ -1,4 +1,4 @@
-.outstand-forms__form {
+.osf__form {
 	-webkit-tap-highlight-color: transparent;
 	box-sizing: border-box;
 	width: 100%;
@@ -10,20 +10,20 @@
 	}
 }
 
-.outstand-forms__field {
+.osf__field {
 
-	&.outstand-forms__field--label-left,
-	&.outstand-forms__field--label-right {
+	&.osf__field--label-left,
+	&.osf__field--label-right {
 		display: flex;
 		flex-direction: row;
 	}
 }
 
-.outstand-forms__field-label {
+.osf__field-label {
 	display: block;
 }
 
-.outstand-forms__field-input {
+.osf__field-input {
 	-webkit-appearance: none;
 	height: auto;
 	margin: 0;
@@ -31,6 +31,6 @@
 	max-width: none;
 }
 
-.outstand-forms__field-description {}
+.osf__field-description {}
 
-.outstand-forms__field-wrapper {}
+.osf__field-wrapper {}

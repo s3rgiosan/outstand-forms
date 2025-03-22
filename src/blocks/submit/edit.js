@@ -23,7 +23,7 @@ const TEMPLATE = [
 
 export default function FieldSubmitEdit() {
 	const blockProps = useBlockProps({
-		className: 'outstand-forms__field',
+		className: 'osf__field',
 	});
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		template: TEMPLATE,

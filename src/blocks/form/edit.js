@@ -18,13 +18,13 @@ import { __ } from '@wordpress/i18n';
 
 const TEMPLATE = [
 	[
-		'outstand-forms/text',
+		'osf/text',
 		{
 			label: __('Name', 'outstand-forms'),
 			required: true,
 		},
 	],
-	['outstand-forms/submit'],
+	['osf/submit'],
 ];
 
 export default function FormEdit({ attributes, setAttributes }) {
@@ -42,11 +42,7 @@ export default function FormEdit({ attributes, setAttributes }) {
 	}, [formId, formType, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
 
 	const blockProps = useBlockProps({
-		className: clsx(
-			'outstand-forms__form',
-			`outstand-forms__form--${formType}`,
-			`outstand-forms__form--${formId}`,
-		),
+		className: clsx('osf__form', `osf__form--${formType}`, `osf__form--${formId}`),
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {

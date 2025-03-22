@@ -81,7 +81,7 @@ class Plugin {
 	public function register_block_categories( $categories ) {
 
 		$categories[] = array(
-			'slug'  => 'outstand-forms',
+			'slug'  => 'osf',
 			'title' => esc_html__( 'Outstand Forms', 'outstand-forms' ),
 		);
 

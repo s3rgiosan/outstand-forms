@@ -19,7 +19,7 @@ export default function FormField({ slots = {} }) {
 			{descriptionTop}
 
 			{hasInlineLabel ? (
-				<div className="outstand-forms__field-wrapper">
+				<div className="osf__field-wrapper">
 					{labelLeft}
 					{beforeInput}
 					{input}

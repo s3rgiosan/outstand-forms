@@ -14,11 +14,11 @@ use function Outstand\Forms\get_field_id;
 use function Outstand\Forms\get_field_label_id;
 use function Outstand\Forms\render_form_field;
 
-if ( empty( $block->context['outstand-forms/formId'] ) || empty( $attributes['fieldId'] ) ) {
+if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) ) {
 	return;
 }
 
-$form_id              = $block->context['outstand-forms/formId'];
+$form_id              = $block->context['osf/formId'];
 $field_id             = $attributes['fieldId'];
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
@@ -41,7 +41,7 @@ $label_field   = '';
 if ( ! empty( $label ) ) {
 	$label_id_attr = get_field_label_id( $form_id, $field_id );
 	$label_field   = sprintf(
-		'<label id="%1$s" for="%2$s" class="outstand-forms__field-label">%3$s</label>',
+		'<label id="%1$s" for="%2$s" class="osf__field-label">%3$s</label>',
 		esc_attr( $label_id_attr ),
 		esc_attr( $field_id_attr ),
 		wp_kses_post( $label )
@@ -54,7 +54,7 @@ $description_field   = '';
 if ( ! empty( $description ) ) {
 	$description_id_attr = get_field_description_id( $form_id, $field_id );
 	$description_field   = sprintf(
-		'<div id="%1$s" class="outstand-forms__field-description">%2$s</div>',
+		'<div id="%1$s" class="osf__field-description">%2$s</div>',
 		esc_attr( $description_id_attr ),
 		wp_kses_post( $description )
 	);
@@ -74,7 +74,7 @@ $input_field = sprintf(
 		%9$s
 		%10$s
 		%11$s
-		class="outstand-forms__field-input outstand-forms__field-input--text"
+		class="osf__field-input osf__field-input--text"
 	/>',
 	esc_attr( $field_id_attr ),
 	esc_attr( $field_name ),
@@ -90,12 +90,12 @@ $input_field = sprintf(
 );
 
 $wrapper_classes = [
-	'outstand-forms__field',
-	"outstand-forms__field--label-{$label_position}",
-	"outstand-forms__field--description-{$description_position}",
-	$required ? 'outstand-forms__field--required' : '',
-	$label ? 'outstand-forms__field--has-label' : '',
-	$description ? 'outstand-forms__field--has-description' : '',
+	'osf__field',
+	"osf__field--label-{$label_position}",
+	"osf__field--description-{$description_position}",
+	$required ? 'osf__field--required' : '',
+	$label ? 'osf__field--has-label' : '',
+	$description ? 'osf__field--has-description' : '',
 ];
 $wrapper_classes = array_filter( $wrapper_classes );
 $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );

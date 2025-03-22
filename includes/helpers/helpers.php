@@ -10,7 +10,7 @@ namespace Outstand\Forms;
  * @return string
  */
 function get_field_id( $form_id, $field_id ) {
-	return sprintf( 'outstand-forms-%1$s-field-%2$s', $form_id, $field_id );
+	return sprintf( 'osf-%1$s-field-%2$s', $form_id, $field_id );
 }
 
 /**
@@ -21,7 +21,7 @@ function get_field_id( $form_id, $field_id ) {
  * @return string
  */
 function get_field_label_id( $form_id, $field_id ) {
-	return sprintf( 'outstand-forms-%1$s-label-%2$s', $form_id, $field_id );
+	return sprintf( 'osf-%1$s-label-%2$s', $form_id, $field_id );
 }
 
 /**
@@ -32,7 +32,7 @@ function get_field_label_id( $form_id, $field_id ) {
  * @return string
  */
 function get_field_description_id( $form_id, $field_id ) {
-	return sprintf( 'outstand-forms-%1$s-description-%2$s', $form_id, $field_id );
+	return sprintf( 'osf-%1$s-description-%2$s', $form_id, $field_id );
 }
 
 /**
@@ -70,7 +70,7 @@ function render_form_field( $slots = [], $should_echo = true ) {
 	<?php echo $slots['description_top']; ?>
 
 	<?php if ( $has_inline_label ) : ?>
-	<div class="outstand-forms__field-wrapper">
+	<div class="osf__field-wrapper">
 		<?php echo $slots['label_left']; ?>
 		<?php echo $slots['before_input']; ?>
 		<?php echo $slots['input']; ?>

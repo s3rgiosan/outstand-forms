@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "outstand-forms/form",
+  "name": "osf/form",
   "version": "0.1.0",
   "title": "Form",
   "category": "common",
@@ -24,7 +24,7 @@
     }
   },
   "providesContext": {
-    "outstand-forms/formId": "formId"
+    "osf/formId": "formId"
   },
   "allowedBlocks": [
     "core/paragraph",
@@ -32,8 +32,8 @@
     "core/group",
     "core/columns",
     "core/media-text",
-    "outstand-forms/text",
-    "outstand-forms/submit"
+    "osf/text",
+    "osf/submit"
   ],
   "supports": {
     "html": false,

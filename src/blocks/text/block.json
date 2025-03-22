@@ -1,10 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "outstand-forms/text",
+  "name": "osf/text",
   "version": "0.1.0",
   "title": "Text",
-  "category": "outstand-forms",
+  "category": "osf",
   "icon": "",
   "description": "",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "textdomain": "outstand-forms",
   "ancestor": [
-    "outstand-forms/form"
+    "osf/form"
   ],
   "attributes": {
     "fieldId": {
@@ -66,7 +66,7 @@
     }
   },
   "usesContext": [
-    "outstand-forms/formId"
+    "osf/formId"
   ],
   "supports": {
     "html": false,
