@@ -1,51 +1,38 @@
 /**
- * FormField component.
- *
- * This component is used to render a form field.
- *
- * @param {Object} props       Component props.
- * @param {Object} props.slots Component slots.
- *
- * @return {Object} FormField component.
+ * Internal dependencies
  */
-export default function FormField({ slots = {} }) {
-	const {
-		labelTop,
-		labelLeft,
-		labelRight,
-		labelBottom,
-		descriptionTop,
-		descriptionBottom,
-		beforeInput,
-		input,
-		afterInput,
-	} = slots;
+import FieldInput from '../FieldInput';
+import FieldLabel from '../FieldLabel';
+import FieldDescription from '../FieldDescription';
 
-	const hasInlineLabel = labelLeft || labelRight;
+export default function FormField({ type = 'text', attributes, setAttributes }) {
+	const { labelPosition, descriptionPosition } = attributes;
+
+	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
+
+	const labelField = <FieldLabel attributes={attributes} setAttributes={setAttributes} />;
+	const descriptionField = (
+		<FieldDescription attributes={attributes} setAttributes={setAttributes} />
+	);
+	const inputField = <FieldInput type={type} {...attributes} setAttributes={setAttributes} />;
 
 	return (
 		<>
-			{labelTop}
-			{descriptionTop}
+			{labelPosition === 'top' && labelField}
+			{descriptionPosition === 'top' && descriptionField}
 
 			{hasInlineLabel ? (
 				<div className="osf__field-wrapper">
-					{labelLeft}
-					{beforeInput}
-					{input}
-					{afterInput}
-					{labelRight}
+					{labelPosition === 'left' && labelField}
+					{inputField}
+					{labelPosition === 'right' && labelField}
 				</div>
 			) : (
-				<>
-					{beforeInput}
-					{input}
-					{afterInput}
-				</>
+				inputField
 			)}
 
-			{descriptionBottom}
-			{labelBottom}
+			{descriptionPosition === 'bottom' && descriptionField}
+			{labelPosition === 'bottom' && labelField}
 		</>
 	);
 }

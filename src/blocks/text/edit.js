@@ -12,10 +12,7 @@ import {
 	useBlockProps,
 	InspectorControls,
 	InspectorAdvancedControls,
-	RichText,
 	store as blockEditorStore,
-	__experimentalUseBorderProps as useBorderProps,
-	__experimentalUseColorProps as useColorProps,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
@@ -34,13 +31,12 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { DESCRIPTION_ALLOWED_FORMATS } from '../../constants';
 import {
 	labelPositionOptions,
 	descriptionPositionOptions,
 	autocompleteOptions,
 } from '../../options';
-import FormField from '../../components/FormField';
+import Field from '../../components/Field';
 
 export default function FieldTextEdit({ attributes, setAttributes }) {
 	const {
@@ -69,9 +65,6 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		}
 	}, [id, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
 
-	const borderProps = useBorderProps(attributes);
-	const colorProps = useColorProps(attributes);
-
 	const blockProps = useBlockProps({
 		className: clsx(
 			'osf__field',
@@ -89,16 +82,8 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		setAttributes({ name: value.trim() });
 	};
 
-	const onChangeLabel = (value) => {
-		setAttributes({ label: value.trim() });
-	};
-
 	const onChangeLabelPosition = (value) => {
 		setAttributes({ labelPosition: value });
-	};
-
-	const onDescriptionChange = (value) => {
-		setAttributes({ description: value.trim() });
 	};
 
 	const onDescriptionPositionChange = (value) => {
@@ -133,66 +118,10 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		setAttributes({ maxLength: value !== '' ? parseInt(value, 10) : undefined });
 	};
 
-	const inputField = (
-		<input
-			type="text"
-			className={clsx(
-				'osf__field-input',
-				'osf__field-input--text',
-				colorProps.className,
-				borderProps.className,
-			)}
-			aria-label={__('Optional placeholder text', 'outstand-forms')}
-			placeholder={placeholder ? undefined : __('Optional placeholder…', 'outstand-forms')}
-			value={placeholder}
-			onChange={(event) => onPlaceholderChange(event.target.value)}
-			aria-required={required}
-			style={{
-				...borderProps.style,
-				...colorProps.style,
-			}}
-		/>
-	);
-
-	const labelField = (
-		<RichText
-			tagName="label"
-			value={label}
-			onChange={onChangeLabel}
-			aria-label={label ? __('Label', 'outstand-forms') : __('Empty label', 'outstand-forms')}
-			placeholder={__('Type a label', 'outstand-forms')}
-			allowedFormats={[]}
-			className="osf__field-label"
-		/>
-	);
-
-	const descriptionField = (
-		<RichText
-			tagName="div"
-			value={description}
-			onChange={onDescriptionChange}
-			aria-label={__('Optional description…', 'outstand-forms')}
-			placeholder={__('Add a short description', 'outstand-forms')}
-			allowedFormats={DESCRIPTION_ALLOWED_FORMATS}
-			className="osf__field-description"
-		/>
-	);
-
 	return (
 		<>
 			<div {...blockProps}>
-				<FormField
-					slots={{
-						labelTop: labelPosition === 'top' ? labelField : null,
-						labelLeft: labelPosition === 'left' ? labelField : null,
-						labelRight: labelPosition === 'right' ? labelField : null,
-						labelBottom: labelPosition === 'bottom' ? labelField : null,
-						descriptionTop: descriptionPosition === 'top' ? descriptionField : null,
-						descriptionBottom:
-							descriptionPosition === 'bottom' ? descriptionField : null,
-						input: inputField,
-					}}
-				/>
+				<Field type="text" attributes={attributes} setAttributes={setAttributes} />
 			</div>
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'outstand-forms')}>
