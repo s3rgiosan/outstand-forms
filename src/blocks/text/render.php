@@ -75,6 +75,7 @@ $input_field = sprintf(
 		%9$s
 		%10$s
 		%11$s
+		%12$s
 		class="osf__field-input osf__field-input--text"
 	/>',
 	esc_attr( $field_id_attr ),
@@ -85,6 +86,7 @@ $input_field = sprintf(
 	$min_length ? sprintf( ' minlength="%s"', esc_attr( $min_length ) ) : '',
 	$max_length ? sprintf( ' maxlength="%s"', esc_attr( $max_length ) ) : '',
 	$required ? ' required' : '',
+	$required ? ' aria-required="true"' : '',
 	$aria_label ? sprintf( ' aria-label="%s"', esc_attr( $aria_label ) ) : '',
 	$label_id_attr ? sprintf( ' aria-labelledby="%s"', esc_attr( $label_id_attr ) ) : '',
 	$description_id_attr ? sprintf( ' aria-describedby="%s"', esc_attr( $description_id_attr ) ) : ''
