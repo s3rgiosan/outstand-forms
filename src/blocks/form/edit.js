@@ -20,13 +20,11 @@ import { __ } from '@wordpress/i18n';
 
 const TEMPLATE = [
 	[
-		'osf/text',
-		{
-			label: __('Name', 'outstand-forms'),
-			required: true,
-		},
+		'osf/form-fields',
+		{},
+		[['osf/text', { label: __('Name', 'outstand-forms'), required: true }]],
 	],
-	['osf/submit'],
+	['osf/form-submit'],
 ];
 
 export default function FormEdit({ attributes, setAttributes }) {
@@ -50,6 +48,7 @@ export default function FormEdit({ attributes, setAttributes }) {
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		__experimentalCaptureToolbars: true,
 		template: TEMPLATE,
+		templateLock: 'all',
 	});
 
 	return (

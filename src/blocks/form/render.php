@@ -36,9 +36,9 @@ $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
+		'class'               => implode( ' ', $wrapper_classes ),
 		'method'              => $form_method,
 		'action'              => esc_url( $form_action ),
-		'class'               => implode( ' ', $wrapper_classes ),
 		'data-wp-interactive' => 'osf/form',
 	]
 );
@@ -46,5 +46,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 ?>
 
 <form <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+	<?php do_action( 'osf_form_before_fields', $form_id ); ?>
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php do_action( 'osf_form_after_fields', $form_id ); ?>
 </form>

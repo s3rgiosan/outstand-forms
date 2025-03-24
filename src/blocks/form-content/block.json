@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "osf/form-fields",
+  "version": "0.1.0",
+  "title": "Fields",
+  "category": "osf",
+  "icon": "",
+  "description": "",
+  "keywords": [],
+  "textdomain": "outstand-forms",
+  "parent": [
+    "osf/form"
+  ],
+  "attributes": {
+    "lock": {
+      "type": "object",
+      "default": {
+        "move": false
+      }
+    }
+  },
+  "usesContext": [
+    "osf/formId"
+  ],
+  "allowedBlocks": [
+    "core/column",
+    "core/columns",
+    "core/cover",
+    "core/gallery",
+    "core/group",
+    "core/heading",
+    "core/image",
+    "core/list-item",
+    "core/list",
+    "core/media-text",
+    "core/paragraph",
+    "core/separator",
+    "core/spacer",
+    "core/table",
+    "osf/field-text"
+  ],
+  "supports": {
+    "html": false,
+    "lock": false,
+    "inserter": false,
+    "reusable": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}

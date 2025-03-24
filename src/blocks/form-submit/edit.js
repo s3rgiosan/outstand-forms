@@ -21,10 +21,11 @@ const TEMPLATE = [
 	],
 ];
 
-export default function FieldSubmitEdit() {
+export default function FormSubmitEdit() {
 	const blockProps = useBlockProps({
-		className: 'osf__field',
+		className: 'osf__form-submit',
 	});
+
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		template: TEMPLATE,
 		templateLock: 'all',

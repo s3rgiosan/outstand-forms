@@ -11,10 +11,11 @@
 }
 
 .osf__field {
+	display: flex;
+	flex-direction: column;
 
 	&.osf__field--label-left,
 	&.osf__field--label-right {
-		display: flex;
 		flex-direction: row;
 	}
 }

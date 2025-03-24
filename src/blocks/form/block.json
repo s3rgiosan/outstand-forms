@@ -37,13 +37,8 @@
     "osf/formId": "id"
   },
   "allowedBlocks": [
-    "core/paragraph",
-    "core/heading",
-    "core/group",
-    "core/columns",
-    "core/media-text",
-    "osf/text",
-    "osf/submit"
+    "osf/form-fields",
+    "osf/form-submit"
   ],
   "supports": {
     "html": false,

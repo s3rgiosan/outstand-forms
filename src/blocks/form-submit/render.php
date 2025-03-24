@@ -1,6 +1,6 @@
 <?php
 /**
- * Field: Submit
+ * Form Submit
  *
  * @var array     $attributes Block attributes.
  * @var string    $content    Block default content.
@@ -11,7 +11,7 @@
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'osf__field',
+		'class' => 'osf__form-submit',
 	]
 );
 

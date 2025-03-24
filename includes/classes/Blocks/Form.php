@@ -15,32 +15,19 @@ class Form extends AbstractBlock {
 	 * {@inheritDoc}
 	 */
 	public function register(): void {
-		add_filter( "render_block_{$this->get_name()}", [ $this, 'render_block' ], 10, 2 );
+		add_action( 'osf_form_after_fields', [ $this, 'add_extra_fields' ], 90, 2 );
 	}
 
 	/**
-	 * Updates the block content.
+	 * Add extra fields to the form.
 	 *
-	 * @param string $block_content The block content.
-	 * @param array  $block         The full block, including name and attributes.
-	 * @return string The updated block content.
+	 * @param string $form_id Form ID.
+	 * @return void
 	 */
-	public function render_block( $block_content, $block ): string {
-
-		/**
-		 * Filters the extra fields to be added to the form.
-		 *
-		 * @param string $extra_fields The extra fields.
-		 * @param array  $block        The full block, including name and attributes.
-		 */
-		$extra_fields = apply_filters( 'outstand_forms_form_extra_fields', '', $block );
-
-		$block_content = str_replace(
-			'</form>',
-			$extra_fields . '</form>',
-			$block_content
-		);
-
-		return $block_content;
+	public function add_extra_fields( $form_id ): void {
+		?>
+		<input type="hidden" name="form_id" value="<?php echo esc_attr( $form_id ); ?>">
+		<input type="hidden" name="nonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
+		<?php
 	}
 }
