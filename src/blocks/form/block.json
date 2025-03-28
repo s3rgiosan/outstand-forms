@@ -48,6 +48,7 @@
     },
     "interactivity": true
   },
+  "editorStyle": "file:./index.css",
   "editorScript": "file:./index.js",
   "viewScriptModule": "file:./view.js",
   "style": "file:./style-index.css",

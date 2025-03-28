@@ -5,6 +5,8 @@
 
 ## Description
 
+The icons are from [Lucide](https://lucide.dev/).
+
 ## Requirements
 
 * PHP 7.4+

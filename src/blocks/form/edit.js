@@ -19,6 +19,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
+import './editor.css';
 import { useFormIds } from '../../hooks/useFormIds';
 
 const TEMPLATE = [
