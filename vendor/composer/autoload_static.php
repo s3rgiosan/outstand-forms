@@ -28,7 +28,13 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Outstand\\Forms\\AbstractModule' => __DIR__ . '/../..' . '/includes/classes/AbstractModule.php',
-        'Outstand\\Forms\\Blocks\\Submit' => __DIR__ . '/../..' . '/includes/classes/Blocks/Submit.php',
+        'Outstand\\Forms\\Blocks\\AbstractBlock' => __DIR__ . '/../..' . '/includes/classes/Blocks/AbstractBlock.php',
+        'Outstand\\Forms\\Blocks\\Form' => __DIR__ . '/../..' . '/includes/classes/Blocks/Form.php',
+        'Outstand\\Forms\\Blocks\\FormSubmitButton' => __DIR__ . '/../..' . '/includes/classes/Blocks/FormSubmitButton.php',
+        'Outstand\\Forms\\Components\\AbstractComponent' => __DIR__ . '/../..' . '/includes/classes/Components/AbstractComponent.php',
+        'Outstand\\Forms\\Components\\FieldDescription' => __DIR__ . '/../..' . '/includes/classes/Components/FieldDescription.php',
+        'Outstand\\Forms\\Components\\FieldInput' => __DIR__ . '/../..' . '/includes/classes/Components/FieldInput.php',
+        'Outstand\\Forms\\Components\\FieldLabel' => __DIR__ . '/../..' . '/includes/classes/Components/FieldLabel.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
     );
 

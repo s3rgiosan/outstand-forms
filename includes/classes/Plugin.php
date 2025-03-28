@@ -3,7 +3,7 @@
 namespace Outstand\Forms;
 
 use Outstand\Forms\Blocks\Form;
-use Outstand\Forms\Blocks\FormSubmit;
+use Outstand\Forms\Blocks\FormSubmitButton;
 
 class Plugin {
 
@@ -35,7 +35,7 @@ class Plugin {
 
 		$modules = [
 			new Form(),
-			new FormSubmit(),
+			new FormSubmitButton(),
 		];
 
 		foreach ( $modules as $module ) {

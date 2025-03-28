@@ -8,6 +8,12 @@ $baseDir = dirname($vendorDir);
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Outstand\\Forms\\AbstractModule' => $baseDir . '/includes/classes/AbstractModule.php',
-    'Outstand\\Forms\\Blocks\\Submit' => $baseDir . '/includes/classes/Blocks/Submit.php',
+    'Outstand\\Forms\\Blocks\\AbstractBlock' => $baseDir . '/includes/classes/Blocks/AbstractBlock.php',
+    'Outstand\\Forms\\Blocks\\Form' => $baseDir . '/includes/classes/Blocks/Form.php',
+    'Outstand\\Forms\\Blocks\\FormSubmitButton' => $baseDir . '/includes/classes/Blocks/FormSubmitButton.php',
+    'Outstand\\Forms\\Components\\AbstractComponent' => $baseDir . '/includes/classes/Components/AbstractComponent.php',
+    'Outstand\\Forms\\Components\\FieldDescription' => $baseDir . '/includes/classes/Components/FieldDescription.php',
+    'Outstand\\Forms\\Components\\FieldInput' => $baseDir . '/includes/classes/Components/FieldInput.php',
+    'Outstand\\Forms\\Components\\FieldLabel' => $baseDir . '/includes/classes/Components/FieldLabel.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
 );

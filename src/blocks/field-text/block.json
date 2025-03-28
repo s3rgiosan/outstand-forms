@@ -14,10 +14,10 @@
   ],
   "textdomain": "outstand-forms",
   "ancestor": [
-    "osf/form"
+    "osf/form-fields"
   ],
   "attributes": {
-    "id": {
+    "fieldId": {
       "type": "number"
     },
     "name": {
@@ -85,6 +85,5 @@
   },
   "editorScript": "file:./index.js",
   "viewScriptModule": "file:./view.js",
-  "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

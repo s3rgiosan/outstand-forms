@@ -2,13 +2,13 @@
 
 namespace Outstand\Forms\Blocks;
 
-class FormSubmit extends AbstractBlock {
+class FormSubmitButton extends AbstractBlock {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_name(): string {
-		return 'osf/form-submit';
+		return 'osf/form-submit-button';
 	}
 
 	/**

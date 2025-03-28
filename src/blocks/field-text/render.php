@@ -11,7 +11,7 @@
 
 use function Outstand\Forms\render_field;
 
-if ( empty( $block->context['osf/formId'] ) || empty( $attributes['id'] ) ) {
+if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) ) {
 	return;
 }
 

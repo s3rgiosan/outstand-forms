@@ -1,25 +1,18 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/form-submit",
+  "name": "osf/form-submit-button",
   "version": "0.1.0",
-  "title": "Submit",
+  "title": "Submit Button",
   "category": "osf",
   "icon": "",
   "description": "",
   "keywords": [],
   "textdomain": "outstand-forms",
-  "parent": [
+  "ancestor": [
     "osf/form"
   ],
-  "attributes": {
-    "lock": {
-      "type": "object",
-      "default": {
-        "move": false
-      }
-    }
-  },
+  "attributes": {},
   "usesContext": [
     "osf/formId"
   ],
@@ -42,6 +35,5 @@
   },
   "editorScript": "file:./index.js",
   "viewScriptModule": "file:./view.js",
-  "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

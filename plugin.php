@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       Outstand Forms
- * Description:
+ * Description:       Build flexible, modern forms using the WordPress block editor.
  * Plugin URI:        https://github.com/s3rgiosan/outstand-forms
  * Requires at least: 6.7
  * Requires PHP:      7.4

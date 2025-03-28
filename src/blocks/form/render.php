@@ -9,11 +9,11 @@
  * @package Outstand\Forms
  */
 
-if ( empty( $attributes['id'] ) ) {
+if ( empty( $attributes['formId'] ) ) {
 	return;
 }
 
-$form_id     = $attributes['id'];
+$form_id     = $attributes['formId'];
 $form_type   = $attributes['type'] ?? 'inline';
 $form_method = $attributes['method'] ?? 'post';
 $form_action = $attributes['action'] ?? '';

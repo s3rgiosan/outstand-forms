@@ -12,7 +12,6 @@ import {
 	useBlockProps,
 	InspectorControls,
 	InspectorAdvancedControls,
-	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import {
 	PanelBody,
@@ -24,7 +23,6 @@ import {
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
 import { useInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
 
@@ -37,10 +35,11 @@ import {
 	autocompleteOptions,
 } from '../../options';
 import Field from '../../components/Field';
+import { useFieldIds } from '../../hooks/useFieldIds';
 
-export default function FieldTextEdit({ attributes, setAttributes }) {
+export default function FieldTextEdit({ clientId, attributes, setAttributes }) {
 	const {
-		id,
+		fieldId,
 		name,
 		label,
 		labelPosition,
@@ -55,15 +54,21 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 		maxLength,
 	} = attributes;
 
-	const { __unstableMarkNextChangeAsNotPersistent } = useDispatch(blockEditorStore);
 	const instanceId = useInstanceId(FieldTextEdit);
+	const { fieldIds, stableFieldIds, hasFieldBlocks } = useFieldIds(clientId);
 
 	useEffect(() => {
-		if (!Number.isFinite(id)) {
-			__unstableMarkNextChangeAsNotPersistent();
-			setAttributes({ id: instanceId });
+		if (!hasFieldBlocks) {
+			return;
 		}
-	}, [id, instanceId, __unstableMarkNextChangeAsNotPersistent, setAttributes]);
+
+		const isUnset = !Number.isFinite(fieldId);
+		const isDuplicate = Number.isFinite(fieldId) && fieldIds.includes(fieldId);
+
+		if ((isUnset || isDuplicate) && Number.isFinite(instanceId)) {
+			setAttributes({ fieldId: instanceId });
+		}
+	}, [hasFieldBlocks, fieldId, fieldIds, stableFieldIds, instanceId, setAttributes]);
 
 	const blockProps = useBlockProps({
 		className: clsx(
@@ -175,7 +180,7 @@ export default function FieldTextEdit({ attributes, setAttributes }) {
 			<InspectorAdvancedControls>
 				<TextControl
 					label={__('Name', 'outstand-forms')}
-					value={name || `field_${id}`}
+					value={name || `field_${fieldId}`}
 					onChange={onChangeName}
 					autoComplete="off"
 					__next40pxDefaultSize

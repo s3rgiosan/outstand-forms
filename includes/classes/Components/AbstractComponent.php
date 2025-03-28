@@ -50,7 +50,7 @@ abstract class AbstractComponent {
 	 * @return string
 	 */
 	public function get_field_id(): string {
-		return sprintf( 'osf-%1$s-field-%2$s', $this->form_id, $this->attributes['id'] );
+		return sprintf( 'osf-%1$s-field-%2$s', $this->form_id, $this->attributes['fieldId'] );
 	}
 
 	/**
@@ -59,7 +59,7 @@ abstract class AbstractComponent {
 	 * @return string
 	 */
 	public function get_label_id(): string {
-		return sprintf( 'osf-%1$s-label-%2$s', $this->form_id, $this->attributes['id'] );
+		return sprintf( 'osf-%1$s-label-%2$s', $this->form_id, $this->attributes['fieldId'] );
 	}
 
 	/**
@@ -68,6 +68,6 @@ abstract class AbstractComponent {
 	 * @return string
 	 */
 	public function get_description_id(): string {
-		return sprintf( 'osf-%1$s-description-%2$s', $this->form_id, $this->attributes['id'] );
+		return sprintf( 'osf-%1$s-description-%2$s', $this->form_id, $this->attributes['fieldId'] );
 	}
 }

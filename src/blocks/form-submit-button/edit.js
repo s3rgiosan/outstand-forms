@@ -15,6 +15,9 @@ const TEMPLATE = [
 					text: __('Submit', 'outstand-forms'),
 					tagName: 'button',
 					type: 'submit',
+					lock: {
+						remove: true,
+					},
 				},
 			],
 		],
@@ -28,7 +31,7 @@ export default function FormSubmitEdit() {
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		template: TEMPLATE,
-		templateLock: 'all',
+		templateLock: 'insert',
 	});
 
 	return <div {...innerBlocksProps} />;
