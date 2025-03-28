@@ -15,7 +15,7 @@ class Form extends AbstractBlock {
 	 * {@inheritDoc}
 	 */
 	public function register(): void {
-		add_action( 'osf_form_after_fields', [ $this, 'add_extra_fields' ], 90, 2 );
+		add_action( 'osf_after_content', [ $this, 'add_extra_fields' ], 90, 2 );
 	}
 
 	/**

@@ -74,18 +74,12 @@
   ],
   "supports": {
     "html": false,
+    "reusable": false,
     "spacing": {
       "margin": [
         "top",
         "bottom"
       ]
-    },
-    "__experimentalBorder": {
-      "radius": true,
-      "__experimentalSkipSerialization": true,
-      "__experimentalDefaultControls": {
-        "radius": true
-      }
     },
     "interactivity": true
   },

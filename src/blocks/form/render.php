@@ -13,7 +13,7 @@ if ( empty( $attributes['id'] ) ) {
 	return;
 }
 
-$form_id     = $attributes['id'] ?? '';
+$form_id     = $attributes['id'];
 $form_type   = $attributes['type'] ?? 'inline';
 $form_method = $attributes['method'] ?? 'post';
 $form_action = $attributes['action'] ?? '';
@@ -46,7 +46,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 ?>
 
 <form <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<?php do_action( 'osf_form_before_fields', $form_id ); ?>
+	<?php do_action( 'osf_before_content', $form_id ); ?>
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-	<?php do_action( 'osf_form_after_fields', $form_id ); ?>
+	<?php do_action( 'osf_after_content', $form_id ); ?>
 </form>

@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/form-fields",
+  "name": "osf/form-content",
   "version": "0.1.0",
-  "title": "Fields",
+  "title": "Content",
   "category": "osf",
   "icon": "",
   "description": "",
@@ -24,6 +24,8 @@
     "osf/formId"
   ],
   "allowedBlocks": [
+    "core/button",
+    "core/buttons",
     "core/column",
     "core/columns",
     "core/cover",

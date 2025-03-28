@@ -37,7 +37,7 @@
     "osf/formId": "id"
   },
   "allowedBlocks": [
-    "osf/form-fields",
+    "osf/form-content",
     "osf/form-submit"
   ],
   "supports": {

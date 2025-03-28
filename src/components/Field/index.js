@@ -14,9 +14,15 @@ export default function Field({ type = 'text', attributes, setAttributes }) {
 	const descriptionField = (
 		<FieldDescription attributes={attributes} setAttributes={setAttributes} />
 	);
-	const inputField = (
-		<FieldInput type={type} attributes={attributes} setAttributes={setAttributes} />
-	);
+
+	let field = '';
+	switch (type) {
+		case 'text':
+			field = (
+				<FieldInput type="text" attributes={attributes} setAttributes={setAttributes} />
+			);
+			break;
+	}
 
 	return (
 		<>
@@ -26,11 +32,11 @@ export default function Field({ type = 'text', attributes, setAttributes }) {
 			{hasInlineLabel ? (
 				<div className="osf__field-wrapper">
 					{descriptionPosition === 'top' && descriptionField}
-					{inputField}
+					{field}
 					{descriptionPosition === 'bottom' && descriptionField}
 				</div>
 			) : (
-				inputField
+				field
 			)}
 
 			{!hasInlineLabel && descriptionPosition === 'bottom' && descriptionField}

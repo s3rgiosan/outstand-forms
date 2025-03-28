@@ -52,11 +52,11 @@ export const autocompleteOptions = [
 		value: '',
 	},
 	{
-		label: __('None (off)', 'outstand-forms'),
+		label: __('Disabled (off)', 'outstand-forms'),
 		value: 'off',
 	},
 	{
-		label: __('Default (on)', 'outstand-forms'),
+		label: __('Enabled (on)', 'outstand-forms'),
 		value: 'on',
 	},
 	{

@@ -20,9 +20,9 @@ import { __ } from '@wordpress/i18n';
 
 const TEMPLATE = [
 	[
-		'osf/form-fields',
+		'osf/form-content',
 		{},
-		[['osf/text', { label: __('Name', 'outstand-forms'), required: true }]],
+		[['osf/field-text', { label: __('Name', 'outstand-forms'), required: true }]],
 	],
 	['osf/form-submit'],
 ];

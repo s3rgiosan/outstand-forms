@@ -33,8 +33,10 @@
     "inserter": false,
     "reusable": false,
     "spacing": {
-      "margin": true,
-      "padding": true
+      "margin": [
+        "top",
+        "bottom"
+      ]
     },
     "interactivity": true
   },
