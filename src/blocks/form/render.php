@@ -21,8 +21,7 @@ $form_action = $attributes['action'] ?? '';
 wp_interactivity_state(
 	'osf/form',
 	[
-		'formId'   => $form_id,
-		'formType' => $form_type,
+		'isFormValid' => false,
 	]
 );
 
@@ -47,6 +46,11 @@ $wrapper_attributes = get_block_wrapper_attributes(
 
 <form <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
 	<?php do_action( 'osf_before_content', $form_id ); ?>
+
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<input type="hidden" name="form_id" value="<?php echo esc_attr( $form_id ); ?>">
+	<input type="hidden" name="form_type" value="<?php echo esc_attr( $form_type ); ?>">
+	<input type="hidden" name="nonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
+
 	<?php do_action( 'osf_after_content', $form_id ); ?>
 </form>
