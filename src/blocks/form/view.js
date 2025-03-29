@@ -1,17 +1,23 @@
 /**
  * WordPress dependencies
  */
-import { store } from '@wordpress/interactivity';
+import { store, getContext } from '@wordpress/interactivity';
 
 const { state } = store('osf/form', {
 	state: {
-		get isValid() {
-			return true;
+		get isFocused() {
+			const { isFocused } = getContext();
+			return isFocused;
 		},
 	},
 	actions: {
-		validate() {
-			return true;
+		onFocus() {
+			const context = getContext();
+			context.isFocused = true;
+		},
+		onBlur() {
+			const context = getContext();
+			context.isFocused = false;
 		},
 	},
 });

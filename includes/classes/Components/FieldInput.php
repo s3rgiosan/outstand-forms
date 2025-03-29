@@ -40,6 +40,9 @@ class FieldInput extends AbstractComponent {
 				%11$s
 				%12$s
 				class="osf-field__input osf-field__input--%13$s"
+				data-wp-class--is-focused="context.isFocused"
+				data-wp-on-async--focus="actions.onFocus"
+				data-wp-on-async--blur="actions.onBlur"
 			/>',
 			esc_attr( $field_id ),
 			esc_attr( $field_name ),

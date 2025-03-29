@@ -40,8 +40,17 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	]
 );
 
+$context = wp_interactivity_data_wp_context(
+	[
+		'isFocused' => false,
+	]
+);
+
 ?>
 
-<div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div
+	<?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo $context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+>
 	<?php render_field( $block, $attributes ); ?>
 </div>
