@@ -1,23 +1,27 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext } from '@wordpress/interactivity';
+import { store } from '@wordpress/interactivity';
 
 const { state } = store('osf/form', {
 	state: {
-		get isFocused() {
-			const { isFocused } = getContext();
-			return isFocused;
+		get isValid() {
+			return true;
 		},
 	},
 	actions: {
-		onFocus() {
-			const context = getContext();
-			context.isFocused = true;
+		validate() {
+			return true;
 		},
-		onBlur() {
-			const context = getContext();
-			context.isFocused = false;
+		onSubmit(ev) {
+			ev.preventDefault();
+
+			const form = ev.currentTarget;
+
+			const formData = new FormData(form);
+			const entries = Object.fromEntries(formData.entries());
+
+			console.log('Form submitted:', state, entries);
 		},
 	},
 });

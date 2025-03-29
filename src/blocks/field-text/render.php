@@ -16,6 +16,7 @@ if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) )
 }
 
 $form_id              = $block->context['osf/formId'];
+$default_value        = $attributes['defaultValue'] ?? '';
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
 $required             = $attributes['required'] ?? false;
@@ -42,6 +43,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 
 $context = wp_interactivity_data_wp_context(
 	[
+		'value'     => $default_value,
 		'isFocused' => false,
 	]
 );

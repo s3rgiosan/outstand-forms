@@ -21,7 +21,7 @@ $form_action = $attributes['action'] ?? '';
 wp_interactivity_state(
 	'osf/form',
 	[
-		'isFormValid' => false,
+		'isValid' => false,
 	]
 );
 
