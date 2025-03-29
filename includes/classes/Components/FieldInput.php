@@ -20,7 +20,7 @@ class FieldInput extends AbstractComponent {
 		$aria_label    = $this->attributes['ariaLabel'] ?? '';
 
 		$field_id       = $this->get_field_id();
-		$field_name     = ! empty( $field_name ) ? $field_name : 'field_' . $field_id;
+		$field_name     = ! empty( $field_name ) ? $field_name : 'field_' . $this->attributes['fieldId'];
 		$label_id       = $this->get_label_id();
 		$description_id = $this->get_description_id();
 
