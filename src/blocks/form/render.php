@@ -27,9 +27,9 @@ wp_interactivity_state(
 );
 
 $wrapper_classes = [
-	'osf__form',
-	"osf__form--{$form_type}",
-	"osf__form--{$form_id}",
+	'osf-form',
+	"osf-form--{$form_type}",
+	"osf-form--{$form_id}",
 ];
 $wrapper_classes = array_filter( $wrapper_classes );
 $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );

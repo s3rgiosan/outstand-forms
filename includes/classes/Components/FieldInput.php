@@ -39,7 +39,7 @@ class FieldInput extends AbstractComponent {
 				%10$s
 				%11$s
 				%12$s
-				class="osf__field-input osf__field-input--%13$s"
+				class="osf-field__input osf-field__input--%13$s"
 			/>',
 			esc_attr( $field_id ),
 			esc_attr( $field_name ),

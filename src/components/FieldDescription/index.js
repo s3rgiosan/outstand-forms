@@ -24,7 +24,7 @@ export default function FieldDescription({ attributes, setAttributes }) {
 			aria-label={__('Optional description…', 'outstand-forms')}
 			placeholder={__('Add a short description', 'outstand-forms')}
 			allowedFormats={DESCRIPTION_ALLOWED_FORMATS}
-			className="osf__field-description"
+			className="osf-field__description"
 		/>
 	);
 }

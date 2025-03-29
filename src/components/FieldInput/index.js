@@ -18,7 +18,7 @@ export default function FieldInput({ type = 'text', attributes, setAttributes })
 	return (
 		<input
 			type={type}
-			className={clsx('osf__field-input', `osf__field-input--${type}`)}
+			className={clsx('osf-field__input', `osf-field__input--${type}`)}
 			aria-label={__('Optional placeholder text', 'outstand-forms')}
 			placeholder={placeholder ? undefined : __('Optional placeholder…', 'outstand-forms')}
 			value={placeholder}

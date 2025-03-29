@@ -72,13 +72,14 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes }) {
 
 	const blockProps = useBlockProps({
 		className: clsx(
-			'osf__field',
-			`osf__field--label-${labelPosition}`,
-			`osf__field--description-${descriptionPosition}`,
+			'osf-field',
+			'osf-field--text',
+			`osf-field--label-${labelPosition}`,
+			`osf-field--description-${descriptionPosition}`,
 			{
-				'osf__field--required': required,
-				'osf__field--has-label': !!label,
-				'osf__field--has-description': !!description,
+				'osf-field--required': required,
+				'osf-field--has-label': !!label,
+				'osf-field--has-description': !!description,
 			},
 		),
 	});

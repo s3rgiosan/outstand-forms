@@ -43,7 +43,7 @@ function render_field( $block, $attributes ) {
 	<?php endif; ?>
 
 	<?php if ( $has_inline_label ) : ?>
-		<div class="osf__field-wrapper">
+		<div class="osf-field__wrapper">
 			<?php if ( 'top' === $description_position ) : ?>
 				<?php echo $description_field; ?>
 			<?php endif; ?>

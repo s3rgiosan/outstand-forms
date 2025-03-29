@@ -30,7 +30,7 @@ export default function Field({ type = 'text', attributes, setAttributes }) {
 			{!hasInlineLabel && descriptionPosition === 'top' && descriptionField}
 
 			{hasInlineLabel ? (
-				<div className="osf__field-wrapper">
+				<div className="osf-field__wrapper">
 					{descriptionPosition === 'top' && descriptionField}
 					{field}
 					{descriptionPosition === 'bottom' && descriptionField}

@@ -14,7 +14,7 @@ class FieldDescription extends AbstractComponent {
 		}
 
 		return sprintf(
-			'<div id="%1$s" class="osf__field-description">%2$s</div>',
+			'<div id="%1$s" class="osf-field__description">%2$s</div>',
 			esc_attr( $this->get_description_id() ),
 			wp_kses_post( $this->attributes['description'] )
 		);

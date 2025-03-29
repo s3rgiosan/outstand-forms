@@ -11,7 +11,7 @@
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'osf__form-submit',
+		'class' => 'osf-form__submit',
 	]
 );
 

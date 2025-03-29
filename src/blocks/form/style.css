@@ -1,4 +1,4 @@
-.osf__form {
+.osf-form {
 	-webkit-tap-highlight-color: transparent;
 	box-sizing: border-box;
 	width: 100%;
@@ -10,28 +10,24 @@
 	}
 }
 
-.osf__field {
+.osf-field {
 	display: flex;
 	flex-direction: column;
 
-	&.osf__field--label-left,
-	&.osf__field--label-right {
+	&.osf-field--label-left,
+	&.osf-field--label-right {
 		flex-direction: row;
 	}
 }
 
-.osf__field-label {
+.osf-field__label {
 	display: block;
 }
 
-.osf__field-input {
+.osf-field__input {
 	-webkit-appearance: none;
 	height: auto;
 	margin: 0;
 	min-height: auto;
 	max-width: none;
 }
-
-.osf__field-description {}
-
-.osf__field-wrapper {}

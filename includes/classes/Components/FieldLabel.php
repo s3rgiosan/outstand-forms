@@ -14,7 +14,7 @@ class FieldLabel extends AbstractComponent {
 		}
 
 		return sprintf(
-			'<label id="%1$s" for="%2$s" class="osf__field-label">%3$s</label>',
+			'<label id="%1$s" for="%2$s" class="osf-field__label">%3$s</label>',
 			esc_attr( $this->get_label_id() ),
 			esc_attr( $this->get_field_id() ),
 			wp_kses_post( $this->attributes['label'] )

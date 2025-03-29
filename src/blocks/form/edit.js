@@ -68,7 +68,7 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 	}, [hasFormBlocks, formId, type, formIds, stableFormIds, instanceId, setAttributes]);
 
 	const blockProps = useBlockProps({
-		className: clsx('osf__form', `osf__form--${type}`, `osf__form--${formId}`),
+		className: clsx('osf-form', `osf-form--${type}`, `osf-form--${formId}`),
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {

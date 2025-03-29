@@ -19,7 +19,7 @@ export default function FieldLabel({ attributes, setAttributes }) {
 			aria-label={label ? __('Label', 'outstand-forms') : __('Empty label', 'outstand-forms')}
 			placeholder={__('Type a label', 'outstand-forms')}
 			allowedFormats={[]}
-			className="osf__field-label"
+			className="osf-field__label"
 		/>
 	);
 }

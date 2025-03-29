@@ -17,7 +17,7 @@ $form_id = $block->context['osf/formId'];
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'osf__form-fields',
+		'class' => 'osf-form__fields',
 	]
 );
 

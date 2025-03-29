@@ -5,7 +5,7 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 export default function FormContentEdit() {
 	const blockProps = useBlockProps({
-		className: 'osf__form-fields',
+		className: 'osf-form__fields',
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
