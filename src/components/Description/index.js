@@ -9,7 +9,7 @@ import { __ } from '@wordpress/i18n';
  */
 import { DESCRIPTION_ALLOWED_FORMATS } from '../../constants';
 
-export default function FieldDescription({ attributes, setAttributes }) {
+export default function Description({ attributes, setAttributes }) {
 	const { description } = attributes;
 
 	const onDescriptionChange = (value) => {

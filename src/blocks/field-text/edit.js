@@ -34,7 +34,7 @@ import {
 	descriptionPositionOptions,
 	autocompleteOptions,
 } from '../../options';
-import Field from '../../components/Field';
+import Field from '../../fields';
 import { useFieldIds } from '../../hooks/useFieldIds';
 
 export default function FieldTextEdit({ clientId, attributes, setAttributes }) {

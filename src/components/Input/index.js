@@ -8,7 +8,7 @@ import clsx from 'clsx';
  */
 import { __ } from '@wordpress/i18n';
 
-export default function FieldInput({ type = 'text', attributes, setAttributes }) {
+export default function Input({ type = 'text', attributes, setAttributes }) {
 	const { required, placeholder } = attributes;
 
 	const onPlaceholderChange = (value) => {

@@ -44,14 +44,14 @@ class Input extends AbstractComponent {
 		$label_id   = $this->get_field_label_id( $form_id );
 
 		$conditional_attrs = [
-			'placeholder'     => $placeholder ? sprintf( ' placeholder="%s"', esc_attr( $placeholder ) ) : '',
-			'autocomplete'    => $autocomplete ? sprintf( ' autocomplete="%s"', esc_attr( $autocomplete ) ) : '',
-			'min_length'      => $min_length ? sprintf( ' minlength="%s"', esc_attr( $min_length ) ) : '',
-			'max_length'      => $max_length ? sprintf( ' maxlength="%s"', esc_attr( $max_length ) ) : '',
-			'required'        => $required ? ' required' : '',
-			'aria_required'   => $required ? ' aria-required="true"' : '',
-			'aria_label'      => $aria_label ? sprintf( ' aria-label="%s"', esc_attr( $aria_label ) ) : '',
-			'aria_labelledby' => $label_id ? sprintf( ' aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
+			'{placeholder}'     => $placeholder ? sprintf( 'placeholder="%s"', esc_attr( $placeholder ) ) : '',
+			'{autocomplete}'    => $autocomplete ? sprintf( 'autocomplete="%s"', esc_attr( $autocomplete ) ) : '',
+			'{min_length}'      => $min_length ? sprintf( 'minlength="%s"', esc_attr( $min_length ) ) : '',
+			'{max_length}'      => $max_length ? sprintf( 'maxlength="%s"', esc_attr( $max_length ) ) : '',
+			'{required}'        => $required ? 'required' : '',
+			'{aria_required}'   => $required ? 'aria-required="true"' : '',
+			'{aria_label}'      => $aria_label ? sprintf( 'aria-label="%s"', esc_attr( $aria_label ) ) : '',
+			'{aria_labelledby}' => $label_id ? sprintf( 'aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
 		];
 
 		$template = '<input

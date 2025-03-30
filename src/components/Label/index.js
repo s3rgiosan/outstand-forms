@@ -4,7 +4,7 @@
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
-export default function FieldLabel({ attributes, setAttributes }) {
+export default function Label({ attributes, setAttributes }) {
 	const { label } = attributes;
 
 	const onChangeLabel = (value) => {

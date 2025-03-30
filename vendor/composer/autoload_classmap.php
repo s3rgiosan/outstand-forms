@@ -16,8 +16,9 @@ return array(
     'Outstand\\Forms\\Components\\Error' => $baseDir . '/includes/classes/Components/Error.php',
     'Outstand\\Forms\\Components\\Input' => $baseDir . '/includes/classes/Components/Input.php',
     'Outstand\\Forms\\Components\\Label' => $baseDir . '/includes/classes/Components/Label.php',
+    'Outstand\\Forms\\FieldFactory' => $baseDir . '/includes/classes/FieldFactory.php',
     'Outstand\\Forms\\Fields\\AbstractField' => $baseDir . '/includes/classes/Fields/AbstractField.php',
     'Outstand\\Forms\\Fields\\FieldInterface' => $baseDir . '/includes/classes/Fields/FieldInterface.php',
-    'Outstand\\Forms\\Fields\\FieldText' => $baseDir . '/includes/classes/Fields/FieldText.php',
+    'Outstand\\Forms\\Fields\\Text' => $baseDir . '/includes/classes/Fields/Text.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
 );

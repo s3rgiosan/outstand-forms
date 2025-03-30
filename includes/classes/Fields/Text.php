@@ -7,7 +7,7 @@ use Outstand\Forms\Components\Description;
 use Outstand\Forms\Components\Error;
 use Outstand\Forms\Components\Input;
 
-class FieldText extends AbstractField {
+class Text extends AbstractField {
 
 	/**
 	 * {@inheritDoc}

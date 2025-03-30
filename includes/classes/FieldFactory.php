@@ -4,7 +4,7 @@ namespace Outstand\Forms;
 
 use InvalidArgumentException;
 use Outstand\Forms\Fields\FieldInterface;
-use Outstand\Forms\Fields\FieldText;
+use Outstand\Forms\Fields\Text;
 
 class FieldFactory {
 	/**
@@ -13,7 +13,7 @@ class FieldFactory {
 	 * @var array
 	 */
 	protected array $field_types = [
-		'text' => FieldText::class,
+		'text' => Text::class,
 	];
 
 	/**
