@@ -21,7 +21,7 @@ const { state } = store('osf/form', {
 			const formData = new FormData(form);
 			const entries = Object.fromEntries(formData.entries());
 
-			console.log('Form submitted:', state, entries);
+			console.log('Form submitted:', entries);
 		},
 	},
 });

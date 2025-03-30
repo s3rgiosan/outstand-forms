@@ -37,7 +37,8 @@ $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => implode( ' ', $wrapper_classes ),
+		'class'               => implode( ' ', $wrapper_classes ),
+		'data-wp-interactive' => 'osf/field-text',
 	]
 );
 
@@ -46,8 +47,11 @@ $field   = $factory->create( 'text', $attributes );
 
 $context = wp_interactivity_data_wp_context(
 	[
-		'value'     => $default_value,
-		'isFocused' => false,
+		'value'         => $default_value,
+		'isValid'       => true,
+		'isFocused'     => false,
+		'descriptionId' => $field->get_description_id( $form_id ),
+		'errorId'       => $field->get_error_id( $form_id ),
 	]
 );
 
