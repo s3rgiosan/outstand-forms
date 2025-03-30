@@ -44,40 +44,36 @@ abstract class AbstractComponent implements ComponentInterface {
 	/**
 	 * Get the field ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	protected function get_field_id( string $form_id ): string {
-		return $this->field->get_field_id( $form_id );
+	protected function get_field_id(): string {
+		return $this->field->get_field_id();
 	}
 
 	/**
 	 * Get the field label ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	protected function get_field_label_id( string $form_id ): string {
-		return $this->field->get_label_id( $form_id );
+	protected function get_field_label_id(): string {
+		return $this->field->get_label_id();
 	}
 
 	/**
 	 * Get the field description ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	protected function get_field_description_id( string $form_id ): string {
-		return $this->field->get_description_id( $form_id );
+	protected function get_field_description_id(): string {
+		return $this->field->get_description_id();
 	}
 
 	/**
 	 * Get the field error ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	protected function get_field_error_id( string $form_id ): string {
-		return $this->field->get_error_id( $form_id );
+	protected function get_field_error_id(): string {
+		return $this->field->get_error_id();
 	}
 }

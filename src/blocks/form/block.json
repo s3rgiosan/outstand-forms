@@ -31,10 +31,15 @@
     },
     "action": {
       "type": "string"
+    },
+    "requiredIndicator": {
+      "type": "string",
+      "default": "*"
     }
   },
   "providesContext": {
-    "osf/formId": "formId"
+    "osf/formId": "formId",
+    "osf/requiredIndicator": "requiredIndicator"
   },
   "allowedBlocks": [
     "osf/form-fields",

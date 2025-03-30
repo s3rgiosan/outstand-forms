@@ -45,40 +45,35 @@ interface FieldInterface {
 	/**
 	 * Get the field ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_field_id( string $form_id ): string;
+	public function get_field_id(): string;
 
 	/**
 	 * Get the field label ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_label_id( string $form_id ): string;
+	public function get_label_id(): string;
 
 	/**
 	 * Get the field description ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_description_id( string $form_id ): string;
+	public function get_description_id(): string;
 
 	/**
 	 * Get the field error ID.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_error_id( string $form_id ): string;
+	public function get_error_id(): string;
 
 	/**
 	 * Render the field.
 	 *
-	 * @param string $form_id Form ID.
 	 * @return void
 	 */
-	public function render( string $form_id ): void;
+	public function render(): void;
 }

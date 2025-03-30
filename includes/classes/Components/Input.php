@@ -27,7 +27,7 @@ class Input extends AbstractComponent {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_markup( string $form_id ): string {
+	public function get_markup(): string {
 		$attributes = $this->get_attributes();
 
 		$field_name    = $attributes['name'] ?? '';
@@ -39,9 +39,9 @@ class Input extends AbstractComponent {
 		$max_length    = $attributes['maxLength'] ?? 0;
 		$aria_label    = $attributes['ariaLabel'] ?? '';
 
-		$field_id   = $this->get_field_id( $form_id );
+		$field_id   = $this->get_field_id();
 		$field_name = ! empty( $field_name ) ? $field_name : 'field_' . $attributes['fieldId'];
-		$label_id   = $this->get_field_label_id( $form_id );
+		$label_id   = $this->get_field_label_id();
 
 		$conditional_attrs = [
 			'{placeholder}'     => $placeholder ? sprintf( 'placeholder="%s"', esc_attr( $placeholder ) ) : '',

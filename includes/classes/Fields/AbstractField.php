@@ -64,44 +64,44 @@ abstract class AbstractField implements FieldInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_field_id( string $form_id ): string {
-		return sprintf( 'osf-%1$s-field-%2$s', $form_id, $this->attributes['fieldId'] );
+	public function get_field_id(): string {
+		return sprintf( 'osf-%1$s-field-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_label_id( string $form_id ): string {
-		return sprintf( 'osf-%1$s-label-%2$s', $form_id, $this->attributes['fieldId'] );
+	public function get_label_id(): string {
+		return sprintf( 'osf-%1$s-label-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_description_id( string $form_id ): string {
-		return sprintf( 'osf-%1$s-description-%2$s', $form_id, $this->attributes['fieldId'] );
+	public function get_description_id(): string {
+		return sprintf( 'osf-%1$s-description-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_error_id( string $form_id ): string {
-		return sprintf( 'osf-%1$s-error-%2$s', $form_id, $this->attributes['fieldId'] );
+	public function get_error_id(): string {
+		return sprintf( 'osf-%1$s-error-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function render( string $form_id ): void {
+	public function render(): void {
 
 		$label_position       = $this->attributes['labelPosition'] ?? 'top';
 		$description_position = $this->attributes['descriptionPosition'] ?? 'bottom';
 		$has_inline_label     = in_array( $label_position, [ 'left', 'right' ], true );
 
-		$label       = $this->get_component( 'label' ) ? $this->get_component( 'label' )->get_markup( $form_id ) : '';
-		$description = $this->get_component( 'description' ) ? $this->get_component( 'description' )->get_markup( $form_id ) : '';
-		$error       = $this->get_component( 'error' ) ? $this->get_component( 'error' )->get_markup( $form_id ) : '';
-		$field       = $this->get_component( 'field' ) ? $this->get_component( 'field' )->get_markup( $form_id ) : '';
+		$label       = $this->get_component( 'label' ) ? $this->get_component( 'label' )->get_markup() : '';
+		$description = $this->get_component( 'description' ) ? $this->get_component( 'description' )->get_markup() : '';
+		$error       = $this->get_component( 'error' ) ? $this->get_component( 'error' )->get_markup() : '';
+		$field       = $this->get_component( 'field' ) ? $this->get_component( 'field' )->get_markup() : '';
 
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>

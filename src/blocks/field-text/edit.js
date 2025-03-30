@@ -37,7 +37,7 @@ import {
 import Field from '../../fields';
 import { useFieldIds } from '../../hooks/useFieldIds';
 
-export default function FieldTextEdit({ clientId, attributes, setAttributes }) {
+export default function FieldTextEdit({ clientId, attributes, setAttributes, context }) {
 	const {
 		fieldId,
 		name,
@@ -127,7 +127,12 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes }) {
 	return (
 		<>
 			<div {...blockProps}>
-				<Field type="text" attributes={attributes} setAttributes={setAttributes} />
+				<Field
+					type="text"
+					attributes={attributes}
+					setAttributes={setAttributes}
+					context={context}
+				/>
 			</div>
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'outstand-forms')}>

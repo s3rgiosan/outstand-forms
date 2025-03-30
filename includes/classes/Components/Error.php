@@ -7,7 +7,7 @@ class Error extends AbstractComponent {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_markup( string $form_id ): string {
+	public function get_markup(): string {
 		return sprintf(
 			'<div
 				id="%1$s"
@@ -15,7 +15,7 @@ class Error extends AbstractComponent {
 				data-wp-text="context.errorMessage"
 				data-wp-bind--aria-hidden="context.isValid"
 			></div>',
-			esc_attr( $this->get_field_error_id( $form_id ) )
+			esc_attr( $this->get_field_error_id() )
 		);
 	}
 }

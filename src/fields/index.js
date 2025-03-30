@@ -5,12 +5,12 @@ import Input from '../components/Input';
 import Label from '../components/Label';
 import Description from '../components/Description';
 
-export default function Field({ type = 'text', attributes, setAttributes }) {
+export default function Field({ type = 'text', attributes, setAttributes, context }) {
 	const { labelPosition, descriptionPosition } = attributes;
 
 	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
 
-	const label = <Label attributes={attributes} setAttributes={setAttributes} />;
+	const label = <Label attributes={attributes} setAttributes={setAttributes} context={context} />;
 	const description = <Description attributes={attributes} setAttributes={setAttributes} />;
 
 	let field = '';

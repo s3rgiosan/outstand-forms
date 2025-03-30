@@ -15,6 +15,14 @@ if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) )
 	return;
 }
 
+$attributes = array_merge(
+	[
+		'formId'            => $block->context['osf/formId'],
+		'requiredIndicator' => $block->context['osf/requiredIndicator'] ?? '*',
+	],
+	$attributes
+);
+
 $form_id              = $block->context['osf/formId'];
 $default_value        = $attributes['defaultValue'] ?? '';
 $label                = $attributes['label'] ?? '';
@@ -50,8 +58,8 @@ $context = wp_interactivity_data_wp_context(
 		'value'         => $default_value,
 		'isValid'       => true,
 		'isFocused'     => false,
-		'descriptionId' => $field->get_description_id( $form_id ),
-		'errorId'       => $field->get_error_id( $form_id ),
+		'descriptionId' => $field->get_description_id(),
+		'errorId'       => $field->get_error_id(),
 	]
 );
 
@@ -61,5 +69,5 @@ $context = wp_interactivity_data_wp_context(
 	<?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	<?php echo $context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
-	<?php $field->render( $form_id ); ?>
+	<?php $field->render(); ?>
 </div>

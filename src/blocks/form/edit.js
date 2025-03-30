@@ -9,9 +9,10 @@ import clsx from 'clsx';
 import {
 	useBlockProps,
 	useInnerBlocksProps,
+	InspectorControls,
 	InspectorAdvancedControls,
 } from '@wordpress/block-editor';
-import { TextControl, SelectControl } from '@wordpress/components';
+import { TextControl, SelectControl, PanelBody } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import { useInstanceId } from '@wordpress/compose';
 import { __ } from '@wordpress/i18n';
@@ -40,7 +41,7 @@ const TEMPLATE = [
 ];
 
 export default function FormEdit({ clientId, attributes, setAttributes }) {
-	const { formId, type, method, action } = attributes;
+	const { formId, type, method, action, requiredIndicator } = attributes;
 
 	const instanceId = useInstanceId(FormEdit);
 	const { formIds, stableFormIds, hasFormBlocks } = useFormIds(clientId);
@@ -77,9 +78,29 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 		templateLock: 'insert',
 	});
 
+	const onChangeRequiredIndicator = (value) => {
+		setAttributes({ requiredIndicator: value });
+	};
+
 	return (
 		<>
 			<div {...innerBlocksProps} />
+			<InspectorControls>
+				<PanelBody title={__('Settings', 'outstand-forms')}>
+					<TextControl
+						label={__('Required Indicator', 'outstand-forms')}
+						value={requiredIndicator}
+						onChange={onChangeRequiredIndicator}
+						autoComplete="off"
+						help={__(
+							'The character or string used to indicate that a field is required. Leave blank to disable.',
+							'outstand-forms',
+						)}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<InspectorAdvancedControls>
 				<SelectControl
 					label={__('Method', 'outstand-forms')}
@@ -99,7 +120,10 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 					value={action}
 					onChange={(newValue) => setAttributes({ action: newValue })}
 					autoComplete="off"
-					help={__('The URL to which the form data will be submitted.', 'outstand-forms')}
+					help={__(
+						'The URL where the form will be submitted. Leave blank to handle the submission automatically.',
+						'outstand-forms',
+					)}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>

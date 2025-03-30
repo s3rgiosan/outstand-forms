@@ -70,7 +70,8 @@
     }
   },
   "usesContext": [
-    "osf/formId"
+    "osf/formId",
+    "osf/requiredIndicator"
   ],
   "supports": {
     "html": false,
