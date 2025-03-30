@@ -11,10 +11,7 @@
   "autoload": {
     "psr-4": {
       "Outstand\\Forms\\": "includes/classes"
-    },
-    "files": [
-      "includes/helpers/helpers.php"
-    ]
+    }
   },
   "require": {
     "php": "^8.0",

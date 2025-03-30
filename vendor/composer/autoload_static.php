@@ -8,7 +8,6 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
 {
     public static $files = array (
         '256558b1ddf2fa4366ea7d7602798dd1' => __DIR__ . '/..' . '/yahnis-elsts/plugin-update-checker/load-v5p5.php',
-        'ef2cf838d8e500212eaf71797477b87f' => __DIR__ . '/../..' . '/includes/helpers/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -29,12 +28,16 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Outstand\\Forms\\AbstractModule' => __DIR__ . '/../..' . '/includes/classes/AbstractModule.php',
         'Outstand\\Forms\\Blocks\\AbstractBlock' => __DIR__ . '/../..' . '/includes/classes/Blocks/AbstractBlock.php',
-        'Outstand\\Forms\\Blocks\\Form' => __DIR__ . '/../..' . '/includes/classes/Blocks/Form.php',
         'Outstand\\Forms\\Blocks\\FormSubmitButton' => __DIR__ . '/../..' . '/includes/classes/Blocks/FormSubmitButton.php',
         'Outstand\\Forms\\Components\\AbstractComponent' => __DIR__ . '/../..' . '/includes/classes/Components/AbstractComponent.php',
-        'Outstand\\Forms\\Components\\FieldDescription' => __DIR__ . '/../..' . '/includes/classes/Components/FieldDescription.php',
-        'Outstand\\Forms\\Components\\FieldInput' => __DIR__ . '/../..' . '/includes/classes/Components/FieldInput.php',
-        'Outstand\\Forms\\Components\\FieldLabel' => __DIR__ . '/../..' . '/includes/classes/Components/FieldLabel.php',
+        'Outstand\\Forms\\Components\\ComponentInterface' => __DIR__ . '/../..' . '/includes/classes/Components/ComponentInterface.php',
+        'Outstand\\Forms\\Components\\Description' => __DIR__ . '/../..' . '/includes/classes/Components/Description.php',
+        'Outstand\\Forms\\Components\\Error' => __DIR__ . '/../..' . '/includes/classes/Components/Error.php',
+        'Outstand\\Forms\\Components\\Input' => __DIR__ . '/../..' . '/includes/classes/Components/Input.php',
+        'Outstand\\Forms\\Components\\Label' => __DIR__ . '/../..' . '/includes/classes/Components/Label.php',
+        'Outstand\\Forms\\Fields\\AbstractField' => __DIR__ . '/../..' . '/includes/classes/Fields/AbstractField.php',
+        'Outstand\\Forms\\Fields\\FieldInterface' => __DIR__ . '/../..' . '/includes/classes/Fields/FieldInterface.php',
+        'Outstand\\Forms\\Fields\\FieldText' => __DIR__ . '/../..' . '/includes/classes/Fields/FieldText.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
     );
 

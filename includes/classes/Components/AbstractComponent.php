@@ -2,72 +2,82 @@
 
 namespace Outstand\Forms\Components;
 
-abstract class AbstractComponent {
+use Outstand\Forms\Components\ComponentInterface;
+use Outstand\Forms\Fields\FieldInterface;
+
+abstract class AbstractComponent implements ComponentInterface {
 
 	/**
-	 * Block instance.
+	 * Field instance.
 	 *
-	 * @var \WP_Block
+	 * @var FieldInterface
 	 */
-	protected $block = null;
-
-	/**
-	 * Component attributes.
-	 *
-	 * @var array
-	 */
-	protected array $attributes = [];
-
-	/**
-	 * Form ID.
-	 *
-	 * @var string
-	 */
-	protected string $form_id;
-
-	/**
-	 * Get the markup for the component.
-	 *
-	 * @var string
-	 */
-	abstract public function get_markup(): string;
+	protected FieldInterface $field;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param \WP_Block $block      Block instance.
-	 * @param array     $attributes Component attributes.
+	 * @param FieldInterface $field Field instance.
 	 */
-	public function __construct( $block = null, array $attributes ) {
-		$this->block      = $block;
-		$this->attributes = $attributes;
-		$this->form_id    = $block->context['osf/formId'];
+	public function __construct( FieldInterface $field ) {
+		$this->field = $field;
+	}
+
+	/**
+	 * Get the field attributes.
+	 *
+	 * @return array
+	 */
+	protected function get_attributes(): array {
+		return $this->field->get_attributes();
+	}
+
+	/**
+	 * Get the field type.
+	 *
+	 * @return string
+	 */
+	protected function get_field_type(): string {
+		return $this->field->get_type();
 	}
 
 	/**
 	 * Get the field ID.
 	 *
+	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_field_id(): string {
-		return sprintf( 'osf-%1$s-field-%2$s', $this->form_id, $this->attributes['fieldId'] );
+	protected function get_field_id( string $form_id ): string {
+		return $this->field->get_field_id( $form_id );
 	}
 
 	/**
-	 * Get the label ID.
+	 * Get the field label ID.
 	 *
+	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_label_id(): string {
-		return sprintf( 'osf-%1$s-label-%2$s', $this->form_id, $this->attributes['fieldId'] );
+	protected function get_field_label_id( string $form_id ): string {
+		return $this->field->get_label_id( $form_id );
 	}
 
 	/**
-	 * Get the description ID.
+	 * Get the field description ID.
 	 *
+	 * @param string $form_id Form ID.
 	 * @return string
 	 */
-	public function get_description_id(): string {
-		return sprintf( 'osf-%1$s-description-%2$s', $this->form_id, $this->attributes['fieldId'] );
+	protected function get_field_description_id( string $form_id ): string {
+		return $this->field->get_description_id( $form_id );
+	}
+
+	/**
+	 * Get the field error ID.
+	 *
+	 * @param string $form_id Form ID.
+	 * @return string
+	 */
+	protected function get_field_error_id( string $form_id ): string {
+		return $this->field->get_error_id( $form_id );
 	}
 }

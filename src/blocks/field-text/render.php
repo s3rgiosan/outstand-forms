@@ -9,7 +9,7 @@
  * @package Outstand\Forms
  */
 
-use function Outstand\Forms\render_field;
+use Outstand\Forms\FieldFactory;
 
 if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) ) {
 	return;
@@ -41,6 +41,9 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	]
 );
 
+$factory = new FieldFactory();
+$field   = $factory->create( 'text', $attributes );
+
 $context = wp_interactivity_data_wp_context(
 	[
 		'value'     => $default_value,
@@ -54,5 +57,5 @@ $context = wp_interactivity_data_wp_context(
 	<?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	<?php echo $context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
-	<?php render_field( $block, $attributes ); ?>
+	<?php $field->render( $form_id ); ?>
 </div>
