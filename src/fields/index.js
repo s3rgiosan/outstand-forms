@@ -11,12 +11,21 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
 
 	const label = <Label attributes={attributes} setAttributes={setAttributes} context={context} />;
-	const description = <Description attributes={attributes} setAttributes={setAttributes} />;
+	const description = (
+		<Description attributes={attributes} setAttributes={setAttributes} context={context} />
+	);
 
 	let field = '';
 	switch (type) {
 		case 'text':
-			field = <Input type="text" attributes={attributes} setAttributes={setAttributes} />;
+			field = (
+				<Input
+					type="text"
+					attributes={attributes}
+					setAttributes={setAttributes}
+					context={context}
+				/>
+			);
 			break;
 	}
 

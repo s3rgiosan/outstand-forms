@@ -3,20 +3,35 @@
  */
 import { store, getContext, getElement } from '@wordpress/interactivity';
 
-store('osf/field-text', {
+/**
+ * Internal dependencies
+ */
+import validationRegistry from './../../validation-registry';
+import './../../validators';
+
+const { actions } = store('osf/field-text', {
 	state: {
 		get ariaDescribedBy() {
-			const { isValid, descriptionId, errorId } = getContext();
+			const { isValid, descriptionFieldId, errorFieldId } = getContext();
 
-			if (!descriptionId && !errorId) {
+			if (!descriptionFieldId && !errorFieldId) {
 				return '';
 			}
 
-			if (!errorId) {
-				return descriptionId;
+			if (!errorFieldId) {
+				return descriptionFieldId;
 			}
 
-			return isValid ? descriptionId : `${errorId} ${descriptionId}`;
+			return isValid ? descriptionFieldId : `${errorFieldId} ${descriptionFieldId}`;
+		},
+		get errorMessage() {
+			const { isValid, validationErrors, errorMessages } = getContext();
+			if (isValid) {
+				return '';
+			}
+
+			const firstError = validationErrors[0];
+			return errorMessages?.[firstError] || '';
 		},
 	},
 	actions: {
@@ -31,8 +46,17 @@ store('osf/field-text', {
 		onChange() {
 			const context = getContext();
 			const { ref } = getElement();
+
 			context.value = ref.value;
-			context.isValid = ref.value !== '';
+			actions.validate();
+		},
+		validate() {
+			const context = getContext();
+			const { value, validationRules } = context;
+			const { isValid, errors } = validationRegistry.validate(value, validationRules);
+
+			context.isValid = isValid;
+			context.validationErrors = errors;
 		},
 	},
 });

@@ -5,7 +5,7 @@ import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
 export default function Label({ attributes, setAttributes, context }) {
-	const { label } = attributes;
+	const { label, required } = attributes;
 	const { 'osf/requiredIndicator': requiredIndicator } = context;
 
 	const onChangeLabel = (value) => {
@@ -24,8 +24,8 @@ export default function Label({ attributes, setAttributes, context }) {
 				placeholder={__('Type a label', 'outstand-forms')}
 				allowedFormats={[]}
 			/>
-			{requiredIndicator && ' '}
-			{requiredIndicator && (
+			{required && requiredIndicator && ' '}
+			{required && requiredIndicator && (
 				<span className="osf-field__required-indicator">{requiredIndicator}</span>
 			)}
 		</div>

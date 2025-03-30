@@ -18,6 +18,10 @@ $form_type   = $attributes['type'] ?? 'inline';
 $form_method = $attributes['method'] ?? 'post';
 $form_action = $attributes['action'] ?? '';
 
+if ( empty( $form_action ) ) {
+	$form_action = rest_url( 'osf/v1/forms/submit' );
+}
+
 wp_interactivity_state(
 	'osf/form',
 	[
@@ -38,6 +42,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 		'class'               => implode( ' ', $wrapper_classes ),
 		'method'              => $form_method,
 		'action'              => esc_url( $form_action ),
+		'novalidate'          => '',
 		'data-wp-interactive' => 'osf/form',
 		'data-wp-on--submit'  => 'actions.onSubmit',
 	]

@@ -14,11 +14,13 @@ class Label extends AbstractComponent {
 			return '';
 		}
 
-		$required_indicator = $attributes['requiredIndicator'] ?? '';
-		if ( ! empty( $required_indicator ) ) {
+		$required = $attributes['required'] ?? false;
+
+		$required_indicator = '';
+		if ( ! empty( $required ) && ! empty( $attributes['requiredIndicator'] ) ) {
 			$required_indicator = sprintf(
 				' <span class="osf-field__required-indicator">%s</span>',
-				esc_html( $required_indicator )
+				esc_html( $attributes['requiredIndicator'] )
 			);
 		}
 

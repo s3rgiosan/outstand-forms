@@ -23,7 +23,6 @@ $attributes = array_merge(
 	$attributes
 );
 
-$form_id              = $block->context['osf/formId'];
 $default_value        = $attributes['defaultValue'] ?? '';
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
@@ -55,11 +54,17 @@ $field   = $factory->create( 'text', $attributes );
 
 $context = wp_interactivity_data_wp_context(
 	[
-		'value'         => $default_value,
-		'isValid'       => true,
-		'isFocused'     => false,
-		'descriptionId' => $field->get_description_id(),
-		'errorId'       => $field->get_error_id(),
+		'value'              => $default_value,
+		'isValid'            => true,
+		'isFocused'          => false,
+		'descriptionFieldId' => $field->get_description_id(),
+		'errorFieldId'       => $field->get_error_id(),
+		'validationRules'    => [
+			'required' => $required,
+		],
+		'errorMessages'      => [
+			'required' => __( 'This field is required.', 'outstand-forms' ),
+		],
 	]
 );
 
