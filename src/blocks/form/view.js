@@ -3,16 +3,8 @@
  */
 import { store } from '@wordpress/interactivity';
 
-const { state } = store('osf/form', {
-	state: {
-		get isValid() {
-			return true;
-		},
-	},
+store('osf/form', {
 	actions: {
-		validate() {
-			return true;
-		},
 		onSubmit(ev) {
 			ev.preventDefault();
 

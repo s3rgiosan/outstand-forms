@@ -22,13 +22,6 @@ if ( empty( $form_action ) ) {
 	$form_action = rest_url( 'osf/v1/forms/submit' );
 }
 
-wp_interactivity_state(
-	'osf/form',
-	[
-		'isValid' => false,
-	]
-);
-
 $wrapper_classes = [
 	'osf-form',
 	"osf-form--{$form_type}",
@@ -45,6 +38,24 @@ $wrapper_attributes = get_block_wrapper_attributes(
 		'novalidate'          => '',
 		'data-wp-interactive' => 'osf/form',
 		'data-wp-on--submit'  => 'actions.onSubmit',
+	]
+);
+
+wp_interactivity_state(
+	'osf/form',
+	[
+		'isValid' => false,
+	]
+);
+
+wp_interactivity_config(
+	'osf/form',
+	[
+		'validationMessages' => [
+			'required'  => __( 'This value is required.', 'outstand-forms' ),
+			'minLength' => __( 'This value is too short. It should have {{min}} characters or more.', 'outstand-forms' ),
+			'maxLength' => __( 'This value is too long. It should have {{max}} characters or fewer.', 'outstand-forms' ),
+		],
 	]
 );
 
