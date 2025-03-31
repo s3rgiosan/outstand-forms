@@ -71,6 +71,13 @@ interface FieldInterface {
 	public function get_error_id(): string;
 
 	/**
+	 * Get the validation rules.
+	 *
+	 * @return array
+	 */
+	public function get_validation_rules(): array;
+
+	/**
 	 * Render the field.
 	 *
 	 * @return void

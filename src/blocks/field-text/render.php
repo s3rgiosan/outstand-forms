@@ -24,9 +24,11 @@ $attributes = array_merge(
 );
 
 $default_value        = $attributes['defaultValue'] ?? '';
+$required             = $attributes['required'] ?? false;
+$min_length           = $attributes['minLength'] ?? 0;
+$max_length           = $attributes['maxLength'] ?? 0;
 $label                = $attributes['label'] ?? '';
 $label_position       = $attributes['labelPosition'] ?? 'top';
-$required             = $attributes['required'] ?? false;
 $description          = $attributes['description'] ?? '';
 $description_position = $attributes['descriptionPosition'] ?? 'bottom';
 
@@ -59,12 +61,7 @@ $context = wp_interactivity_data_wp_context(
 		'isFocused'          => false,
 		'descriptionFieldId' => $field->get_description_id(),
 		'errorFieldId'       => $field->get_error_id(),
-		'validationRules'    => [
-			'required' => $required,
-		],
-		'errorMessages'      => [
-			'required' => __( 'This field is required.', 'outstand-forms' ),
-		],
+		'validationRules'    => $field->get_validation_rules(),
 	]
 );
 

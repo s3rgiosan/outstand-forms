@@ -92,6 +92,17 @@ abstract class AbstractField implements FieldInterface {
 	/**
 	 * {@inheritDoc}
 	 */
+	public function get_validation_rules(): array {
+		return [
+			'required'  => $this->attributes['required'] ?? false,
+			'minLength' => $this->attributes['minLength'] ?? 0,
+			'maxLength' => $this->attributes['maxLength'] ?? 0,
+		];
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public function render(): void {
 
 		$label_position       = $this->attributes['labelPosition'] ?? 'top';
