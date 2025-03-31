@@ -1,3 +1,6 @@
+/**
+ * Internal dependencies
+ */
 import validationRegistry from '../validation-registry';
 
 function required(value) {

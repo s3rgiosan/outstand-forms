@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext, getElement } from '@wordpress/interactivity';
+import { store, getContext, getElement, getConfig } from '@wordpress/interactivity';
 
 /**
  * Internal dependencies
@@ -25,13 +25,41 @@ const { actions } = store('osf/field-text', {
 			return isValid ? descriptionFieldId : `${errorFieldId} ${descriptionFieldId}`;
 		},
 		get errorMessage() {
-			const { isValid, validationErrors, errorMessages } = getContext();
+			const { isValid, validationErrors } = getContext();
+
+			// Skip if there are no validation errors.
 			if (isValid) {
 				return '';
 			}
 
-			const firstError = validationErrors[0];
-			return errorMessages?.[firstError] || '';
+			const { validationMessages = {} } = getConfig('osf/form');
+
+			// Skip if there are no validation messages.
+			if (!validationMessages) {
+				return '';
+			}
+
+			const context = getContext();
+			const { validationRules } = context;
+
+			const error = validationErrors[0];
+
+			// Skip if the error is not in the validation messages.
+			if (validationMessages?.[error] === undefined) {
+				return '';
+			}
+
+			let message = validationMessages[error];
+			switch (error) {
+				case 'minLength':
+					message = message.replace('{{min}}', validationRules.minLength);
+					break;
+				case 'maxLength':
+					message = message.replace('{{max}}', validationRules.maxLength);
+					break;
+			}
+
+			return message;
 		},
 	},
 	actions: {
