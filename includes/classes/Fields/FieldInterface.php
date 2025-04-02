@@ -57,11 +57,11 @@ interface FieldInterface {
 	public function get_label_id(): string;
 
 	/**
-	 * Get the field description ID.
+	 * Get the field help text ID.
 	 *
 	 * @return string
 	 */
-	public function get_description_id(): string;
+	public function get_help_text_id(): string;
 
 	/**
 	 * Get the field error ID.

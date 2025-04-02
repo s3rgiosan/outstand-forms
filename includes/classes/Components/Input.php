@@ -68,13 +68,12 @@ class Input extends AbstractComponent {
 			{aria_label}
 			{aria_labelledby}
 			class="osf-field__input osf-field__input--{type}"
-			data-wp-class--is-focused="context.isFocused"
 			data-wp-bind--value="context.value"
 			data-wp-bind--aria-invalid="!context.isValid"
-			data-wp-bind--aria-describedby="state.ariaDescribedBy"
-			data-wp-on--focus="actions.onFocus"
-			data-wp-on--blur="actions.onBlur"
-			data-wp-on--change="actions.onChange"
+			data-wp-bind--aria-describedby="state.fieldAriaDescribedByAttribute"
+			data-wp-on--focus="actions.handleFieldFocus"
+			data-wp-on--blur="actions.handleFieldBlur"
+			data-wp-on--change="actions.handleFieldChange"
 		/>';
 
 		$replacements = array_merge(

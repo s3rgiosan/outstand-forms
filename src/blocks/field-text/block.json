@@ -48,11 +48,11 @@
       "type": "string",
       "default": ""
     },
-    "description": {
+    "helpText": {
       "type": "string",
       "default": ""
     },
-    "descriptionPosition": {
+    "helpTextPosition": {
       "type": "string",
       "default": "bottom"
     },
@@ -85,6 +85,5 @@
     "interactivity": true
   },
   "editorScript": "file:./index.js",
-  "viewScriptModule": "file:./view.js",
   "render": "file:./render.php"
 }

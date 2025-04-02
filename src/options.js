@@ -24,11 +24,11 @@ export const labelPositionOptions = [
 ];
 
 /**
- * Options for the field description position.
+ * Options for the field help text position.
  *
  * @type {Array}
  */
-export const descriptionPositionOptions = [
+export const helpTextPositionOptions = [
 	{
 		value: 'bottom',
 		label: __('Bottom', 'outstand-forms'),

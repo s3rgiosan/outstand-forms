@@ -3,16 +3,16 @@
  */
 import Input from '../components/Input';
 import Label from '../components/Label';
-import Description from '../components/Description';
+import HelpText from '../components/HelpText';
 
 export default function Field({ type = 'text', attributes, setAttributes, context }) {
-	const { labelPosition, descriptionPosition } = attributes;
+	const { labelPosition, helpTextPosition } = attributes;
 
 	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
 
 	const label = <Label attributes={attributes} setAttributes={setAttributes} context={context} />;
-	const description = (
-		<Description attributes={attributes} setAttributes={setAttributes} context={context} />
+	const helpText = (
+		<HelpText attributes={attributes} setAttributes={setAttributes} context={context} />
 	);
 
 	let field = '';
@@ -32,19 +32,19 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 	return (
 		<>
 			{labelPosition !== 'right' && label}
-			{!hasInlineLabel && descriptionPosition === 'top' && description}
+			{!hasInlineLabel && helpTextPosition === 'top' && helpText}
 
 			{hasInlineLabel ? (
 				<div className="osf-field__wrapper">
-					{descriptionPosition === 'top' && description}
+					{helpTextPosition === 'top' && helpText}
 					{field}
-					{descriptionPosition === 'bottom' && description}
+					{helpTextPosition === 'bottom' && helpText}
 				</div>
 			) : (
 				field
 			)}
 
-			{!hasInlineLabel && descriptionPosition === 'bottom' && description}
+			{!hasInlineLabel && helpTextPosition === 'bottom' && helpText}
 			{labelPosition === 'right' && label}
 		</>
 	);

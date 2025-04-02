@@ -29,11 +29,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import {
-	labelPositionOptions,
-	descriptionPositionOptions,
-	autocompleteOptions,
-} from '../../options';
+import { labelPositionOptions, helpTextPositionOptions, autocompleteOptions } from '../../options';
 import Field from '../../fields';
 import { useFieldIds } from '../../hooks/useFieldIds';
 
@@ -48,8 +44,8 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 		placeholder,
 		autocomplete,
 		ariaLabel,
-		description,
-		descriptionPosition,
+		helpText,
+		helpTextPosition,
 		minLength,
 		maxLength,
 	} = attributes;
@@ -75,11 +71,11 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 			'osf-field',
 			'osf-field--text',
 			`osf-field--label-${labelPosition}`,
-			`osf-field--description-${descriptionPosition}`,
+			`osf-field--help-text-${helpTextPosition}`,
 			{
 				'osf-field--required': required,
 				'osf-field--has-label': !!label,
-				'osf-field--has-description': !!description,
+				'osf-field--has-help-text': !!helpText,
 			},
 		),
 	});
@@ -92,8 +88,8 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 		setAttributes({ labelPosition: value });
 	};
 
-	const onDescriptionPositionChange = (value) => {
-		setAttributes({ descriptionPosition: value });
+	const onHelpTextPositionChange = (value) => {
+		setAttributes({ helpTextPosition: value });
 	};
 
 	const onChangeRequired = (value) => {
@@ -207,16 +203,16 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 					})}
 				</ToggleGroupControl>
 				<ToggleGroupControl
-					label={__('Description Position', 'outstand-forms')}
-					value={descriptionPosition}
+					label={__('Help Text Position', 'outstand-forms')}
+					value={helpTextPosition}
 					isBlock
-					onChange={onDescriptionPositionChange}
+					onChange={onHelpTextPositionChange}
 					help={__('Select the position of the help text.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				>
 					{/* eslint-disable-next-line no-shadow */}
-					{descriptionPositionOptions.map(({ value, label }) => {
+					{helpTextPositionOptions.map(({ value, label }) => {
 						return <ToggleGroupControlOption key={value} value={value} label={label} />;
 					})}
 				</ToggleGroupControl>

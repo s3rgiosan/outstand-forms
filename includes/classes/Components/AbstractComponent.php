@@ -60,12 +60,12 @@ abstract class AbstractComponent implements ComponentInterface {
 	}
 
 	/**
-	 * Get the field description ID.
+	 * Get the field help text ID.
 	 *
 	 * @return string
 	 */
-	protected function get_field_description_id(): string {
-		return $this->field->get_description_id();
+	protected function get_field_help_text_id(): string {
+		return $this->field->get_help_text_id();
 	}
 
 	/**

@@ -37,7 +37,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 		'action'              => esc_url( $form_action ),
 		'novalidate'          => '',
 		'data-wp-interactive' => 'osf/form',
-		'data-wp-on--submit'  => 'actions.onSubmit',
+		'data-wp-on--submit'  => 'actions.onFormSubmit',
 	]
 );
 

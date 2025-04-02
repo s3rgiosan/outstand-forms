@@ -23,31 +23,31 @@ $attributes = array_merge(
 	$attributes
 );
 
-$default_value        = $attributes['defaultValue'] ?? '';
-$required             = $attributes['required'] ?? false;
-$min_length           = $attributes['minLength'] ?? 0;
-$max_length           = $attributes['maxLength'] ?? 0;
-$label                = $attributes['label'] ?? '';
-$label_position       = $attributes['labelPosition'] ?? 'top';
-$description          = $attributes['description'] ?? '';
-$description_position = $attributes['descriptionPosition'] ?? 'bottom';
+$default_value      = $attributes['defaultValue'] ?? '';
+$required           = $attributes['required'] ?? false;
+$min_length         = $attributes['minLength'] ?? 0;
+$max_length         = $attributes['maxLength'] ?? 0;
+$label              = $attributes['label'] ?? '';
+$label_position     = $attributes['labelPosition'] ?? 'top';
+$help_text          = $attributes['helpText'] ?? '';
+$help_text_position = $attributes['helpTextPosition'] ?? 'bottom';
 
 $wrapper_classes = [
 	'osf-field',
 	'osf-field--text',
 	"osf-field--label-{$label_position}",
-	"osf-field--description-{$description_position}",
+	"osf-field--help-text-{$help_text_position}",
 	$required ? 'osf-field--required' : '',
 	$label ? 'osf-field--has-label' : '',
-	$description ? 'osf-field--has-description' : '',
+	$help_text ? 'osf-field--has-help-text' : '',
 ];
 $wrapper_classes = array_filter( $wrapper_classes );
 $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class'               => implode( ' ', $wrapper_classes ),
-		'data-wp-interactive' => 'osf/field-text',
+		'class'                     => implode( ' ', $wrapper_classes ),
+		'data-wp-class--is-focused' => 'context.isFocused',
 	]
 );
 
@@ -56,12 +56,12 @@ $field   = $factory->create( 'text', $attributes );
 
 $context = wp_interactivity_data_wp_context(
 	[
-		'value'              => $default_value,
-		'isValid'            => true,
-		'isFocused'          => false,
-		'descriptionFieldId' => $field->get_description_id(),
-		'errorFieldId'       => $field->get_error_id(),
-		'validationRules'    => $field->get_validation_rules(),
+		'value'           => $default_value,
+		'isValid'         => true,
+		'isFocused'       => false,
+		'helpTextFieldId' => $field->get_help_text_id(),
+		'errorFieldId'    => $field->get_error_id(),
+		'validationRules' => $field->get_validation_rules(),
 	]
 );
 

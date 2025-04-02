@@ -1,9 +1,9 @@
 /**
- * Allowed formats for the description field.
+ * Allowed formats for the help text field.
  *
  * @type {Array}
  */
-export const DESCRIPTION_ALLOWED_FORMATS = [
+export const HELP_TEXT_ALLOWED_FORMATS = [
 	'core/bold',
 	'core/italic',
 	'core/strikethrough',

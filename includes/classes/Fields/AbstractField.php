@@ -78,8 +78,8 @@ abstract class AbstractField implements FieldInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function get_description_id(): string {
-		return sprintf( 'osf-%1$s-description-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
+	public function get_help_text_id(): string {
+		return sprintf( 'osf-%1$s-help-text-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
 	}
 
 	/**
@@ -93,11 +93,7 @@ abstract class AbstractField implements FieldInterface {
 	 * {@inheritDoc}
 	 */
 	public function get_validation_rules(): array {
-		return [
-			'required'  => $this->attributes['required'] ?? false,
-			'minLength' => $this->attributes['minLength'] ?? 0,
-			'maxLength' => $this->attributes['maxLength'] ?? 0,
-		];
+		return [];
 	}
 
 	/**
@@ -105,14 +101,14 @@ abstract class AbstractField implements FieldInterface {
 	 */
 	public function render(): void {
 
-		$label_position       = $this->attributes['labelPosition'] ?? 'top';
-		$description_position = $this->attributes['descriptionPosition'] ?? 'bottom';
-		$has_inline_label     = in_array( $label_position, [ 'left', 'right' ], true );
+		$label_position     = $this->attributes['labelPosition'] ?? 'top';
+		$help_text_position = $this->attributes['helpTextPosition'] ?? 'bottom';
+		$has_inline_label   = in_array( $label_position, [ 'left', 'right' ], true );
 
-		$label       = $this->get_component( 'label' ) ? $this->get_component( 'label' )->get_markup() : '';
-		$description = $this->get_component( 'description' ) ? $this->get_component( 'description' )->get_markup() : '';
-		$error       = $this->get_component( 'error' ) ? $this->get_component( 'error' )->get_markup() : '';
-		$field       = $this->get_component( 'field' ) ? $this->get_component( 'field' )->get_markup() : '';
+		$label     = $this->get_component( 'label' ) ? $this->get_component( 'label' )->get_markup() : '';
+		$help_text = $this->get_component( 'help_text' ) ? $this->get_component( 'help_text' )->get_markup() : '';
+		$error     = $this->get_component( 'error' ) ? $this->get_component( 'error' )->get_markup() : '';
+		$field     = $this->get_component( 'field' ) ? $this->get_component( 'field' )->get_markup() : '';
 
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>
@@ -121,19 +117,19 @@ abstract class AbstractField implements FieldInterface {
 			<?php echo $label; ?>
 		<?php endif; ?>
 
-		<?php if ( ! $has_inline_label && 'top' === $description_position ) : ?>
-			<?php echo $description; ?>
+		<?php if ( ! $has_inline_label && 'top' === $help_text_position ) : ?>
+			<?php echo $help_text; ?>
 		<?php endif; ?>
 
 		<?php if ( $has_inline_label ) : ?>
 			<div class="osf-field__wrapper">
-				<?php if ( 'top' === $description_position ) : ?>
-					<?php echo $description; ?>
+				<?php if ( 'top' === $help_text_position ) : ?>
+					<?php echo $help_text; ?>
 				<?php endif; ?>
 				<?php echo $field; ?>
 				<?php echo $error; ?>
-				<?php if ( 'bottom' === $description_position ) : ?>
-					<?php echo $description; ?>
+				<?php if ( 'bottom' === $help_text_position ) : ?>
+					<?php echo $help_text; ?>
 				<?php endif; ?>
 			</div>
 		<?php else : ?>
@@ -144,8 +140,8 @@ abstract class AbstractField implements FieldInterface {
 			<?php echo $error; ?>
 		<?php endif; ?>
 
-		<?php if ( ! $has_inline_label && 'bottom' === $description_position ) : ?>
-			<?php echo $description; ?>
+		<?php if ( ! $has_inline_label && 'bottom' === $help_text_position ) : ?>
+			<?php echo $help_text; ?>
 		<?php endif; ?>
 
 		<?php if ( 'right' === $label_position ) : ?>
