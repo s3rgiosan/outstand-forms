@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "osf/form",
+  "version": "0.1.0",
+  "title": "Form",
+  "category": "common",
+  "icon": "",
+  "description": "",
+  "keywords": [
+    "outstand",
+    "form",
+    "feedback"
+  ],
+  "textdomain": "outstand-forms",
+  "attributes": {
+    "formId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "default": "inline",
+      "enum": [
+        "inline",
+        "reference"
+      ]
+    },
+    "method": {
+      "type": "string",
+      "default": "post"
+    },
+    "action": {
+      "type": "string"
+    },
+    "requiredIndicator": {
+      "type": "string",
+      "default": "*"
+    }
+  },
+  "providesContext": {
+    "osf/formId": "formId",
+    "osf/requiredIndicator": "requiredIndicator"
+  },
+  "allowedBlocks": [
+    "osf/form-fields",
+    "osf/form-submit-button"
+  ],
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "interactivity": true
+  },
+  "editorStyle": "file:./index.css",
+  "editorScript": "file:./index.js",
+  "viewScriptModule": "file:./view.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}
