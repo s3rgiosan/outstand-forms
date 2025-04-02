@@ -35,10 +35,20 @@
     "requiredIndicator": {
       "type": "string",
       "default": "*"
+    },
+    "labelPosition": {
+      "type": "string",
+      "default": "top"
+    },
+    "helpTextPosition": {
+      "type": "string",
+      "default": "bottom"
     }
   },
   "providesContext": {
     "osf/formId": "formId",
+    "osf/labelPosition": "labelPosition",
+    "osf/helpTextPosition": "helpTextPosition",
     "osf/requiredIndicator": "requiredIndicator"
   },
   "allowedBlocks": [

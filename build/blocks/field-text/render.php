@@ -18,7 +18,9 @@ if ( empty( $block->context['osf/formId'] ) || empty( $attributes['fieldId'] ) )
 $attributes = array_merge(
 	[
 		'formId'            => $block->context['osf/formId'],
-		'requiredIndicator' => $block->context['osf/requiredIndicator'] ?? '*',
+		'labelPosition'     => $block->context['osf/labelPosition'],
+		'helpTextPosition'  => $block->context['osf/helpTextPosition'],
+		'requiredIndicator' => $block->context['osf/requiredIndicator'],
 	],
 	$attributes
 );
@@ -28,9 +30,9 @@ $required           = $attributes['required'] ?? false;
 $min_length         = $attributes['minLength'] ?? 0;
 $max_length         = $attributes['maxLength'] ?? 0;
 $label              = $attributes['label'] ?? '';
-$label_position     = $attributes['labelPosition'] ?? 'top';
+$label_position     = $attributes['labelPosition'];
 $help_text          = $attributes['helpText'] ?? '';
-$help_text_position = $attributes['helpTextPosition'] ?? 'bottom';
+$help_text_position = $attributes['helpTextPosition'];
 
 $wrapper_classes = [
 	'osf-field',

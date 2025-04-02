@@ -8,7 +8,7 @@ export default function Label({ attributes, setAttributes, context }) {
 	const { label, required } = attributes;
 	const { 'osf/requiredIndicator': requiredIndicator } = context;
 
-	const onChangeLabel = (value) => {
+	const onLabelChange = (value) => {
 		setAttributes({ label: value });
 	};
 
@@ -17,7 +17,7 @@ export default function Label({ attributes, setAttributes, context }) {
 			<RichText
 				tagName="label"
 				value={label}
-				onChange={onChangeLabel}
+				onChange={onLabelChange}
 				aria-label={
 					label ? __('Label', 'outstand-forms') : __('Empty label', 'outstand-forms')
 				}

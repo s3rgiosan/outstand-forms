@@ -29,8 +29,7 @@
       "default": ""
     },
     "labelPosition": {
-      "type": "string",
-      "default": "top"
+      "type": "string"
     },
     "required": {
       "type": "boolean",
@@ -53,8 +52,7 @@
       "default": ""
     },
     "helpTextPosition": {
-      "type": "string",
-      "default": "bottom"
+      "type": "string"
     },
     "minLength": {
       "type": "number",
@@ -71,6 +69,8 @@
   },
   "usesContext": [
     "osf/formId",
+    "osf/labelPosition",
+    "osf/helpTextPosition",
     "osf/requiredIndicator"
   ],
   "supports": {

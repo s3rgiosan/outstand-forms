@@ -35,17 +35,22 @@ import { useFieldIds } from '../../hooks/useFieldIds';
 
 export default function FieldTextEdit({ clientId, attributes, setAttributes, context }) {
 	const {
+		'osf/labelPosition': defaultLabelPosition,
+		'osf/helpTextPosition': defaultHelpTextPosition,
+	} = context;
+
+	const {
 		fieldId,
 		name,
 		label,
-		labelPosition,
+		labelPosition = defaultLabelPosition,
 		required,
 		defaultValue,
 		placeholder,
 		autocomplete,
 		ariaLabel,
 		helpText,
-		helpTextPosition,
+		helpTextPosition = defaultHelpTextPosition,
 		minLength,
 		maxLength,
 	} = attributes;
@@ -80,11 +85,11 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 		),
 	});
 
-	const onChangeName = (value) => {
+	const onNameChange = (value) => {
 		setAttributes({ name: value.trim() });
 	};
 
-	const onChangeLabelPosition = (value) => {
+	const onLabelPositionChange = (value) => {
 		setAttributes({ labelPosition: value });
 	};
 
@@ -92,11 +97,11 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 		setAttributes({ helpTextPosition: value });
 	};
 
-	const onChangeRequired = (value) => {
+	const onRequiredChange = (value) => {
 		setAttributes({ required: value });
 	};
 
-	const onChangeDefaultValue = (value) => {
+	const onDefaultValueChange = (value) => {
 		setAttributes({ defaultValue: value });
 	};
 
@@ -135,14 +140,14 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 					<ToggleControl
 						label={__('Required', 'outstand-forms')}
 						checked={required}
-						onChange={onChangeRequired}
+						onChange={onRequiredChange}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
 					<TextControl
 						label={__('Default Value', 'outstand-forms')}
 						value={defaultValue}
-						onChange={onChangeDefaultValue}
+						onChange={onDefaultValueChange}
 						autoComplete="off"
 						help={__('The value that will be displayed by default.', 'outstand-forms')}
 						__next40pxDefaultSize
@@ -183,7 +188,7 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 				<TextControl
 					label={__('Name', 'outstand-forms')}
 					value={name || `field_${fieldId}`}
-					onChange={onChangeName}
+					onChange={onNameChange}
 					autoComplete="off"
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
@@ -192,7 +197,7 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 					label={__('Label Position', 'outstand-forms')}
 					value={labelPosition}
 					isBlock
-					onChange={onChangeLabelPosition}
+					onChange={onLabelPositionChange}
 					help={__('Select the position of the label.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom

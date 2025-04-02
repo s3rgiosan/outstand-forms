@@ -6,7 +6,13 @@ import Label from '../components/Label';
 import HelpText from '../components/HelpText';
 
 export default function Field({ type = 'text', attributes, setAttributes, context }) {
-	const { labelPosition, helpTextPosition } = attributes;
+	const {
+		'osf/labelPosition': defaultLabelPosition,
+		'osf/helpTextPosition': defaultHelpTextPosition,
+	} = context;
+
+	const { labelPosition = defaultLabelPosition, helpTextPosition = defaultHelpTextPosition } =
+		attributes;
 
 	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
 
