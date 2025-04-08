@@ -2,8 +2,6 @@
 
 namespace Outstand\Forms;
 
-use Outstand\Forms\Blocks\FormSubmitButton;
-
 class Plugin {
 
 	/**
@@ -32,9 +30,7 @@ class Plugin {
 	 */
 	public function setup(): void {
 
-		$modules = [
-			new FormSubmitButton(),
-		];
+		$modules = [];
 
 		foreach ( $modules as $module ) {
 			if ( method_exists( $module, 'register' ) ) {

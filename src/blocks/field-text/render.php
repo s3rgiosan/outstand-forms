@@ -25,6 +25,9 @@ $attributes = array_merge(
 	$attributes
 );
 
+$factory = new FieldFactory();
+$field   = $factory->create( 'text', $attributes );
+
 $default_value      = $attributes['defaultValue'] ?? '';
 $required           = $attributes['required'] ?? false;
 $min_length         = $attributes['minLength'] ?? 0;
@@ -53,16 +56,14 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	]
 );
 
-$factory = new FieldFactory();
-$field   = $factory->create( 'text', $attributes );
-
 $context = wp_interactivity_data_wp_context(
 	[
 		'value'           => $default_value,
 		'isValid'         => true,
 		'isFocused'       => false,
-		'helpTextFieldId' => $field->get_help_text_id(),
-		'errorFieldId'    => $field->get_error_id(),
+		'fieldId'         => $field->get_field_id(),
+		'helpTextId'      => $field->get_help_text_id(),
+		'errorId'         => $field->get_error_id(),
 		'validationRules' => $field->get_validation_rules(),
 	]
 );

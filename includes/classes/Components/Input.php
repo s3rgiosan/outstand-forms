@@ -28,9 +28,12 @@ class Input extends AbstractComponent {
 	 * {@inheritDoc}
 	 */
 	public function get_markup(): string {
+
+		$input_id   = $this->get_field_id();
+		$label_id   = $this->get_field_label_id();
 		$attributes = $this->get_attributes();
 
-		$field_name    = $attributes['name'] ?? '';
+		$input_name    = $attributes['name'] ?? 'input_' . $attributes['fieldId'];
 		$required      = $attributes['required'] ?? false;
 		$default_value = $attributes['defaultValue'] ?? '';
 		$placeholder   = $attributes['placeholder'] ?? '';
@@ -38,10 +41,6 @@ class Input extends AbstractComponent {
 		$min_length    = $attributes['minLength'] ?? 0;
 		$max_length    = $attributes['maxLength'] ?? 0;
 		$aria_label    = $attributes['ariaLabel'] ?? '';
-
-		$field_id   = $this->get_field_id();
-		$field_name = ! empty( $field_name ) ? $field_name : 'field_' . $attributes['fieldId'];
-		$label_id   = $this->get_field_label_id();
 
 		$conditional_attrs = [
 			'{placeholder}'     => $placeholder ? sprintf( 'placeholder="%s"', esc_attr( $placeholder ) ) : '',
@@ -74,13 +73,15 @@ class Input extends AbstractComponent {
 			data-wp-on--focus="actions.handleFieldFocus"
 			data-wp-on--blur="actions.handleFieldBlur"
 			data-wp-on--change="actions.handleFieldChange"
+			data-wp-init--register="callbacks.registerField"
+			data-wp-on--osf-field-validate="actions.handleFieldValidate"
 		/>';
 
 		$replacements = array_merge(
 			[
 				'{type}'  => esc_attr( $this->input_type ),
-				'{id}'    => esc_attr( $field_id ),
-				'{name}'  => esc_attr( $field_name ),
+				'{id}'    => esc_attr( $input_id ),
+				'{name}'  => esc_attr( $input_name ),
 				'{value}' => esc_attr( $default_value ),
 			],
 			$conditional_attrs

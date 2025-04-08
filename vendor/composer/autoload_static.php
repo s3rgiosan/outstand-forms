@@ -28,7 +28,6 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Outstand\\Forms\\AbstractModule' => __DIR__ . '/../..' . '/includes/classes/AbstractModule.php',
         'Outstand\\Forms\\Blocks\\AbstractBlock' => __DIR__ . '/../..' . '/includes/classes/Blocks/AbstractBlock.php',
-        'Outstand\\Forms\\Blocks\\FormSubmitButton' => __DIR__ . '/../..' . '/includes/classes/Blocks/FormSubmitButton.php',
         'Outstand\\Forms\\Components\\AbstractComponent' => __DIR__ . '/../..' . '/includes/classes/Components/AbstractComponent.php',
         'Outstand\\Forms\\Components\\ComponentInterface' => __DIR__ . '/../..' . '/includes/classes/Components/ComponentInterface.php',
         'Outstand\\Forms\\Components\\Error' => __DIR__ . '/../..' . '/includes/classes/Components/Error.php',

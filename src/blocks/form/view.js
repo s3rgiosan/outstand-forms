@@ -1,7 +1,14 @@
 /**
  * WordPress dependencies
  */
-import { store, getContext, getElement, getConfig, withSyncEvent } from '@wordpress/interactivity';
+import {
+	store,
+	getContext,
+	getElement,
+	getConfig,
+	withSyncEvent,
+	withScope,
+} from '@wordpress/interactivity';
 
 /**
  * Internal dependencies
@@ -9,7 +16,7 @@ import { store, getContext, getElement, getConfig, withSyncEvent } from '@wordpr
 import validationRegistry from './../../validation-registry';
 import './../../validators';
 
-const { actions } = store('osf/form', {
+const { state, actions } = store('osf/form', {
 	state: {
 		/**
 		 * Get the aria-describedby attribute for the field.
@@ -17,17 +24,17 @@ const { actions } = store('osf/form', {
 		 * @return {string|undefined} The aria-describedby attribute.
 		 */
 		get fieldAriaDescribedByAttribute() {
-			const { isValid, helpTextFieldId, errorFieldId } = getContext();
+			const { isValid, helpTextId, errorId } = getContext();
 
-			if (!helpTextFieldId && !errorFieldId) {
+			if (!helpTextId && !errorId) {
 				return undefined;
 			}
 
-			if (!errorFieldId) {
-				return helpTextFieldId;
+			if (!errorId) {
+				return helpTextId;
 			}
 
-			return isValid ? helpTextFieldId : `${errorFieldId} ${helpTextFieldId}`;
+			return isValid ? helpTextId : `${errorId} ${helpTextId}`;
 		},
 		/**
 		 * Get the error message for the field.
@@ -71,6 +78,15 @@ const { actions } = store('osf/form', {
 
 			return message;
 		},
+		/**
+		 * Determine if the form is valid.
+		 *
+		 * @return {boolean} True if the form is valid, false otherwise.
+		 */
+		get isFormValid() {
+			const { formFields } = getContext('osf/form');
+			return Object.keys(formFields).length > 0 && Object.values(formFields).every(Boolean);
+		},
 	},
 	actions: {
 		/**
@@ -87,31 +103,107 @@ const { actions } = store('osf/form', {
 			const context = getContext();
 			context.isFocused = false;
 		},
+		/**
+		 * Handle the field change event.
+		 */
 		handleFieldChange() {
 			const context = getContext();
 			const { ref } = getElement();
-
 			context.value = ref.value;
-			actions.validateField();
 		},
-		validateField() {
-			console.log('validateField', getElement().ref.getAttribute('name'), getContext());
+		/**
+		 * Handle the field validate event.
+		 */
+		handleFieldValidate() {
 			const context = getContext();
-			const { value, validationRules } = context;
+			const { fieldId, value, validationRules } = context;
 			const { isValid, errors } = validationRegistry.validate(value, validationRules);
 
 			context.isValid = isValid;
 			context.validationErrors = errors;
+
+			const { ref } = getElement();
+
+			const formContext = getContext('osf/form');
+			if (!formContext.formFields) {
+				formContext.formFields = {};
+			}
+
+			formContext.formFields[fieldId] = isValid;
+
+			const event = new CustomEvent('osf-field-validated');
+			ref.dispatchEvent(event);
 		},
-		onFormSubmit: withSyncEvent((ev) => {
+		/**
+		 * Handle the form submit event.
+		 */
+		handleFormSubmit: withSyncEvent((ev) => {
 			ev.preventDefault();
 
-			const form = ev.currentTarget;
+			const { ref: form } = getElement();
 
-			const formData = new FormData(form);
-			const entries = Object.fromEntries(formData.entries());
+			actions.validateForm().then(() => {
+				const event = new CustomEvent('osf-form-validated');
+				form.dispatchEvent(event);
+			});
 
-			console.log('onFormSubmit', entries);
+			form.addEventListener(
+				'osf-form-validated',
+				withScope(() => {
+					if (state.isFormValid) {
+						form.submit();
+					}
+				}),
+			);
 		}),
+		/**
+		 * Validate the form.
+		 *
+		 * @return {Promise} A promise that resolves when the validation is complete.
+		 */
+		validateForm() {
+			const { formFields } = getContext('osf/form');
+			const { ref: form } = getElement();
+
+			const fieldIds = Object.keys(formFields || {});
+			const validations = fieldIds.map((fieldId) => {
+				return new Promise((resolve) => {
+					const fieldElement = form.querySelector(`[id="${fieldId}"]`);
+					if (!fieldElement) {
+						return resolve();
+					}
+
+					const validationHandler = () => {
+						fieldElement.removeEventListener('osf-field-validated', validationHandler);
+						resolve();
+					};
+
+					fieldElement.addEventListener('osf-field-validated', validationHandler, {
+						once: true,
+					});
+
+					const event = new CustomEvent('osf-field-validate', { bubbles: true });
+					fieldElement.dispatchEvent(event);
+				});
+			});
+
+			return Promise.all(validations);
+		},
+	},
+	callbacks: {
+		/**
+		 * Register the field in the form context.
+		 */
+		registerField() {
+			const context = getContext();
+			const { fieldId, isValid } = context;
+
+			const formContext = getContext('osf/form');
+			if (!formContext.formFields) {
+				formContext.formFields = {};
+			}
+
+			formContext.formFields[fieldId] = isValid;
+		},
 	},
 });

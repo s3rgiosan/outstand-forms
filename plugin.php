@@ -4,7 +4,7 @@
  * Description:       Build flexible, modern forms using the WordPress block editor.
  * Plugin URI:        https://github.com/s3rgiosan/outstand-forms
  * Requires at least: 6.7
- * Requires PHP:      7.4
+ * Requires PHP:      8.2
  * Version:           1.0.0
  * Author:            Sérgio Santos
  * Author URI:        https://s3rgiosan.dev/?utm_source=wp-plugins&utm_medium=outstand-forms&utm_campaign=author-uri

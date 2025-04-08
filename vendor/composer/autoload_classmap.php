@@ -9,7 +9,6 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Outstand\\Forms\\AbstractModule' => $baseDir . '/includes/classes/AbstractModule.php',
     'Outstand\\Forms\\Blocks\\AbstractBlock' => $baseDir . '/includes/classes/Blocks/AbstractBlock.php',
-    'Outstand\\Forms\\Blocks\\FormSubmitButton' => $baseDir . '/includes/classes/Blocks/FormSubmitButton.php',
     'Outstand\\Forms\\Components\\AbstractComponent' => $baseDir . '/includes/classes/Components/AbstractComponent.php',
     'Outstand\\Forms\\Components\\ComponentInterface' => $baseDir . '/includes/classes/Components/ComponentInterface.php',
     'Outstand\\Forms\\Components\\Error' => $baseDir . '/includes/classes/Components/Error.php',
