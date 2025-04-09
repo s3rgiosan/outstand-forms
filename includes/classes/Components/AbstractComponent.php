@@ -51,6 +51,15 @@ abstract class AbstractComponent implements ComponentInterface {
 	}
 
 	/**
+	 * Get the field name.
+	 *
+	 * @return string
+	 */
+	protected function get_field_name(): string {
+		return $this->field->get_field_name();
+	}
+
+	/**
 	 * Get the field label ID.
 	 *
 	 * @return string

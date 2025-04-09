@@ -20,40 +20,28 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-import { useEffect } from '@wordpress/element';
-import { useInstanceId } from '@wordpress/compose';
+import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 /**
  * Internal dependencies
  */
 import './editor.css';
-import { useFormIds } from '../../hooks/useFormIds';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
+import { getBlockId } from '../../utils/getBlockId';
+import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
 
 const TEMPLATE = [
-	[
-		'osf/form-fields',
-		{},
-		[
-			[
-				'osf/field-text',
-				{
-					label: __('Name', 'outstand-forms'),
-					required: true,
-				},
-			],
-		],
-	],
+	['osf/form-fields', {}, [['osf/field-text', {}]]],
 	['osf/form-submit-button', {}],
 ];
 
-export default function FormEdit({ clientId, attributes, setAttributes }) {
+export default function FormEdit({ name, clientId, attributes, setAttributes }) {
 	const { formId, type, method, action, labelPosition, helpTextPosition, requiredIndicator } =
 		attributes;
 
-	const instanceId = useInstanceId(FormEdit);
-	const { formIds, stableFormIds, hasFormBlocks } = useFormIds(clientId);
+	const newFormId = useMemo(() => getBlockId(), []);
+	const isDuplicate = useIsDuplicateBlock(name, clientId, attributes);
 
 	/**
 	 * @todo
@@ -63,18 +51,11 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 	 * and must be globally unique — no duplicates allowed.
 	 */
 	useEffect(() => {
-		if (!hasFormBlocks) {
-			return;
-		}
-
-		const isUnset = !formId;
-		const isDuplicate = formId && formIds.includes(formId);
-
-		if ((isUnset || isDuplicate) && Number.isFinite(instanceId)) {
+		if (!formId || isDuplicate) {
 			const prefix = type === 'inline' ? 'inline-' : 'ref-';
-			setAttributes({ formId: `${prefix}${instanceId}` });
+			setAttributes({ formId: `${prefix}${newFormId}` });
 		}
-	}, [hasFormBlocks, formId, type, formIds, stableFormIds, instanceId, setAttributes]);
+	}, [type, formId, isDuplicate, setAttributes, newFormId]);
 
 	const blockProps = useBlockProps({
 		className: clsx('osf-form', `osf-form--${type}`, `osf-form--${formId}`),

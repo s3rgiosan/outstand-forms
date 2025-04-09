@@ -22,8 +22,7 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
-import { useEffect } from '@wordpress/element';
-import { useInstanceId } from '@wordpress/compose';
+import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -31,9 +30,10 @@ import { __ } from '@wordpress/i18n';
  */
 import { labelPositionOptions, helpTextPositionOptions, autocompleteOptions } from '../../options';
 import Field from '../../fields';
-import { useFieldIds } from '../../hooks/useFieldIds';
+import { getBlockId } from '../../utils/getBlockId';
+import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
 
-export default function FieldTextEdit({ clientId, attributes, setAttributes, context }) {
+export default function FieldTextEdit({ name, clientId, attributes, setAttributes, context }) {
 	const {
 		'osf/labelPosition': defaultLabelPosition,
 		'osf/helpTextPosition': defaultHelpTextPosition,
@@ -41,7 +41,7 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 
 	const {
 		fieldId,
-		name,
+		name: fieldName,
 		label,
 		labelPosition = defaultLabelPosition,
 		required,
@@ -55,21 +55,14 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 		maxLength,
 	} = attributes;
 
-	const instanceId = useInstanceId(FieldTextEdit);
-	const { fieldIds, stableFieldIds, hasFieldBlocks } = useFieldIds(clientId);
+	const newFieldId = useMemo(() => getBlockId(), []);
+	const isDuplicate = useIsDuplicateBlock(name, clientId, attributes, 'osf/form-fields');
 
 	useEffect(() => {
-		if (!hasFieldBlocks) {
-			return;
+		if (!fieldId || isDuplicate) {
+			setAttributes({ fieldId: newFieldId });
 		}
-
-		const isUnset = !Number.isFinite(fieldId);
-		const isDuplicate = Number.isFinite(fieldId) && fieldIds.includes(fieldId);
-
-		if ((isUnset || isDuplicate) && Number.isFinite(instanceId)) {
-			setAttributes({ fieldId: instanceId });
-		}
-	}, [hasFieldBlocks, fieldId, fieldIds, stableFieldIds, instanceId, setAttributes]);
+	}, [fieldId, isDuplicate, setAttributes, newFieldId]);
 
 	const blockProps = useBlockProps({
 		className: clsx(
@@ -187,7 +180,7 @@ export default function FieldTextEdit({ clientId, attributes, setAttributes, con
 			<InspectorAdvancedControls>
 				<TextControl
 					label={__('Name', 'outstand-forms')}
-					value={name || `field_${fieldId}`}
+					value={fieldName || `field_${fieldId}`}
 					onChange={onNameChange}
 					autoComplete="off"
 					__next40pxDefaultSize

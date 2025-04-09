@@ -29,11 +29,11 @@ class Input extends AbstractComponent {
 	 */
 	public function get_markup(): string {
 
-		$input_id   = $this->get_field_id();
+		$field_id   = $this->get_field_id();
+		$field_name = $this->get_field_name();
 		$label_id   = $this->get_field_label_id();
 		$attributes = $this->get_attributes();
 
-		$input_name    = $attributes['name'] ?? 'input_' . $attributes['fieldId'];
 		$required      = $attributes['required'] ?? false;
 		$default_value = $attributes['defaultValue'] ?? '';
 		$placeholder   = $attributes['placeholder'] ?? '';
@@ -80,8 +80,8 @@ class Input extends AbstractComponent {
 		$replacements = array_merge(
 			[
 				'{type}'  => esc_attr( $this->input_type ),
-				'{id}'    => esc_attr( $input_id ),
-				'{name}'  => esc_attr( $input_name ),
+				'{id}'    => esc_attr( $field_id ),
+				'{name}'  => esc_attr( $field_name ),
 				'{value}' => esc_attr( $default_value ),
 			],
 			$conditional_attrs

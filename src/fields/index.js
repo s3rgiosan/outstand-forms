@@ -1,9 +1,9 @@
 /**
  * Internal dependencies
  */
-import Input from '../components/Input';
 import Label from '../components/Label';
 import HelpText from '../components/HelpText';
+import Input from '../components/Input';
 
 export default function Field({ type = 'text', attributes, setAttributes, context }) {
 	const {

@@ -33,7 +33,8 @@
     "core/separator",
     "core/spacer",
     "core/table",
-    "osf/field-text"
+    "osf/field-text",
+    "osf/field-textarea"
   ],
   "supports": {
     "html": false,

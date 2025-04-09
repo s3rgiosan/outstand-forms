@@ -18,7 +18,7 @@
   ],
   "attributes": {
     "fieldId": {
-      "type": "number"
+      "type": "string"
     },
     "name": {
       "type": "string",
@@ -84,6 +84,8 @@
     },
     "interactivity": true
   },
+  "editorStyle": "file:./index.css",
   "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

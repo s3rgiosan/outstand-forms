@@ -65,35 +65,60 @@ abstract class AbstractField implements FieldInterface {
 	 * {@inheritDoc}
 	 */
 	public function get_field_id(): string {
-		return sprintf( 'osf-%1$s-field-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
+		return sprintf( 'osf-field-%1$s', $this->attributes['fieldId'] );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function get_field_name(): string {
+
+		if ( ! empty( $this->attributes['name'] ) ) {
+			return $this->attributes['name'];
+		}
+
+		return sprintf( 'field_%1$s', $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_label_id(): string {
-		return sprintf( 'osf-%1$s-label-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
+		return sprintf( 'osf-label-%1$s', $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_help_text_id(): string {
-		return sprintf( 'osf-%1$s-help-text-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
+		return sprintf( 'osf-help-text-%1$s', $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_error_id(): string {
-		return sprintf( 'osf-%1$s-error-%2$s', $this->attributes['formId'], $this->attributes['fieldId'] );
+		return sprintf( 'osf-error-%1$s', $this->attributes['fieldId'] );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_validation_rules(): array {
-		return [];
+
+		$validation_rules = [
+			'required' => $this->attributes['required'] ?? false,
+		];
+
+		if ( ! empty( $this->attributes['minLength'] ) ) {
+			$validation_rules['minLength'] = (int) $this->attributes['minLength'];
+		}
+
+		if ( ! empty( $this->attributes['maxLength'] ) ) {
+			$validation_rules['maxLength'] = (int) $this->attributes['maxLength'];
+		}
+
+		return $validation_rules;
 	}
 
 	/**

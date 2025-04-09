@@ -50,6 +50,13 @@ interface FieldInterface {
 	public function get_field_id(): string;
 
 	/**
+	 * Get the field name.
+	 *
+	 * @return string
+	 */
+	public function get_field_name(): string;
+
+	/**
 	 * Get the field label ID.
 	 *
 	 * @return string
