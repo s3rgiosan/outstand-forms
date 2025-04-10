@@ -7,6 +7,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { BlankVariationIcon, ContactUsVariationIcon } from './icon';
+import { getBlockId } from '../../utils';
 
 const variations = [
 	{
@@ -26,9 +27,7 @@ const variations = [
 	{
 		name: 'contact-us',
 		title: __('Contact Us', 'outstand-forms'),
-		attributes: {
-			type: 'inline',
-		},
+		attributes: {},
 		icon: ContactUsVariationIcon,
 		innerBlocks: [
 			[
@@ -38,19 +37,22 @@ const variations = [
 					[
 						'osf/field-text',
 						{
+							fieldId: getBlockId(),
+							name: 'name',
 							label: __('Name', 'outstand-forms'),
 							required: true,
-							helpText: 'Please enter your full name.',
-							name: 'name',
+							helpText: __('Please enter your full name.', 'outstand-forms'),
 							autocomplete: 'name',
 						},
 					],
 					[
 						'osf/field-textarea',
 						{
+							fieldId: getBlockId(),
+							name: 'message',
 							label: __('Message', 'outstand-forms'),
 							required: true,
-							helpText: 'Please enter your message.',
+							helpText: __('Please enter your message.', 'outstand-forms'),
 						},
 					],
 				],
