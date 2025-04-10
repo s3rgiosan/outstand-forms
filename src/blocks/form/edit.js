@@ -64,10 +64,8 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 
 			if (isDuplicate && !didResetFieldIds.current) {
 				fieldBlocks.forEach((block) => {
-					if (block.name?.startsWith('osf/field-')) {
-						const newFieldId = getBlockId();
-						updateBlockAttributes(block.clientId, { fieldId: newFieldId });
-					}
+					const newFieldId = getBlockId();
+					updateBlockAttributes(block.clientId, { fieldId: newFieldId });
 				});
 				didResetFieldIds.current = true;
 			}
