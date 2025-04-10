@@ -8,28 +8,37 @@ import { useMemo } from '@wordpress/element';
 /**
  * Internal dependencies
  */
-import { useFormBlocks } from './useFormBlocks';
+import { findBlocks } from '../utils';
 
+/**
+ * Checks if a form block is a duplicate of another form block in the same root container.
+ *
+ * A block is considered a duplicate if:
+ * - It has the same attributes as another `osf/form` block.
+ * - That other block appears earlier (based on index) in the same root block tree.
+ *
+ * @param {string} clientId   The client ID of the block to check.
+ * @param {Object} attributes The attributes of the block to compare.
+ *
+ * @return {boolean} True if the block is a duplicate, false otherwise.
+ */
 export function useIsDuplicateFormBlock(clientId, attributes) {
 	const stableAttributes = useMemo(() => JSON.stringify(attributes), [attributes]);
 
-	const rootClientId = useSelect(
-		(select) => {
-			const { getBlockRootClientId } = select(blockEditorStore);
-			return getBlockRootClientId(clientId);
-		},
-		[clientId],
-	);
-
-	const formBlocks = useFormBlocks(rootClientId);
-
 	return useSelect(
 		(select) => {
-			const { getBlockIndex } = select(blockEditorStore);
+			const { getBlockRootClientId, getBlocks, getBlockIndex } = select(blockEditorStore);
 
+			const rootClientId = getBlockRootClientId(clientId);
+			if (!rootClientId) {
+				return false;
+			}
+
+			const rootBlocks = getBlocks(rootClientId);
+			const formBlocks = findBlocks('osf/form', rootBlocks);
 			const currentIndex = getBlockIndex(clientId, rootClientId);
 
-			if (!rootClientId || currentIndex === -1 || !formBlocks.length) {
+			if (currentIndex === -1 || !formBlocks.length) {
 				return false;
 			}
 
@@ -47,6 +56,6 @@ export function useIsDuplicateFormBlock(clientId, attributes) {
 
 			return false;
 		},
-		[clientId, stableAttributes, formBlocks, rootClientId],
+		[clientId, stableAttributes],
 	);
 }
