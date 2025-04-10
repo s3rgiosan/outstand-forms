@@ -1,0 +1,98 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "osf/field-textarea",
+  "version": "0.1.0",
+  "title": "Textarea",
+  "category": "osf",
+  "icon": "",
+  "description": "",
+  "keywords": [
+    "field",
+    "textarea"
+  ],
+  "textdomain": "outstand-forms",
+  "ancestor": [
+    "osf/form-fields"
+  ],
+  "attributes": {
+    "fieldId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "labelPosition": {
+      "type": "string"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "defaultValue": {
+      "type": "string",
+      "default": ""
+    },
+    "placeholder": {
+      "type": "string",
+      "default": ""
+    },
+    "autocomplete": {
+      "type": "string",
+      "default": ""
+    },
+    "helpText": {
+      "type": "string",
+      "default": ""
+    },
+    "helpTextPosition": {
+      "type": "string"
+    },
+    "minLength": {
+      "type": "number",
+      "default": 0
+    },
+    "maxLength": {
+      "type": "number",
+      "default": 0
+    },
+    "ariaLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "rows": {
+      "type": "number",
+      "default": 2
+    },
+    "cols": {
+      "type": "number",
+      "default": 20
+    }
+  },
+  "usesContext": [
+    "osf/formId",
+    "osf/labelPosition",
+    "osf/helpTextPosition",
+    "osf/requiredIndicator"
+  ],
+  "supports": {
+    "html": false,
+    "reusable": false,
+    "spacing": {
+      "margin": [
+        "top",
+        "bottom"
+      ]
+    },
+    "interactivity": true
+  },
+  "editorStyle": "file:./index.css",
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

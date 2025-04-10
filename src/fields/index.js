@@ -4,6 +4,7 @@
 import Label from '../components/Label';
 import HelpText from '../components/HelpText';
 import Input from '../components/Input';
+import Textarea from '../components/Textarea';
 
 export default function Field({ type = 'text', attributes, setAttributes, context }) {
 	const {
@@ -31,6 +32,11 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 					setAttributes={setAttributes}
 					context={context}
 				/>
+			);
+			break;
+		case 'textarea':
+			field = (
+				<Textarea attributes={attributes} setAttributes={setAttributes} context={context} />
 			);
 			break;
 	}

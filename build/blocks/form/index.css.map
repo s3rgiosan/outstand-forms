@@ -1,1 +1,0 @@
-{"version":3,"file":"blocks/form/index.css","mappings":";;;AAAA;CACC,4BAA4B;AAC7B","sources":["webpack://outstand-forms/./src/blocks/form/editor.css"],"sourcesContent":[".osf__icon {\n\tfill: transparent !important;\n}\n"],"names":[],"sourceRoot":""}

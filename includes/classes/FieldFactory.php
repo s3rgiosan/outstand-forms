@@ -5,6 +5,7 @@ namespace Outstand\Forms;
 use InvalidArgumentException;
 use Outstand\Forms\Fields\FieldInterface;
 use Outstand\Forms\Fields\Text;
+use Outstand\Forms\Fields\Textarea;
 
 class FieldFactory {
 	/**
@@ -13,7 +14,8 @@ class FieldFactory {
 	 * @var array
 	 */
 	protected array $field_types = [
-		'text' => Text::class,
+		'text'     => Text::class,
+		'textarea' => Textarea::class,
 	];
 
 	/**
