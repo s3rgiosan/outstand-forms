@@ -17,8 +17,8 @@ import { findBlocks } from '../utils';
  * - It has the same attributes as another `osf/form` block.
  * - That other block appears earlier (based on index) in the same root block tree.
  *
- * @param {string} clientId   The client ID of the block to check.
- * @param {Object} attributes The attributes of the block to compare.
+ * @param {string} clientId   Client ID of the block to check.
+ * @param {Object} attributes Attributes to compare.
  *
  * @return {boolean} True if the block is a duplicate, false otherwise.
  */

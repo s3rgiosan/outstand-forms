@@ -30,8 +30,8 @@ import { __ } from '@wordpress/i18n';
  */
 import { labelPositionOptions, helpTextPositionOptions, autocompleteOptions } from '../../options';
 import Field from '../../fields';
-import { getBlockId } from '../../utils/getBlockId';
 import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
+import { getBlockId } from '../../utils';
 
 export default function FieldTextEdit({ name, clientId, attributes, setAttributes, context }) {
 	const {
@@ -60,7 +60,7 @@ export default function FieldTextEdit({ name, clientId, attributes, setAttribute
 
 	useEffect(() => {
 		if (!fieldId || isDuplicate) {
-			setAttributes({ fieldId: newFieldId });
+			setAttributes({ fieldId: newFieldId, name: '' });
 		}
 	}, [fieldId, isDuplicate, setAttributes, newFieldId]);
 
