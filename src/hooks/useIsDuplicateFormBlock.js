@@ -1,9 +1,14 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/**
+ * External dependencies
+ */
+import isEqual from 'lodash/isEqual';
+
 /**
  * WordPress dependencies
  */
 import { useSelect } from '@wordpress/data';
 import { store as blockEditorStore } from '@wordpress/block-editor';
-import { useMemo } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -23,8 +28,6 @@ import { findBlocks } from '../utils';
  * @return {boolean} True if the block is a duplicate, false otherwise.
  */
 export function useIsDuplicateFormBlock(clientId, attributes) {
-	const stableAttributes = useMemo(() => JSON.stringify(attributes), [attributes]);
-
 	return useSelect(
 		(select) => {
 			const { getBlockRootClientId, getBlocks, getBlockIndex } = select(blockEditorStore);
@@ -43,10 +46,7 @@ export function useIsDuplicateFormBlock(clientId, attributes) {
 			}
 
 			for (const block of formBlocks) {
-				if (
-					block.clientId !== clientId &&
-					JSON.stringify(block.attributes) === stableAttributes
-				) {
+				if (block.clientId !== clientId && isEqual(block.attributes, attributes)) {
 					const blockIndex = getBlockIndex(block.clientId, rootClientId);
 					if (blockIndex < currentIndex) {
 						return true;
@@ -56,6 +56,6 @@ export function useIsDuplicateFormBlock(clientId, attributes) {
 
 			return false;
 		},
-		[clientId, stableAttributes],
+		[clientId, attributes],
 	);
 }

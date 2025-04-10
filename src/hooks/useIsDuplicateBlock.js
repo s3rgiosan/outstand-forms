@@ -1,8 +1,13 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/**
+ * External dependencies
+ */
+import isEqual from 'lodash/isEqual';
+
 /**
  * WordPress dependencies
  */
 import { useSelect } from '@wordpress/data';
-import { useMemo } from '@wordpress/element';
 import { store as blockEditorStore } from '@wordpress/block-editor';
 
 /**
@@ -25,8 +30,6 @@ import { findBlocks } from '../utils';
  * @return {boolean} True if the block is a duplicate, false otherwise.
  */
 export function useIsDuplicateBlock(blockName, clientId, attributes, parentBlockName) {
-	const stableAttributes = useMemo(() => JSON.stringify(attributes), [attributes]);
-
 	return useSelect(
 		(select) => {
 			const { getBlockRootClientId, getBlockParentsByBlockName, getBlocks, getBlockIndex } =
@@ -55,16 +58,13 @@ export function useIsDuplicateBlock(blockName, clientId, attributes, parentBlock
 
 				const blockIndex = getBlockIndex(block.clientId, rootClientId);
 
-				if (
-					blockIndex < currentIndex &&
-					JSON.stringify(block.attributes) === stableAttributes
-				) {
+				if (blockIndex < currentIndex && isEqual(block.attributes, attributes)) {
 					return true;
 				}
 			}
 
 			return false;
 		},
-		[blockName, clientId, stableAttributes, parentBlockName],
+		[blockName, clientId, attributes, parentBlockName],
 	);
 }
