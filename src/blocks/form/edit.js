@@ -13,6 +13,7 @@ import {
 	InspectorControls,
 	InspectorAdvancedControls,
 	store as blockEditorStore,
+	__experimentalBlockVariationPicker as BlockVariationPicker,
 } from '@wordpress/block-editor';
 import {
 	TextControl,
@@ -22,7 +23,8 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 import { useEffect, useMemo, useRef } from '@wordpress/element';
-import { useDispatch } from '@wordpress/data';
+import { useDispatch, useSelect } from '@wordpress/data';
+import { store as blocksStore, createBlocksFromInnerBlocksTemplate } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -39,7 +41,7 @@ const TEMPLATE = [
 	['osf/form-submit-button', {}],
 ];
 
-export default function FormEdit({ clientId, attributes, setAttributes }) {
+function FormEditContainer({ attributes, setAttributes, clientId }) {
 	const { formId, type, method, action, labelPosition, helpTextPosition, requiredIndicator } =
 		attributes;
 
@@ -187,4 +189,64 @@ export default function FormEdit({ clientId, attributes, setAttributes }) {
 			</InspectorAdvancedControls>
 		</>
 	);
+}
+
+function FormVariationPicker({ clientId, name, setAttributes }) {
+	const { blockType, defaultVariation, variations } = useSelect(
+		(select) => {
+			const { getBlockVariations, getBlockType, getDefaultBlockVariation } =
+				select(blocksStore);
+
+			return {
+				blockType: getBlockType(name),
+				defaultVariation: getDefaultBlockVariation(name, 'block'),
+				variations: getBlockVariations(name, 'block'),
+			};
+		},
+		[name],
+	);
+
+	const { replaceInnerBlocks } = useDispatch(blockEditorStore);
+
+	const blockProps = useBlockProps();
+
+	return (
+		<div {...blockProps}>
+			<BlockVariationPicker
+				icon={blockType?.icon?.src}
+				allowSkip={false}
+				label={blockType?.title}
+				variations={variations}
+				instructions={__(
+					'Choose a form template or start from scratch to create your own.',
+					'outstand-forms',
+				)}
+				onSelect={(nextVariation = defaultVariation) => {
+					if (nextVariation.attributes) {
+						setAttributes(nextVariation.attributes);
+					}
+					if (nextVariation.innerBlocks) {
+						replaceInnerBlocks(
+							clientId,
+							createBlocksFromInnerBlocksTemplate(nextVariation.innerBlocks),
+							true,
+						);
+					}
+				}}
+			/>
+		</div>
+	);
+}
+
+export default function FormEdit(props) {
+	const { clientId } = props;
+
+	const hasInnerBlocks = useSelect(
+		(select) => select(blockEditorStore).getBlocks(clientId).length > 0,
+		[clientId],
+	);
+
+	const Component = hasInnerBlocks ? FormEditContainer : FormVariationPicker;
+
+	return <Component {...props} />;
 }

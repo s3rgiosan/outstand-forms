@@ -1,3 +1,12 @@
-.osf__icon {
+.osf__icon,
+.block-editor-block-variation-picker__skip .osf__icon,
+.block-editor-block-variation-picker__variations .osf__icon,
+.wp-block-group-placeholder__variations .osf__icon {
+	fill: transparent !important;
+}
+
+.block-editor-block-variation-picker__skip .components-button:hover .osf__icon,
+.block-editor-block-variation-picker__variations .components-button:hover .osf__icon,
+.wp-block-group-placeholder__variations .components-button:hover .osf__icon {
 	fill: transparent !important;
 }
