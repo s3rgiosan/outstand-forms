@@ -12,6 +12,7 @@ import {
 	useInnerBlocksProps,
 	InspectorControls,
 	InspectorAdvancedControls,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import {
 	TextControl,
@@ -20,7 +21,8 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-import { useEffect, useMemo } from '@wordpress/element';
+import { useEffect, useMemo, useRef } from '@wordpress/element';
+import { useDispatch } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -28,20 +30,25 @@ import { __ } from '@wordpress/i18n';
  */
 import './editor.css';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
-import { getBlockId } from '../../utils/getBlockId';
-import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
+import { useFieldBlocks } from '../../hooks/useFieldBlocks';
+import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
+import { getBlockId } from '../../utils';
 
 const TEMPLATE = [
 	['osf/form-fields', {}, [['osf/field-text', {}]]],
 	['osf/form-submit-button', {}],
 ];
 
-export default function FormEdit({ name, clientId, attributes, setAttributes }) {
+export default function FormEdit({ clientId, attributes, setAttributes }) {
 	const { formId, type, method, action, labelPosition, helpTextPosition, requiredIndicator } =
 		attributes;
 
 	const newFormId = useMemo(() => getBlockId(), []);
-	const isDuplicate = useIsDuplicateBlock(name, clientId, attributes);
+
+	const isDuplicate = useIsDuplicateFormBlock(clientId, attributes);
+	const fieldBlocks = useFieldBlocks(clientId);
+	const { updateBlockAttributes } = useDispatch(blockEditorStore);
+	const didResetFieldIds = useRef(false);
 
 	/**
 	 * @todo
@@ -54,8 +61,27 @@ export default function FormEdit({ name, clientId, attributes, setAttributes }) 
 		if (!formId || isDuplicate) {
 			const prefix = type === 'inline' ? 'inline-' : 'ref-';
 			setAttributes({ formId: `${prefix}${newFormId}` });
+
+			if (isDuplicate && !didResetFieldIds.current) {
+				fieldBlocks.forEach((block) => {
+					if (block.name?.startsWith('osf/field-')) {
+						const newFieldId = getBlockId();
+						updateBlockAttributes(block.clientId, { fieldId: newFieldId });
+					}
+				});
+				didResetFieldIds.current = true;
+			}
 		}
-	}, [type, formId, isDuplicate, setAttributes, newFormId]);
+	}, [
+		type,
+		formId,
+		isDuplicate,
+		setAttributes,
+		newFormId,
+		clientId,
+		fieldBlocks,
+		updateBlockAttributes,
+	]);
 
 	const blockProps = useBlockProps({
 		className: clsx('osf-form', `osf-form--${type}`, `osf-form--${formId}`),
