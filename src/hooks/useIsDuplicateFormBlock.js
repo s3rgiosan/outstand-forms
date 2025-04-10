@@ -35,7 +35,7 @@ export function useIsDuplicateFormBlock(clientId, attributes) {
 			}
 
 			const rootBlocks = getBlocks(rootClientId);
-			const formBlocks = findBlocks('osf/form', rootBlocks);
+			const formBlocks = findBlocks((block) => block.name === 'osf/form', rootBlocks);
 			const currentIndex = getBlockIndex(clientId, rootClientId);
 
 			if (currentIndex === -1 || !formBlocks.length) {

@@ -15,15 +15,26 @@ export function getBlockId(length = 9) {
 }
 
 /**
- * Recursively finds all blocks of a specific type.
+ * Recursively finds all blocks that match a given condition.
  *
- * @param {string} blockName The name of the block to find.
- * @param {Array}  blocks    List of blocks to search in.
- * @return {Array} List of blocks matching the specified name.
+ * This function searches through a list of blocks and all their inner blocks,
+ * returning those that satisfy the provided matcher function.
+ *
+ * @param {Function} matcher A function that receives a block and returns true if it should be included.
+ * @param {Array}    blocks  An array of blocks to search through.
+ *
+ * @return {Array} An array of blocks that match the condition.
+ *
+ * @example
+ * findBlocks(
+ *   (block) => block.name?.startsWith('osf/field-'),
+ *   getBlocks(clientId)
+ * );
  */
-export function findBlocks(blockName, blocks = []) {
-	return blocks.flatMap((block) => [
-		...(block.name === blockName ? [block] : []),
-		...(block.innerBlocks?.length ? findBlocks(blockName, block.innerBlocks) : []),
-	]);
+export function findBlocks(matcher, blocks = []) {
+	return blocks.flatMap((block) => {
+		const children = Array.isArray(block.innerBlocks) ? block.innerBlocks : [];
+		const matches = matcher(block) ? [block] : [];
+		return [...matches, ...findBlocks(matcher, children)];
+	});
 }
