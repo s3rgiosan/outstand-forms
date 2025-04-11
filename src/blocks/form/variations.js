@@ -46,6 +46,16 @@ const variations = [
 						},
 					],
 					[
+						'osf/field-email',
+						{
+							fieldId: getBlockId(),
+							name: 'email',
+							label: __('Email', 'outstand-forms'),
+							required: true,
+							helpText: __('Please enter your email address.', 'outstand-forms'),
+						},
+					],
+					[
 						'osf/field-textarea',
 						{
 							fieldId: getBlockId(),

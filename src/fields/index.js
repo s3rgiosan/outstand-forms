@@ -25,9 +25,10 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 	let field = '';
 	switch (type) {
 		case 'text':
+		case 'email':
 			field = (
 				<Input
-					type="text"
+					type={type}
 					attributes={attributes}
 					setAttributes={setAttributes}
 					context={context}

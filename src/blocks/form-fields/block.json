@@ -34,7 +34,8 @@
     "core/spacer",
     "core/table",
     "osf/field-text",
-    "osf/field-textarea"
+    "osf/field-textarea",
+    "osf/field-email"
   ],
   "supports": {
     "html": false,

@@ -15,9 +15,12 @@ return array(
     'Outstand\\Forms\\Components\\HelpText' => $baseDir . '/includes/classes/Components/HelpText.php',
     'Outstand\\Forms\\Components\\Input' => $baseDir . '/includes/classes/Components/Input.php',
     'Outstand\\Forms\\Components\\Label' => $baseDir . '/includes/classes/Components/Label.php',
+    'Outstand\\Forms\\Components\\Textarea' => $baseDir . '/includes/classes/Components/Textarea.php',
     'Outstand\\Forms\\FieldFactory' => $baseDir . '/includes/classes/FieldFactory.php',
     'Outstand\\Forms\\Fields\\AbstractField' => $baseDir . '/includes/classes/Fields/AbstractField.php',
+    'Outstand\\Forms\\Fields\\Email' => $baseDir . '/includes/classes/Fields/Email.php',
     'Outstand\\Forms\\Fields\\FieldInterface' => $baseDir . '/includes/classes/Fields/FieldInterface.php',
     'Outstand\\Forms\\Fields\\Text' => $baseDir . '/includes/classes/Fields/Text.php',
+    'Outstand\\Forms\\Fields\\Textarea' => $baseDir . '/includes/classes/Fields/Textarea.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
 );

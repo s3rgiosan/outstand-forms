@@ -23,11 +23,3 @@
 .osf-field__label {
 	display: block;
 }
-
-.osf-field__input {
-	-webkit-appearance: none;
-	height: auto;
-	margin: 0;
-	min-height: auto;
-	max-width: none;
-}

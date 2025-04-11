@@ -11,7 +11,7 @@ export default function FormContentEdit() {
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {
 		__experimentalCaptureToolbars: true,
 		templateLock: false,
-		prioritizedInserterBlocks: ['osf/field-text', 'osf/field-textarea'],
+		prioritizedInserterBlocks: ['osf/field-text', 'osf/field-textarea', 'osf/field-email'],
 		defaultBlock: {
 			name: 'osf/field-text',
 		},

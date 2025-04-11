@@ -15,7 +15,7 @@ export const Icon = () => {
 			strokeLinejoin="round"
 			strokeWidth="1.5"
 			viewBox="0 0 24 24"
-			className="osf__icon osf__icon--form-fields"
+			className="osf__icon"
 		>
 			<Rect width="7" height="7" x="3" y="3" rx="1" />
 			<Rect width="7" height="7" x="3" y="14" rx="1" />

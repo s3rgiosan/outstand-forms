@@ -34,10 +34,13 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Outstand\\Forms\\Components\\HelpText' => __DIR__ . '/../..' . '/includes/classes/Components/HelpText.php',
         'Outstand\\Forms\\Components\\Input' => __DIR__ . '/../..' . '/includes/classes/Components/Input.php',
         'Outstand\\Forms\\Components\\Label' => __DIR__ . '/../..' . '/includes/classes/Components/Label.php',
+        'Outstand\\Forms\\Components\\Textarea' => __DIR__ . '/../..' . '/includes/classes/Components/Textarea.php',
         'Outstand\\Forms\\FieldFactory' => __DIR__ . '/../..' . '/includes/classes/FieldFactory.php',
         'Outstand\\Forms\\Fields\\AbstractField' => __DIR__ . '/../..' . '/includes/classes/Fields/AbstractField.php',
+        'Outstand\\Forms\\Fields\\Email' => __DIR__ . '/../..' . '/includes/classes/Fields/Email.php',
         'Outstand\\Forms\\Fields\\FieldInterface' => __DIR__ . '/../..' . '/includes/classes/Fields/FieldInterface.php',
         'Outstand\\Forms\\Fields\\Text' => __DIR__ . '/../..' . '/includes/classes/Fields/Text.php',
+        'Outstand\\Forms\\Fields\\Textarea' => __DIR__ . '/../..' . '/includes/classes/Fields/Textarea.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
     );
 

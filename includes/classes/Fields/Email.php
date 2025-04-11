@@ -7,13 +7,13 @@ use Outstand\Forms\Components\Error;
 use Outstand\Forms\Components\HelpText;
 use Outstand\Forms\Components\Input;
 
-class Text extends AbstractField {
+class Email extends AbstractField {
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_type(): string {
-		return 'text';
+		return 'email';
 	}
 
 	/**

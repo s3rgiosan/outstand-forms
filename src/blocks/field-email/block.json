@@ -1,15 +1,15 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/field-text",
+  "name": "osf/field-email",
   "version": "0.1.0",
-  "title": "Text",
+  "title": "Email",
   "category": "osf",
   "icon": "",
   "description": "",
   "keywords": [
     "field",
-    "text",
+    "email",
     "input"
   ],
   "textdomain": "outstand-forms",
@@ -45,7 +45,7 @@
     },
     "autocomplete": {
       "type": "string",
-      "default": ""
+      "default": "email"
     },
     "helpText": {
       "type": "string",

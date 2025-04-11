@@ -3,6 +3,7 @@
 namespace Outstand\Forms;
 
 use InvalidArgumentException;
+use Outstand\Forms\Fields\Email;
 use Outstand\Forms\Fields\FieldInterface;
 use Outstand\Forms\Fields\Text;
 use Outstand\Forms\Fields\Textarea;
@@ -16,6 +17,7 @@ class FieldFactory {
 	protected array $field_types = [
 		'text'     => Text::class,
 		'textarea' => Textarea::class,
+		'email'    => Email::class,
 	];
 
 	/**
