@@ -53,6 +53,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	[
 		'class'                     => implode( ' ', $wrapper_classes ),
 		'data-wp-class--is-focused' => 'context.isFocused',
+		'data-wp-class--is-invalid' => '!context.isValid',
 	]
 );
 
