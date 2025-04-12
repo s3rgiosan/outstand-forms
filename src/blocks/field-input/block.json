@@ -74,12 +74,11 @@
   ],
   "supports": {
     "html": false,
+    "anchor": true,
     "reusable": false,
     "spacing": {
-      "margin": [
-        "top",
-        "bottom"
-      ]
+      "padding": true,
+      "margin": true
     },
     "interactivity": true
   },

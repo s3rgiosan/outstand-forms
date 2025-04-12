@@ -21,6 +21,7 @@
     "lock": false,
     "inserter": false,
     "reusable": false,
+    "className": false,
     "spacing": {
       "margin": true,
       "padding": true
