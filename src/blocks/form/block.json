@@ -17,14 +17,6 @@
     "formId": {
       "type": "string"
     },
-    "type": {
-      "type": "string",
-      "default": "inline",
-      "enum": [
-        "inline",
-        "reference"
-      ]
-    },
     "method": {
       "type": "string",
       "default": "post"

@@ -42,7 +42,7 @@ const TEMPLATE = [
 ];
 
 function FormEditContainer({ attributes, setAttributes, clientId }) {
-	const { formId, type, method, action, labelPosition, helpTextPosition, requiredIndicator } =
+	const { formId, method, action, labelPosition, helpTextPosition, requiredIndicator } =
 		attributes;
 
 	const newFormId = useMemo(() => getBlockId(), []);
@@ -52,17 +52,9 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 	const { updateBlockAttributes } = useDispatch(blockEditorStore);
 	const didResetFieldIds = useRef(false);
 
-	/**
-	 * @todo
-	 *
-	 * Only generate a `formId` when `type` is `'inline'`.
-	 * If the form type is `'reference'`, the `formId` should come from the form post ID
-	 * and must be globally unique — no duplicates allowed.
-	 */
 	useEffect(() => {
 		if (!formId || isDuplicate) {
-			const prefix = type === 'inline' ? 'inline-' : 'ref-';
-			setAttributes({ formId: `${prefix}${newFormId}` });
+			setAttributes({ formId: newFormId });
 
 			if (isDuplicate && !didResetFieldIds.current) {
 				fieldBlocks.forEach((block) => {
@@ -73,7 +65,6 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 			}
 		}
 	}, [
-		type,
 		formId,
 		isDuplicate,
 		setAttributes,
@@ -84,7 +75,7 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 	]);
 
 	const blockProps = useBlockProps({
-		className: clsx('osf-form', `osf-form--${type}`, `osf-form--${formId}`),
+		className: clsx('osf-form', `osf-form--${formId}`),
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {

@@ -14,7 +14,6 @@ if ( empty( $attributes['formId'] ) ) {
 }
 
 $form_id     = $attributes['formId'];
-$form_type   = $attributes['type'] ?? 'inline';
 $form_method = $attributes['method'] ?? 'post';
 $form_action = $attributes['action'] ?? '';
 
@@ -24,7 +23,6 @@ if ( empty( $form_action ) ) {
 
 $wrapper_classes = [
 	'osf-form',
-	"osf-form--{$form_type}",
 	"osf-form--{$form_id}",
 ];
 $wrapper_classes = array_filter( $wrapper_classes );
@@ -72,7 +70,6 @@ wp_interactivity_config(
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	<input type="hidden" name="form_id" value="<?php echo esc_attr( $form_id ); ?>">
-	<input type="hidden" name="form_type" value="<?php echo esc_attr( $form_type ); ?>">
 	<input type="hidden" name="nonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
 
 	<?php do_action( 'osf_after_content', $form_id ); ?>
