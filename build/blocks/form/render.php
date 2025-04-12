@@ -51,11 +51,31 @@ $context = wp_interactivity_data_wp_context(
 wp_interactivity_config(
 	'osf/form',
 	[
-		'validationMessages' => [
-			'required'  => __( 'This value is required.', 'outstand-forms' ),
-			'minLength' => __( 'This value is too short. It should have {{min}} characters or more.', 'outstand-forms' ),
-			'maxLength' => __( 'This value is too long. It should have {{max}} characters or fewer.', 'outstand-forms' ),
-		],
+		/**
+		 * Filters the validation messages.
+		 *
+		 * @param array  $messages An associative array of messages keyed by rule name.
+		 *                         Example:
+		 *                         [
+		 *                             'required'  => 'This field is required.',
+		 *                             'minLength' => 'Please enter at least {{min}} characters.',
+		 *                             'maxLength' => 'Please enter no more than {{max}} characters.',
+		 *                         ]
+		 * @param string $form_id  The form ID.
+		 * @return array
+		 */
+		'validationMessages' => apply_filters(
+			'osf_validation_messages',
+			[
+				'required'  => __( 'This field is required.', 'outstand-forms' ),
+				'pattern'   => __( 'The value does not match the expected format.', 'outstand-forms' ),
+				'email'     => __( 'Please enter a valid email address.', 'outstand-forms' ),
+				'url'       => __( 'Please enter a valid URL.', 'outstand-forms' ),
+				'minLength' => __( 'Please enter at least {{min}} characters.', 'outstand-forms' ),
+				'maxLength' => __( 'Please enter no more than {{max}} characters.', 'outstand-forms' ),
+			],
+			$form_id
+		),
 	]
 );
 

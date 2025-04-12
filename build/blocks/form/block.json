@@ -10,7 +10,8 @@
   "keywords": [
     "outstand",
     "form",
-    "feedback"
+    "feedback",
+    "contact"
   ],
   "textdomain": "outstand-forms",
   "attributes": {
@@ -49,9 +50,14 @@
   ],
   "supports": {
     "html": false,
+    "anchor": true,
+    "className": false,
     "spacing": {
       "margin": true,
       "padding": true
+    },
+    "typography": {
+      "lineHeight": true
     },
     "interactivity": true
   },

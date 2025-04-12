@@ -17,7 +17,15 @@
     },
     "type": {
       "type": "string",
-      "default": "text"
+      "default": "text",
+      "enum": [
+        "text",
+        "email",
+        "number",
+        "password",
+        "tel",
+        "url"
+      ]
     },
     "name": {
       "type": "string",
@@ -37,6 +45,10 @@
     "defaultValue": {
       "type": "string",
       "default": ""
+    },
+    "step": {
+      "type": "number",
+      "default": 1
     },
     "placeholder": {
       "type": "string",
@@ -74,12 +86,11 @@
   ],
   "supports": {
     "html": false,
+    "anchor": true,
     "reusable": false,
     "spacing": {
-      "margin": [
-        "top",
-        "bottom"
-      ]
+      "padding": true,
+      "margin": true
     },
     "interactivity": true
   },
