@@ -55,6 +55,7 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		helpTextPosition = defaultHelpTextPosition,
 		minLength,
 		maxLength,
+		pattern,
 	} = attributes;
 
 	const newFieldId = useMemo(() => getBlockId(), []);
@@ -122,6 +123,10 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 
 	const onMaxLengthChange = (value) => {
 		setAttributes({ maxLength: value !== '' ? parseInt(value, 10) : undefined });
+	};
+
+	const onPatternChange = (value) => {
+		setAttributes({ pattern: value });
 	};
 
 	return (
@@ -248,6 +253,15 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 					min={0}
 					onChange={onMaxLengthChange}
 					help={__('Maximum number of characters allowed.', 'outstand-forms')}
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+				/>
+				<TextControl
+					label={__('Pattern', 'outstand-forms')}
+					value={pattern}
+					onChange={onPatternChange}
+					autoComplete="off"
+					help={__('Regular expression pattern for input validation.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>

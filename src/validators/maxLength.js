@@ -3,7 +3,7 @@
  */
 import validationRegistry from '../validation-registry';
 
-function maxLength(value, length = 0) {
+function maxLengthFn(value, length = 0) {
 	if (!value || length === 0) {
 		return true;
 	}
@@ -11,6 +11,6 @@ function maxLength(value, length = 0) {
 	return value.length <= length;
 }
 
-validationRegistry.register('maxLength', maxLength);
+validationRegistry.register('maxLength', maxLengthFn);
 
-export default maxLength;
+export default maxLengthFn;

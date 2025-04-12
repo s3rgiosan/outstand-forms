@@ -3,7 +3,7 @@
  */
 import validationRegistry from '../validation-registry';
 
-function pattern(value) {
+function patternFn(value, pattern = '') {
 	if (!value || !pattern) {
 		return true;
 	}
@@ -16,6 +16,6 @@ function pattern(value) {
 	}
 }
 
-validationRegistry.register('pattern', pattern);
+validationRegistry.register('pattern', patternFn);
 
-export default pattern;
+export default patternFn;

@@ -3,7 +3,7 @@
  */
 import validationRegistry from '../validation-registry';
 
-function email(value) {
+function emailFn(value) {
 	if (!value) {
 		return true;
 	}
@@ -12,6 +12,6 @@ function email(value) {
 	return regex.test(value);
 }
 
-validationRegistry.register('email', email);
+validationRegistry.register('email', emailFn);
 
-export default email;
+export default emailFn;

@@ -118,6 +118,10 @@ abstract class AbstractField implements FieldInterface {
 			$validation_rules['maxLength'] = (int) $this->attributes['maxLength'];
 		}
 
+		if ( ! empty( $this->attributes['pattern'] ) ) {
+			$validation_rules['pattern'] = $this->attributes['pattern'];
+		}
+
 		return $validation_rules;
 	}
 

@@ -3,7 +3,7 @@
  */
 import validationRegistry from '../validation-registry';
 
-function minLength(value, length = 0) {
+function minLengthFn(value, length = 0) {
 	if (!value || length === 0) {
 		return true;
 	}
@@ -11,6 +11,6 @@ function minLength(value, length = 0) {
 	return value.length >= length;
 }
 
-validationRegistry.register('minLength', minLength);
+validationRegistry.register('minLength', minLengthFn);
 
-export default minLength;
+export default minLengthFn;

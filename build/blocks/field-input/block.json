@@ -73,6 +73,10 @@
       "type": "number",
       "default": 0
     },
+    "pattern": {
+      "type": "string",
+      "default": ""
+    },
     "ariaLabel": {
       "type": "string",
       "default": ""
