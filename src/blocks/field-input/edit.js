@@ -109,7 +109,7 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 	};
 
 	const onAriaLabelChange = (value) => {
-		setAttributes({ ariaLabel: value });
+		setAttributes({ ariaLabel: value || label });
 	};
 
 	const onAutocompleteChange = (value) => {
@@ -186,8 +186,9 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 					/>
 					<TextControl
 						label={__('ARIA Label', 'outstand-forms')}
-						value={ariaLabel}
+						value={ariaLabel || label}
 						onChange={onAriaLabelChange}
+						help={__('The ARIA label for accessibility.', 'outstand-forms')}
 						autoComplete="off"
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
