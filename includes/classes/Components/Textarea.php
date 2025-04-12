@@ -73,6 +73,9 @@ class Textarea extends AbstractComponent {
 
 		$markup = strtr( $template, $replacements );
 
+		$markup = preg_replace( '/\s+/', ' ', $markup );
+		$markup = trim( $markup );
+
 		return $markup;
 	}
 }

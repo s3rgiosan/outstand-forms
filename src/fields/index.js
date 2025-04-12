@@ -26,6 +26,10 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 	switch (type) {
 		case 'text':
 		case 'email':
+		case 'number':
+		case 'password':
+		case 'tel':
+		case 'url':
 			field = (
 				<Input
 					type={type}

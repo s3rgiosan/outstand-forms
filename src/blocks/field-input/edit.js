@@ -47,6 +47,7 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		labelPosition = defaultLabelPosition,
 		required,
 		defaultValue,
+		step,
 		placeholder,
 		autocomplete,
 		ariaLabel,
@@ -99,6 +100,10 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		setAttributes({ defaultValue: value });
 	};
 
+	const onStepChange = (value) => {
+		setAttributes({ step: value });
+	};
+
 	const onPlaceholderChange = (value) => {
 		setAttributes({ placeholder: value });
 	};
@@ -147,6 +152,17 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
+					{'number' === type && (
+						<NumberControl
+							label={__('Step', 'outstand-forms')}
+							value={step}
+							min={1}
+							onChange={onStepChange}
+							help={__('The step value for number inputs.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
 					<TextControl
 						label={__('Placeholder', 'outstand-forms')}
 						value={placeholder}

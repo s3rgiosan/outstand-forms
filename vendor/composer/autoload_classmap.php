@@ -20,7 +20,11 @@ return array(
     'Outstand\\Forms\\Fields\\AbstractField' => $baseDir . '/includes/classes/Fields/AbstractField.php',
     'Outstand\\Forms\\Fields\\Email' => $baseDir . '/includes/classes/Fields/Email.php',
     'Outstand\\Forms\\Fields\\FieldInterface' => $baseDir . '/includes/classes/Fields/FieldInterface.php',
+    'Outstand\\Forms\\Fields\\Number' => $baseDir . '/includes/classes/Fields/Number.php',
+    'Outstand\\Forms\\Fields\\Password' => $baseDir . '/includes/classes/Fields/Password.php',
+    'Outstand\\Forms\\Fields\\Phone' => $baseDir . '/includes/classes/Fields/Phone.php',
     'Outstand\\Forms\\Fields\\Text' => $baseDir . '/includes/classes/Fields/Text.php',
     'Outstand\\Forms\\Fields\\Textarea' => $baseDir . '/includes/classes/Fields/Textarea.php',
+    'Outstand\\Forms\\Fields\\URL' => $baseDir . '/includes/classes/Fields/URL.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
 );

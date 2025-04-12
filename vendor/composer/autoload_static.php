@@ -39,8 +39,12 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Outstand\\Forms\\Fields\\AbstractField' => __DIR__ . '/../..' . '/includes/classes/Fields/AbstractField.php',
         'Outstand\\Forms\\Fields\\Email' => __DIR__ . '/../..' . '/includes/classes/Fields/Email.php',
         'Outstand\\Forms\\Fields\\FieldInterface' => __DIR__ . '/../..' . '/includes/classes/Fields/FieldInterface.php',
+        'Outstand\\Forms\\Fields\\Number' => __DIR__ . '/../..' . '/includes/classes/Fields/Number.php',
+        'Outstand\\Forms\\Fields\\Password' => __DIR__ . '/../..' . '/includes/classes/Fields/Password.php',
+        'Outstand\\Forms\\Fields\\Phone' => __DIR__ . '/../..' . '/includes/classes/Fields/Phone.php',
         'Outstand\\Forms\\Fields\\Text' => __DIR__ . '/../..' . '/includes/classes/Fields/Text.php',
         'Outstand\\Forms\\Fields\\Textarea' => __DIR__ . '/../..' . '/includes/classes/Fields/Textarea.php',
+        'Outstand\\Forms\\Fields\\URL' => __DIR__ . '/../..' . '/includes/classes/Fields/URL.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
     );
 

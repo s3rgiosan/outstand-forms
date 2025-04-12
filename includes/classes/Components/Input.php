@@ -36,6 +36,7 @@ class Input extends AbstractComponent {
 
 		$required      = $attributes['required'] ?? false;
 		$default_value = $attributes['defaultValue'] ?? '';
+		$step          = $attributes['step'] ?? 1;
 		$placeholder   = $attributes['placeholder'] ?? '';
 		$autocomplete  = $attributes['autocomplete'] ?? '';
 		$min_length    = $attributes['minLength'] ?? 0;
@@ -43,21 +44,27 @@ class Input extends AbstractComponent {
 		$aria_label    = $attributes['ariaLabel'] ?? '';
 
 		$conditional_attrs = [
+			'{step}'            => '',
 			'{placeholder}'     => $placeholder ? sprintf( 'placeholder="%s"', esc_attr( $placeholder ) ) : '',
 			'{autocomplete}'    => $autocomplete ? sprintf( 'autocomplete="%s"', esc_attr( $autocomplete ) ) : '',
-			'{min_length}'      => $min_length ? sprintf( 'minlength="%s"', esc_attr( $min_length ) ) : '',
-			'{max_length}'      => $max_length ? sprintf( 'maxlength="%s"', esc_attr( $max_length ) ) : '',
+			'{min_length}'      => $min_length ? sprintf( 'minlength="%d"', esc_attr( $min_length ) ) : '',
+			'{max_length}'      => $max_length ? sprintf( 'maxlength="%d"', esc_attr( $max_length ) ) : '',
 			'{required}'        => $required ? 'required' : '',
 			'{aria_required}'   => $required ? 'aria-required="true"' : '',
 			'{aria_label}'      => $aria_label ? sprintf( 'aria-label="%s"', esc_attr( $aria_label ) ) : '',
 			'{aria_labelledby}' => $label_id ? sprintf( 'aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
 		];
 
+		if ( 'number' === $this->input_type ) {
+			$conditional_attrs['{step}'] = $step ? sprintf( 'step="%d"', esc_attr( $step ) ) : '';
+		}
+
 		$template = '<input
 			type="{type}"
 			id="{id}"
 			name="{name}"
 			value="{value}"
+			{step}
 			{placeholder}
 			{autocomplete}
 			{min_length}
@@ -88,6 +95,9 @@ class Input extends AbstractComponent {
 		);
 
 		$markup = strtr( $template, $replacements );
+
+		$markup = preg_replace( '/\s+/', ' ', $markup );
+		$markup = trim( $markup );
 
 		return $markup;
 	}

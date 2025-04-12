@@ -5,8 +5,12 @@ namespace Outstand\Forms;
 use InvalidArgumentException;
 use Outstand\Forms\Fields\Email;
 use Outstand\Forms\Fields\FieldInterface;
+use Outstand\Forms\Fields\Number;
+use Outstand\Forms\Fields\Password;
+use Outstand\Forms\Fields\Phone;
 use Outstand\Forms\Fields\Text;
 use Outstand\Forms\Fields\Textarea;
+use Outstand\Forms\Fields\URL;
 
 class FieldFactory {
 	/**
@@ -15,9 +19,13 @@ class FieldFactory {
 	 * @var array
 	 */
 	protected array $field_types = [
+		'email'    => Email::class,
+		'number'   => Number::class,
+		'password' => Password::class,
+		'tel'      => Phone::class,
 		'text'     => Text::class,
 		'textarea' => Textarea::class,
-		'email'    => Email::class,
+		'url'      => URL::class,
 	];
 
 	/**
