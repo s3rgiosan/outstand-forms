@@ -1,6 +1,6 @@
 <?php
 /**
- * Field: Text
+ * Field: Input
  *
  * @var array     $attributes Block attributes.
  * @var string    $content    Block default content.
@@ -25,9 +25,7 @@ $attributes = array_merge(
 	$attributes
 );
 
-$factory = new FieldFactory();
-$field   = $factory->create( 'text', $attributes );
-
+$field_type         = $attributes['type'] ?? 'text';
 $default_value      = $attributes['defaultValue'] ?? '';
 $required           = $attributes['required'] ?? false;
 $min_length         = $attributes['minLength'] ?? 0;
@@ -37,9 +35,12 @@ $label_position     = $attributes['labelPosition'];
 $help_text          = $attributes['helpText'] ?? '';
 $help_text_position = $attributes['helpTextPosition'];
 
+$factory = new FieldFactory();
+$field   = $factory->create( $field_type, $attributes );
+
 $wrapper_classes = [
 	'osf-field',
-	'osf-field--text',
+	"osf-field--input-{$field_type}",
 	"osf-field--label-{$label_position}",
 	"osf-field--help-text-{$help_text_position}",
 	$required ? 'osf-field--required' : '',
@@ -59,6 +60,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
 
 $context = wp_interactivity_data_wp_context(
 	[
+		'type'            => $field_type,
 		'value'           => $default_value,
 		'isValid'         => true,
 		'isFocused'       => false,

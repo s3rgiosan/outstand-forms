@@ -22,7 +22,7 @@ import { findBlocks } from '../utils';
  * A block is considered a duplicate if another block with the same name
  * and identical attributes appears earlier in the same container.
  *
- * @param {string}  blockName       Name of the block (e.g., 'osf/field-text').
+ * @param {string}  blockName       Name of the block (e.g., 'osf/field-input').
  * @param {string}  clientId        Client ID of the current block.
  * @param {Object}  attributes      Attributes to compare.
  * @param {string?} parentBlockName Optional parent block name to scope the check.

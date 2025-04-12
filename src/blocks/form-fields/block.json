@@ -16,27 +16,6 @@
   "usesContext": [
     "osf/formId"
   ],
-  "allowedBlocks": [
-    "core/button",
-    "core/buttons",
-    "core/column",
-    "core/columns",
-    "core/cover",
-    "core/gallery",
-    "core/group",
-    "core/heading",
-    "core/image",
-    "core/list-item",
-    "core/list",
-    "core/media-text",
-    "core/paragraph",
-    "core/separator",
-    "core/spacer",
-    "core/table",
-    "osf/field-text",
-    "osf/field-textarea",
-    "osf/field-email"
-  ],
   "supports": {
     "html": false,
     "lock": false,

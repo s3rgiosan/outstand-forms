@@ -6,7 +6,7 @@ import { __ } from '@wordpress/i18n';
 /**
  * Internal dependencies
  */
-import { BlankVariationIcon, ContactUsVariationIcon } from './icon';
+import { blank, contactUs } from './icon';
 import { getBlockId } from '../../utils';
 
 const variations = [
@@ -17,9 +17,20 @@ const variations = [
 		attributes: {
 			type: 'inline',
 		},
-		icon: BlankVariationIcon,
+		icon: blank,
 		innerBlocks: [
-			['osf/form-fields', {}, []],
+			[
+				'osf/form-fields',
+				{},
+				[
+					[
+						'osf/field-input',
+						{
+							fieldId: getBlockId(),
+						},
+					],
+				],
+			],
 			['osf/form-submit-button', {}],
 		],
 		scope: ['block'],
@@ -28,14 +39,14 @@ const variations = [
 		name: 'contact-us',
 		title: __('Contact Us', 'outstand-forms'),
 		attributes: {},
-		icon: ContactUsVariationIcon,
+		icon: contactUs,
 		innerBlocks: [
 			[
 				'osf/form-fields',
 				{},
 				[
 					[
-						'osf/field-text',
+						'osf/field-input',
 						{
 							fieldId: getBlockId(),
 							name: 'name',
@@ -46,13 +57,15 @@ const variations = [
 						},
 					],
 					[
-						'osf/field-email',
+						'osf/field-input',
 						{
 							fieldId: getBlockId(),
+							type: 'email',
 							name: 'email',
 							label: __('Email', 'outstand-forms'),
 							required: true,
 							helpText: __('Please enter your email address.', 'outstand-forms'),
+							autocomplete: 'email',
 						},
 					],
 					[

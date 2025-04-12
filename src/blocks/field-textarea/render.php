@@ -25,9 +25,6 @@ $attributes = array_merge(
 	$attributes
 );
 
-$factory = new FieldFactory();
-$field   = $factory->create( 'textarea', $attributes );
-
 $default_value      = $attributes['defaultValue'] ?? '';
 $required           = $attributes['required'] ?? false;
 $min_length         = $attributes['minLength'] ?? 0;
@@ -36,6 +33,9 @@ $label              = $attributes['label'] ?? '';
 $label_position     = $attributes['labelPosition'];
 $help_text          = $attributes['helpText'] ?? '';
 $help_text_position = $attributes['helpTextPosition'];
+
+$factory = new FieldFactory();
+$field   = $factory->create( 'textarea', $attributes );
 
 $wrapper_classes = [
 	'osf-field',

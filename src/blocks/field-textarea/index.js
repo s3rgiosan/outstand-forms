@@ -7,12 +7,12 @@ import { registerBlockType } from '@wordpress/blocks';
  * Internal dependencies
  */
 import metadata from './block.json';
-import Edit from './edit';
-import { Icon } from './icon';
+import edit from './edit';
+import { icon } from './icon';
 import './style.css';
 
 registerBlockType(metadata.name, {
-	edit: Edit,
+	edit,
 	save: () => null,
-	icon: <Icon />,
+	icon,
 });

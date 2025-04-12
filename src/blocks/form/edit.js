@@ -31,15 +31,11 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import './editor.css';
+import { TEMPLATE } from './constants';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
 import { useFieldBlocks } from '../../hooks/useFieldBlocks';
 import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
 import { getBlockId } from '../../utils';
-
-const TEMPLATE = [
-	['osf/form-fields', {}, [['osf/field-text', {}]]],
-	['osf/form-submit-button', {}],
-];
 
 function FormEditContainer({ attributes, setAttributes, clientId }) {
 	const { formId, method, action, labelPosition, helpTextPosition, requiredIndicator } =

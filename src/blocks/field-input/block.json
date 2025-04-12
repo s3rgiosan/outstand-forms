@@ -1,17 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/field-text",
+  "name": "osf/field-input",
   "version": "0.1.0",
-  "title": "Text",
+  "title": "Input",
   "category": "osf",
   "icon": "",
   "description": "",
-  "keywords": [
-    "field",
-    "text",
-    "input"
-  ],
   "textdomain": "outstand-forms",
   "ancestor": [
     "osf/form-fields"
@@ -19,6 +14,10 @@
   "attributes": {
     "fieldId": {
       "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "default": "text"
     },
     "name": {
       "type": "string",

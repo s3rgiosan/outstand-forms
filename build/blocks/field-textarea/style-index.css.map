@@ -1,1 +1,0 @@
-{"version":3,"file":"blocks/field-textarea/style-index.css","mappings":";;;AAAA;CACC,YAAY;CACZ,cAAc;CACd,gBAAgB;AACjB","sources":["webpack://outstand-forms/./src/blocks/field-textarea/style.css"],"sourcesContent":[".osf-field__textarea {\n\theight: auto;\n\toverflow: auto;\n\tresize: vertical;\n}\n"],"names":[],"sourceRoot":""}

@@ -33,7 +33,7 @@ import Field from '../../fields';
 import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
 import { getBlockId } from '../../utils';
 
-export default function FieldEmailEdit({ name, clientId, attributes, setAttributes, context }) {
+export default function FieldInputEdit({ name, clientId, attributes, setAttributes, context }) {
 	const {
 		'osf/labelPosition': defaultLabelPosition,
 		'osf/helpTextPosition': defaultHelpTextPosition,
@@ -41,6 +41,7 @@ export default function FieldEmailEdit({ name, clientId, attributes, setAttribut
 
 	const {
 		fieldId,
+		type,
 		name: fieldName,
 		label,
 		labelPosition = defaultLabelPosition,
@@ -67,7 +68,7 @@ export default function FieldEmailEdit({ name, clientId, attributes, setAttribut
 	const blockProps = useBlockProps({
 		className: clsx(
 			'osf-field',
-			'osf-field--email',
+			`osf-field--input-${type}`,
 			`osf-field--label-${labelPosition}`,
 			`osf-field--help-text-${helpTextPosition}`,
 			{
@@ -122,7 +123,7 @@ export default function FieldEmailEdit({ name, clientId, attributes, setAttribut
 		<>
 			<div {...blockProps}>
 				<Field
-					type="email"
+					type={type}
 					attributes={attributes}
 					setAttributes={setAttributes}
 					context={context}

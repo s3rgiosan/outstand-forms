@@ -3,7 +3,7 @@
  */
 import { SVG, Path, Rect } from '@wordpress/primitives';
 
-export const Icon = () => {
+export const icon = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export const Icon = () => {
 	);
 };
 
-export const BlankVariationIcon = () => {
+export const blank = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export const BlankVariationIcon = () => {
 	);
 };
 
-export const ContactUsVariationIcon = () => {
+export const contactUs = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"

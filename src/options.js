@@ -52,83 +52,119 @@ export const autocompleteOptions = [
 		value: '',
 	},
 	{
-		label: __('Disabled (off)', 'outstand-forms'),
+		label: __('Disabled', 'outstand-forms'),
 		value: 'off',
 	},
 	{
-		label: __('Enabled (on)', 'outstand-forms'),
+		label: __('Enabled', 'outstand-forms'),
 		value: 'on',
 	},
 	{
-		label: __('Full Name (name)', 'outstand-forms'),
+		label: __('Full name', 'outstand-forms'),
 		value: 'name',
 	},
 	{
-		label: __('First Name (given-name)', 'outstand-forms'),
+		label: __('Given name or first name', 'outstand-forms'),
 		value: 'given-name',
 	},
 	{
-		label: __('Last Name (family-name)', 'outstand-forms'),
+		label: __('Family name or last name', 'outstand-forms'),
 		value: 'family-name',
 	},
 	{
-		label: __('Email (email)', 'outstand-forms'),
+		label: __('Additional name or middle name', 'outstand-forms'),
+		value: 'additional-name',
+	},
+	{
+		label: __('Prefix or title', 'outstand-forms'),
+		value: 'honorific-prefix',
+	},
+	{
+		label: __('Suffix', 'outstand-forms'),
+		value: 'honorific-suffix',
+	},
+	{
+		label: __('E-mail address', 'outstand-forms'),
 		value: 'email',
 	},
 	{
-		label: __('Username (username)', 'outstand-forms'),
+		label: __('Nickname', 'outstand-forms'),
+		value: 'nickname',
+	},
+	{
+		label: __('Username', 'outstand-forms'),
 		value: 'username',
 	},
 	{
-		label: __('New Password (new-password)', 'outstand-forms'),
+		label: __('New password', 'outstand-forms'),
 		value: 'new-password',
 	},
 	{
-		label: __('Current Password (current-password)', 'outstand-forms'),
+		label: __('Current password', 'outstand-forms'),
 		value: 'current-password',
 	},
 	{
-		label: __('Organization (organization)', 'outstand-forms'),
+		label: __('Company name', 'outstand-forms'),
 		value: 'organization',
 	},
 	{
-		label: __('Street Address (street-address)', 'outstand-forms'),
+		label: __('Street address', 'outstand-forms'),
 		value: 'street-address',
 	},
 	{
-		label: __('Address Line 1 (address-line1)', 'outstand-forms'),
+		label: __('Address line 1', 'outstand-forms'),
 		value: 'address-line1',
 	},
 	{
-		label: __('Address Line 2 (address-line2)', 'outstand-forms'),
+		label: __('Address line 2', 'outstand-forms'),
 		value: 'address-line2',
 	},
 	{
-		label: __('Country (country-name)', 'outstand-forms'),
+		label: __('Address line 3', 'outstand-forms'),
+		value: 'address-line3',
+	},
+	{
+		label: __('Country code', 'outstand-forms'),
+		value: 'country',
+	},
+	{
+		label: __('Country name', 'outstand-forms'),
 		value: 'country-name',
 	},
 	{
-		label: __('ZIP/Postal Code (postal-code)', 'outstand-forms'),
+		label: __('Postal code or zip code', 'outstand-forms'),
 		value: 'postal-code',
 	},
 	{
-		label: __('City (city)', 'outstand-forms'),
+		label: __('City', 'outstand-forms'),
 		value: 'city',
 	},
 	{
-		label: __('Region/State (region)', 'outstand-forms'),
+		label: __('State or region', 'outstand-forms'),
 		value: 'region',
 	},
 	{
-		label: __('Phone Number (tel)', 'outstand-forms'),
+		label: __('Phone number', 'outstand-forms'),
 		value: 'tel',
 	},
 	{
-		label: __('Birthdate (bday)', 'outstand-forms'),
+		label: __('Birthdate', 'outstand-forms'),
 		value: 'bday',
 	},
 	{
-		label: __('Website URL (url)', 'outstand-forms'),
+		label: __('Day component of birthday', 'outstand-forms'),
+		value: 'bday-day',
+	},
+	{
+		label: __('Month component of birthday', 'outstand-forms'),
+		value: 'bday-month',
+	},
+	{
+		label: __('Year component of birthday', 'outstand-forms'),
+		value: 'bday-year',
+	},
+	{
+		label: __('Website URL', 'outstand-forms'),
 		value: 'url',
 	},
 ];
