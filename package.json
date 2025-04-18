@@ -25,6 +25,7 @@
   "dependencies": {
     "@wordpress/interactivity": "^6.19.0",
     "clsx": "^2.1.1",
+    "inputmask": "^5.0.9",
     "uuid": "^11.1.0"
   }
 }

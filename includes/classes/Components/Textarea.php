@@ -22,6 +22,7 @@ class Textarea extends AbstractComponent {
 		$max_length    = $attributes['maxLength'] ?? 0;
 		$rows          = $attributes['rows'] ?? 2;
 		$cols          = $attributes['cols'] ?? 20;
+		$mask          = $attributes['mask'] ?? '';
 		$aria_label    = $attributes['ariaLabel'] ?? '';
 
 		$conditional_attrs = [
@@ -32,6 +33,8 @@ class Textarea extends AbstractComponent {
 			'{max_length}'      => $max_length ? sprintf( 'maxlength="%s"', esc_attr( $max_length ) ) : '',
 			'{rows}'            => $rows ? sprintf( 'rows="%s"', esc_attr( $rows ) ) : '',
 			'{cols}'            => $cols ? sprintf( 'cols="%s"', esc_attr( $cols ) ) : '',
+			'{mask_attribute}'  => $mask ? sprintf( 'data-inputmask="\'mask\': \'%s\'"', esc_attr( $mask ) ) : '',
+			'{mask_directive}'  => $mask ? 'data-wp-init--mask="callbacks.initMask"' : '',
 			'{aria_required}'   => $required ? 'aria-required="true"' : '',
 			'{aria_label}'      => $aria_label ? sprintf( 'aria-label="%s"', esc_attr( $aria_label ) ) : '',
 			'{aria_labelledby}' => $label_id ? sprintf( 'aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
@@ -48,6 +51,8 @@ class Textarea extends AbstractComponent {
 			{max_length}
 			{rows}
 			{cols}
+			{mask_attribute}
+			{mask_directive}
 			{aria_required}
 			{aria_label}
 			{aria_labelledby}

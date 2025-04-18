@@ -188,7 +188,9 @@ const { state, actions } = store('osf/form', {
 						once: true,
 					});
 
-					const event = new CustomEvent('osf-field-validate', { bubbles: true });
+					const event = new CustomEvent('osf-field-validate', {
+						bubbles: true,
+					});
 					fieldElement.dispatchEvent(event);
 				});
 			});
@@ -210,6 +212,23 @@ const { state, actions } = store('osf/form', {
 			}
 
 			formContext.formFields[fieldId] = isValid;
+		},
+		/**
+		 * Initialize the field mask.
+		 *
+		 * @see https://robinherbots.github.io/Inputmask/
+		 */
+		async initMask() {
+			const { ref } = getElement();
+			const { inputmask } = ref?.dataset ?? {};
+
+			if (!inputmask) {
+				return;
+			}
+
+			const { default: Inputmask } = await import('inputmask');
+			const im = new Inputmask(inputmask);
+			im.mask(ref);
 		},
 	},
 });

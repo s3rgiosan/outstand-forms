@@ -55,7 +55,9 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 			if (isDuplicate && !didResetFieldIds.current) {
 				fieldBlocks.forEach((block) => {
 					const newFieldId = getBlockId();
-					updateBlockAttributes(block.clientId, { fieldId: newFieldId });
+					updateBlockAttributes(block.clientId, {
+						fieldId: newFieldId,
+					});
 				});
 				didResetFieldIds.current = true;
 			}
@@ -108,8 +110,14 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 					<SelectControl
 						label={__('Method', 'outstand-forms')}
 						options={[
-							{ label: __('GET', 'outstand-forms'), value: 'get' },
-							{ label: __('POST', 'outstand-forms'), value: 'post' },
+							{
+								label: __('GET', 'outstand-forms'),
+								value: 'get',
+							},
+							{
+								label: __('POST', 'outstand-forms'),
+								value: 'post',
+							},
 						]}
 						value={method}
 						onChange={onMethodChange}

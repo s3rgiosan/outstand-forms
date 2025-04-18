@@ -42,19 +42,20 @@ export default function FieldTextareaEdit({ name, clientId, attributes, setAttri
 	const {
 		fieldId,
 		name: fieldName,
-		label,
-		labelPosition = defaultLabelPosition,
-		required,
 		defaultValue,
+		required,
 		placeholder,
 		autocomplete,
-		ariaLabel,
-		helpText,
-		helpTextPosition = defaultHelpTextPosition,
 		minLength,
 		maxLength,
 		rows,
 		cols,
+		mask,
+		ariaLabel,
+		label,
+		labelPosition = defaultLabelPosition,
+		helpText,
+		helpTextPosition = defaultHelpTextPosition,
 	} = attributes;
 
 	const newFieldId = useMemo(() => getBlockId(), []);
@@ -84,28 +85,16 @@ export default function FieldTextareaEdit({ name, clientId, attributes, setAttri
 		setAttributes({ name: value.trim() });
 	};
 
-	const onLabelPositionChange = (value) => {
-		setAttributes({ labelPosition: value });
-	};
-
-	const onHelpTextPositionChange = (value) => {
-		setAttributes({ helpTextPosition: value });
+	const onDefaultValueChange = (value) => {
+		setAttributes({ defaultValue: value });
 	};
 
 	const onRequiredChange = (value) => {
 		setAttributes({ required: value });
 	};
 
-	const onDefaultValueChange = (value) => {
-		setAttributes({ defaultValue: value });
-	};
-
 	const onPlaceholderChange = (value) => {
 		setAttributes({ placeholder: value });
-	};
-
-	const onAriaLabelChange = (value) => {
-		setAttributes({ ariaLabel: value || label });
 	};
 
 	const onAutocompleteChange = (value) => {
@@ -113,11 +102,15 @@ export default function FieldTextareaEdit({ name, clientId, attributes, setAttri
 	};
 
 	const onMinLengthChange = (value) => {
-		setAttributes({ minLength: value !== '' ? parseInt(value, 10) : undefined });
+		setAttributes({
+			minLength: value !== '' ? parseInt(value, 10) : undefined,
+		});
 	};
 
 	const onMaxLengthChange = (value) => {
-		setAttributes({ maxLength: value !== '' ? parseInt(value, 10) : undefined });
+		setAttributes({
+			maxLength: value !== '' ? parseInt(value, 10) : undefined,
+		});
 	};
 
 	const onRowsChange = (value) => {
@@ -126,6 +119,22 @@ export default function FieldTextareaEdit({ name, clientId, attributes, setAttri
 
 	const onColsChange = (value) => {
 		setAttributes({ cols: parseInt(value, 10) });
+	};
+
+	const onMaskChange = (value) => {
+		setAttributes({ mask: value });
+	};
+
+	const onLabelPositionChange = (value) => {
+		setAttributes({ labelPosition: value });
+	};
+
+	const onHelpTextPositionChange = (value) => {
+		setAttributes({ helpTextPosition: value });
+	};
+
+	const onAriaLabelChange = (value) => {
+		setAttributes({ ariaLabel: value || label });
 	};
 
 	return (
@@ -260,6 +269,15 @@ export default function FieldTextareaEdit({ name, clientId, attributes, setAttri
 					min={0}
 					onChange={onMaxLengthChange}
 					help={__('Maximum number of characters allowed.', 'outstand-forms')}
+					__next40pxDefaultSize
+					__nextHasNoMarginBottom
+				/>
+				<TextControl
+					label={__('Mask', 'outstand-forms')}
+					value={mask}
+					onChange={onMaskChange}
+					autoComplete="off"
+					help={__('The mask that will be applied to the field.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>

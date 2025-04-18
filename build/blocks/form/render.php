@@ -73,6 +73,8 @@ wp_interactivity_config(
 				'url'       => __( 'Please enter a valid URL.', 'outstand-forms' ),
 				'minLength' => __( 'Please enter at least {{min}} characters.', 'outstand-forms' ),
 				'maxLength' => __( 'Please enter no more than {{max}} characters.', 'outstand-forms' ),
+				'min'       => __( 'Please enter a value greater than or equal to {{min}}.', 'outstand-forms' ),
+				'max'       => __( 'Please enter a value less than or equal to {{max}}.', 'outstand-forms' ),
 			],
 			$form_id
 		),

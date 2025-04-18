@@ -44,6 +44,7 @@ class Input extends AbstractComponent {
 		$min           = $attributes['min'] ?? 0;
 		$max           = $attributes['max'] ?? 0;
 		$pattern       = $attributes['pattern'] ?? '';
+		$mask          = $attributes['mask'] ?? '';
 		$aria_label    = $attributes['ariaLabel'] ?? '';
 
 		$conditional_attrs = [
@@ -56,6 +57,8 @@ class Input extends AbstractComponent {
 			'{min}'             => '',
 			'{max}'             => '',
 			'{pattern}'         => $pattern ? sprintf( 'pattern="%s"', esc_attr( $pattern ) ) : '',
+			'{mask_attribute}'  => $mask ? sprintf( 'data-inputmask="\'mask\': \'%s\'"', esc_attr( $mask ) ) : '',
+			'{mask_directive}'  => $mask ? 'data-wp-init--mask="callbacks.initMask"' : '',
 			'{aria_required}'   => $required ? 'aria-required="true"' : '',
 			'{aria_label}'      => $aria_label ? sprintf( 'aria-label="%s"', esc_attr( $aria_label ) ) : '',
 			'{aria_labelledby}' => $label_id ? sprintf( 'aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
@@ -69,6 +72,18 @@ class Input extends AbstractComponent {
 				$conditional_attrs['{min}']            = $min ? sprintf( 'min="%d"', esc_attr( $min ) ) : '';
 				$conditional_attrs['{max}']            = $max ? sprintf( 'max="%d"', esc_attr( $max ) ) : '';
 				$conditional_attrs['{pattern}']        = '';
+				$conditional_attrs['{mask_attribute}'] = '';
+				$conditional_attrs['{mask_directive}'] = '';
+				break;
+
+			case 'email':
+				$conditional_attrs['{mask_attribute}'] = '';
+				$conditional_attrs['{mask_directive}'] = '';
+				break;
+
+			case 'url':
+				$conditional_attrs['{mask_attribute}'] = '';
+				$conditional_attrs['{mask_directive}'] = '';
 				break;
 		}
 
@@ -86,6 +101,8 @@ class Input extends AbstractComponent {
 			{min}
 			{max}
 			{pattern}
+			{mask_attribute}
+			{mask_directive}
 			{aria_required}
 			{aria_label}
 			{aria_labelledby}

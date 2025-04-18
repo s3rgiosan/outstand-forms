@@ -43,22 +43,22 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		fieldId,
 		type,
 		name: fieldName,
-		label,
-		labelPosition = defaultLabelPosition,
-		required,
 		defaultValue,
-		step,
+		required,
 		placeholder,
 		autocomplete,
-		ariaLabel,
-		helpText,
-		helpTextPosition = defaultHelpTextPosition,
 		minLength,
 		maxLength,
-		pattern,
-		mask,
+		step,
 		min,
 		max,
+		pattern,
+		mask,
+		ariaLabel,
+		label,
+		labelPosition = defaultLabelPosition,
+		helpText,
+		helpTextPosition = defaultHelpTextPosition,
 	} = attributes;
 
 	const newFieldId = useMemo(() => getBlockId(), []);
@@ -88,32 +88,16 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		setAttributes({ name: value.trim() });
 	};
 
-	const onLabelPositionChange = (value) => {
-		setAttributes({ labelPosition: value });
-	};
-
-	const onHelpTextPositionChange = (value) => {
-		setAttributes({ helpTextPosition: value });
+	const onDefaultValueChange = (value) => {
+		setAttributes({ defaultValue: value });
 	};
 
 	const onRequiredChange = (value) => {
 		setAttributes({ required: value });
 	};
 
-	const onDefaultValueChange = (value) => {
-		setAttributes({ defaultValue: value });
-	};
-
-	const onStepChange = (value) => {
-		setAttributes({ step: value });
-	};
-
 	const onPlaceholderChange = (value) => {
 		setAttributes({ placeholder: value });
-	};
-
-	const onAriaLabelChange = (value) => {
-		setAttributes({ ariaLabel: value || label });
 	};
 
 	const onAutocompleteChange = (value) => {
@@ -121,11 +105,31 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 	};
 
 	const onMinLengthChange = (value) => {
-		setAttributes({ minLength: value !== '' ? parseInt(value, 10) : undefined });
+		setAttributes({
+			minLength: value !== '' ? parseInt(value, 10) : undefined,
+		});
 	};
 
 	const onMaxLengthChange = (value) => {
-		setAttributes({ maxLength: value !== '' ? parseInt(value, 10) : undefined });
+		setAttributes({
+			maxLength: value !== '' ? parseInt(value, 10) : undefined,
+		});
+	};
+
+	const onStepChange = (value) => {
+		setAttributes({ step: value });
+	};
+
+	const onMinChange = (value) => {
+		setAttributes({
+			min: value !== '' ? parseInt(value, 10) : undefined,
+		});
+	};
+
+	const onMaxChange = (value) => {
+		setAttributes({
+			max: value !== '' ? parseInt(value, 10) : undefined,
+		});
 	};
 
 	const onPatternChange = (value) => {
@@ -136,12 +140,16 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		setAttributes({ mask: value });
 	};
 
-	const onMinChange = (value) => {
-		setAttributes({ min: value !== '' ? parseInt(value, 10) : undefined });
+	const onAriaLabelChange = (value) => {
+		setAttributes({ ariaLabel: value || label });
 	};
 
-	const onMaxChange = (value) => {
-		setAttributes({ max: value !== '' ? parseInt(value, 10) : undefined });
+	const onLabelPositionChange = (value) => {
+		setAttributes({ labelPosition: value });
+	};
+
+	const onHelpTextPositionChange = (value) => {
+		setAttributes({ helpTextPosition: value });
 	};
 
 	return (
@@ -294,6 +302,17 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 						min={0}
 						onChange={onMaxChange}
 						help={__('Maximum value.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
+				{!['email', 'number', 'url'].includes(type) && (
+					<TextControl
+						label={__('Mask', 'outstand-forms')}
+						value={mask}
+						onChange={onMaskChange}
+						autoComplete="off"
+						help={__('The mask that will be applied to the field.', 'outstand-forms')}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>

@@ -31,24 +31,13 @@
       "type": "string",
       "default": ""
     },
-    "label": {
-      "type": "string",
-      "default": ""
-    },
-    "labelPosition": {
-      "type": "string"
-    },
-    "required": {
-      "type": "boolean",
-      "default": false
-    },
     "defaultValue": {
       "type": "string",
       "default": ""
     },
-    "step": {
-      "type": "number",
-      "default": 1
+    "required": {
+      "type": "boolean",
+      "default": false
     },
     "placeholder": {
       "type": "string",
@@ -58,13 +47,6 @@
       "type": "string",
       "default": ""
     },
-    "helpText": {
-      "type": "string",
-      "default": ""
-    },
-    "helpTextPosition": {
-      "type": "string"
-    },
     "minLength": {
       "type": "number",
       "default": 0
@@ -73,9 +55,9 @@
       "type": "number",
       "default": 0
     },
-    "pattern": {
-      "type": "string",
-      "default": ""
+    "step": {
+      "type": "number",
+      "default": 1
     },
     "min": {
       "type": "number",
@@ -85,9 +67,31 @@
       "type": "number",
       "default": 0
     },
+    "pattern": {
+      "type": "string",
+      "default": ""
+    },
+    "mask": {
+      "type": "string",
+      "default": ""
+    },
     "ariaLabel": {
       "type": "string",
       "default": ""
+    },
+    "label": {
+      "type": "string",
+      "default": ""
+    },
+    "labelPosition": {
+      "type": "string"
+    },
+    "helpText": {
+      "type": "string",
+      "default": ""
+    },
+    "helpTextPosition": {
+      "type": "string"
     }
   },
   "usesContext": [
