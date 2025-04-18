@@ -1,16 +1,25 @@
 # Outstand Forms
 
 > [!WARNING]
-> **Work in Progress:** This plugin is currently in development and not yet ready for use. Stay tuned for updates.
+> **Work in Progress:** This plugin is currently in development and not yet ready for production use.
 
 ## Description
 
-The icons are from [Lucide](https://lucide.dev/).
+Outstand Forms is a WordPress plugin for building forms using the Block Editor. It leverages the [Interactivity API](https://developer.wordpress.org/block-editor/reference-guides/interactivity-api/) and provides features like field validation, input masking, and a clean UI built for usability and accessibility.
+
+## Features
+
+- Fully block-based form builder.
+- Dynamic validation using JavaScript.
+- Field-level validation messages.
+- Input mask support via [Inputmask](https://robinherbots.github.io/Inputmask/).
+- Accessible markup with proper `aria` attributes.
+- Lightweight and extensible.
 
 ## Requirements
 
-* PHP 7.4+
-* WordPress 6.5
+- PHP 7.4+
+- WordPress 6.5
 
 ## Installation
 
@@ -36,7 +45,42 @@ composer require s3rgiosan/outstand-forms
 
 ## Quick Start
 
+1. Add a new form using the Outstand Forms block.
+2. Use the available field blocks (e.g., Text, Email, Textarea, Submit) inside the form.
+3. Configure each field via the block sidebar: labels, help text, validation rules, etc.
+4. Preview the form and submit — validation will run automatically.
+5. Customize styles using your theme or custom CSS.
+
+## Input Masks
+
+To enable input masking:
+
+- Add a mask string to the Mask field in the block settings.
+- Internally powered by the [Inputmask](https://robinherbots.github.io/Inputmask/) library.
+- Only loaded when an input mask is defined.
+
+Example:
+
+```json
+"inputmask": "999-999-9999"
+```
+
 ## Styling
+
+You can style forms using your theme’s styles or add custom styles targeting the `.osf-form`, `.osf-field`, and `.osf-field__input` classes.
+
+## Filters
+
+### `osf_validation_messages`
+
+Override or extend the default validation messages passed to the Interactivity API:
+
+```php
+add_filter( 'osf_validation_messages', function( $messages, $form_id ) {
+	$messages['required'] = 'Custom required message.';
+	return $messages;
+}, 10, 2 );
+```
 
 ## Changelog
 
