@@ -77,6 +77,14 @@
       "type": "string",
       "default": ""
     },
+    "min": {
+      "type": "number",
+      "default": 0
+    },
+    "max": {
+      "type": "number",
+      "default": 0
+    },
     "ariaLabel": {
       "type": "string",
       "default": ""

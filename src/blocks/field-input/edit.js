@@ -56,6 +56,9 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		minLength,
 		maxLength,
 		pattern,
+		mask,
+		min,
+		max,
 	} = attributes;
 
 	const newFieldId = useMemo(() => getBlockId(), []);
@@ -129,6 +132,18 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		setAttributes({ pattern: value });
 	};
 
+	const onMaskChange = (value) => {
+		setAttributes({ mask: value });
+	};
+
+	const onMinChange = (value) => {
+		setAttributes({ min: value !== '' ? parseInt(value, 10) : undefined });
+	};
+
+	const onMaxChange = (value) => {
+		setAttributes({ max: value !== '' ? parseInt(value, 10) : undefined });
+	};
+
 	return (
 		<>
 			<div {...blockProps}>
@@ -163,7 +178,7 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 							value={step}
 							min={1}
 							onChange={onStepChange}
-							help={__('The step value for number inputs.', 'outstand-forms')}
+							help={__('The step value.', 'outstand-forms')}
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 						/>
@@ -237,34 +252,66 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 						return <ToggleGroupControlOption key={value} value={value} label={label} />;
 					})}
 				</ToggleGroupControl>
-				<NumberControl
-					label={__('Minimum Characters', 'outstand-forms')}
-					value={minLength}
-					min={0}
-					onChange={onMinLengthChange}
-					help={__('Minimum number of characters required.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
-				<NumberControl
-					type="number"
-					label={__('Maximum Characters', 'outstand-forms')}
-					value={maxLength}
-					min={0}
-					onChange={onMaxLengthChange}
-					help={__('Maximum number of characters allowed.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
-				<TextControl
-					label={__('Pattern', 'outstand-forms')}
-					value={pattern}
-					onChange={onPatternChange}
-					autoComplete="off"
-					help={__('Regular expression pattern for input validation.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
+				{'number' !== type && (
+					<NumberControl
+						label={__('Minimum Characters', 'outstand-forms')}
+						value={minLength}
+						min={0}
+						onChange={onMinLengthChange}
+						help={__('Minimum number of characters required.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
+				{'number' !== type && (
+					<NumberControl
+						type="number"
+						label={__('Maximum Characters', 'outstand-forms')}
+						value={maxLength}
+						min={0}
+						onChange={onMaxLengthChange}
+						help={__('Maximum number of characters allowed.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
+				{'number' === type && (
+					<NumberControl
+						label={__('Minimum', 'outstand-forms')}
+						value={min}
+						min={0}
+						onChange={onMinChange}
+						help={__('Minimum value.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
+				{'number' === type && (
+					<NumberControl
+						type="number"
+						label={__('Maximum', 'outstand-forms')}
+						value={max}
+						min={0}
+						onChange={onMaxChange}
+						help={__('Maximum value.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
+				{'number' !== type && (
+					<TextControl
+						label={__('Pattern', 'outstand-forms')}
+						value={pattern}
+						onChange={onPatternChange}
+						autoComplete="off"
+						help={__(
+							'Regular expression pattern for input validation.',
+							'outstand-forms',
+						)}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				)}
 			</InspectorAdvancedControls>
 		</>
 	);

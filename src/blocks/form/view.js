@@ -74,6 +74,12 @@ const { state, actions } = store('osf/form', {
 				case 'maxLength':
 					message = message.replace('{{max}}', validationRules.maxLength);
 					break;
+				case 'min':
+					message = message.replace('{{min}}', validationRules.min);
+					break;
+				case 'max':
+					message = message.replace('{{max}}', validationRules.max);
+					break;
 			}
 
 			return message;

@@ -34,31 +34,42 @@ class Input extends AbstractComponent {
 		$label_id   = $this->get_field_label_id();
 		$attributes = $this->get_attributes();
 
-		$required      = $attributes['required'] ?? false;
 		$default_value = $attributes['defaultValue'] ?? '';
-		$step          = $attributes['step'] ?? 1;
+		$required      = $attributes['required'] ?? false;
 		$placeholder   = $attributes['placeholder'] ?? '';
 		$autocomplete  = $attributes['autocomplete'] ?? '';
 		$min_length    = $attributes['minLength'] ?? 0;
 		$max_length    = $attributes['maxLength'] ?? 0;
+		$step          = $attributes['step'] ?? 1;
+		$min           = $attributes['min'] ?? 0;
+		$max           = $attributes['max'] ?? 0;
 		$pattern       = $attributes['pattern'] ?? '';
 		$aria_label    = $attributes['ariaLabel'] ?? '';
 
 		$conditional_attrs = [
 			'{required}'        => $required ? 'required' : '',
 			'{placeholder}'     => $placeholder ? sprintf( 'placeholder="%s"', esc_attr( $placeholder ) ) : '',
-			'{step}'            => '',
 			'{autocomplete}'    => $autocomplete ? sprintf( 'autocomplete="%s"', esc_attr( $autocomplete ) ) : '',
 			'{min_length}'      => $min_length ? sprintf( 'minlength="%d"', esc_attr( $min_length ) ) : '',
 			'{max_length}'      => $max_length ? sprintf( 'maxlength="%d"', esc_attr( $max_length ) ) : '',
+			'{step}'            => '',
+			'{min}'             => '',
+			'{max}'             => '',
 			'{pattern}'         => $pattern ? sprintf( 'pattern="%s"', esc_attr( $pattern ) ) : '',
 			'{aria_required}'   => $required ? 'aria-required="true"' : '',
 			'{aria_label}'      => $aria_label ? sprintf( 'aria-label="%s"', esc_attr( $aria_label ) ) : '',
 			'{aria_labelledby}' => $label_id ? sprintf( 'aria-labelledby="%s"', esc_attr( $label_id ) ) : '',
 		];
 
-		if ( 'number' === $this->input_type ) {
-			$conditional_attrs['{step}'] = $step ? sprintf( 'step="%d"', esc_attr( $step ) ) : '';
+		switch ( $this->input_type ) {
+			case 'number':
+				$conditional_attrs['{min_length}']     = '';
+				$conditional_attrs['{max_length}']     = '';
+				$conditional_attrs['{step}']           = $step ? sprintf( 'step="%d"', esc_attr( $step ) ) : '';
+				$conditional_attrs['{min}']            = $min ? sprintf( 'min="%d"', esc_attr( $min ) ) : '';
+				$conditional_attrs['{max}']            = $max ? sprintf( 'max="%d"', esc_attr( $max ) ) : '';
+				$conditional_attrs['{pattern}']        = '';
+				break;
 		}
 
 		$template = '<input
@@ -68,10 +79,12 @@ class Input extends AbstractComponent {
 			value="{value}"
 			{required}
 			{placeholder}
-			{step}
 			{autocomplete}
 			{min_length}
 			{max_length}
+			{step}
+			{min}
+			{max}
 			{pattern}
 			{aria_required}
 			{aria_label}
