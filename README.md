@@ -16,11 +16,6 @@ Outstand Forms is a WordPress plugin for building forms using the Block Editor. 
 - Accessible markup with proper `aria` attributes.
 - Lightweight and extensible.
 
-## Requirements
-
-- PHP 7.4+
-- WordPress 6.5
-
 ## Installation
 
 ### Manual Installation
