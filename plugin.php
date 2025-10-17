@@ -13,8 +13,6 @@
  * Update URI:        https://s3rgiosan.dev/
  * GitHub Plugin URI: https://github.com/s3rgiosan/outstand-forms
  * Text Domain:       outstand-forms
- *
- * @package Outstand\Forms
  */
 
 namespace Outstand\Forms;
