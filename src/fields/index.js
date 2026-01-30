@@ -22,7 +22,7 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 		<HelpText attributes={attributes} setAttributes={setAttributes} context={context} />
 	);
 
-	let field = '';
+	let field = null;
 	switch (type) {
 		case 'text':
 		case 'email':
@@ -43,6 +43,10 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 			field = (
 				<Textarea attributes={attributes} setAttributes={setAttributes} context={context} />
 			);
+			break;
+		default:
+			// Unknown field type - return null to avoid rendering errors
+			field = null;
 			break;
 	}
 

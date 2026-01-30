@@ -2,14 +2,16 @@
 
 namespace Outstand\Forms;
 
+use Outstand\Forms\REST\V1\Forms;
+
 class Plugin {
 
 	/**
 	 * Plugin singleton instance.
 	 *
-	 * @var Plugin
+	 * @var ?Plugin
 	 */
-	public static $instance = null;
+	private static ?Plugin $instance = null;
 
 	/**
 	 * Retrieve the plugin instance.
@@ -30,16 +32,16 @@ class Plugin {
 	 */
 	public function setup(): void {
 
-		$modules = [];
+		$modules = [
+			new Forms(),
+		];
 
 		foreach ( $modules as $module ) {
-			if ( method_exists( $module, 'register' ) ) {
-				$module->register();
-			}
+			$module->register();
 		}
 
-		add_action( 'init', array( $this, 'register_blocks' ) );
-		add_filter( 'block_categories_all', array( $this, 'register_block_categories' ) );
+		add_action( 'init', [ $this, 'register_blocks' ] );
+		add_filter( 'block_categories_all', [ $this, 'register_block_categories' ] );
 	}
 
 	/**
@@ -74,12 +76,12 @@ class Plugin {
 	 * @param  array $categories The block categories.
 	 * @return array The updated block categories.
 	 */
-	public function register_block_categories( $categories ): array {
+	public function register_block_categories( array $categories ): array {
 
-		$categories[] = array(
+		$categories[] = [
 			'slug'  => 'osf',
 			'title' => esc_html__( 'Outstand Forms', 'outstand-forms' ),
-		);
+		];
 
 		return $categories;
 	}

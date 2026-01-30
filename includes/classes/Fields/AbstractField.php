@@ -65,7 +65,7 @@ abstract class AbstractField implements FieldInterface {
 	 * {@inheritDoc}
 	 */
 	public function get_field_id(): string {
-		return sprintf( 'osf-field-%1$s', $this->attributes['fieldId'] );
+		return sprintf( 'osf-field-%1$s', $this->attributes['fieldId'] ?? '' );
 	}
 
 	/**
@@ -77,28 +77,28 @@ abstract class AbstractField implements FieldInterface {
 			return $this->attributes['name'];
 		}
 
-		return sprintf( 'field_%1$s', $this->attributes['fieldId'] );
+		return sprintf( 'field_%1$s', $this->attributes['fieldId'] ?? '' );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_label_id(): string {
-		return sprintf( 'osf-label-%1$s', $this->attributes['fieldId'] );
+		return sprintf( 'osf-label-%1$s', $this->attributes['fieldId'] ?? '' );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_help_text_id(): string {
-		return sprintf( 'osf-help-text-%1$s', $this->attributes['fieldId'] );
+		return sprintf( 'osf-help-text-%1$s', $this->attributes['fieldId'] ?? '' );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function get_error_id(): string {
-		return sprintf( 'osf-error-%1$s', $this->attributes['fieldId'] );
+		return sprintf( 'osf-error-%1$s', $this->attributes['fieldId'] ?? '' );
 	}
 
 	/**
@@ -134,10 +134,10 @@ abstract class AbstractField implements FieldInterface {
 		$help_text_position = $this->attributes['helpTextPosition'] ?? 'bottom';
 		$has_inline_label   = in_array( $label_position, [ 'left', 'right' ], true );
 
-		$label     = $this->get_component( 'label' ) ? $this->get_component( 'label' )->get_markup() : '';
-		$help_text = $this->get_component( 'help_text' ) ? $this->get_component( 'help_text' )->get_markup() : '';
-		$error     = $this->get_component( 'error' ) ? $this->get_component( 'error' )->get_markup() : '';
-		$field     = $this->get_component( 'field' ) ? $this->get_component( 'field' )->get_markup() : '';
+		$label     = $this->get_component( 'label' )?->get_markup() ?? '';
+		$help_text = $this->get_component( 'help_text' )?->get_markup() ?? '';
+		$error     = $this->get_component( 'error' )?->get_markup() ?? '';
+		$field     = $this->get_component( 'field' )?->get_markup() ?? '';
 
 		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		?>

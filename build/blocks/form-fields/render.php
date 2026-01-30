@@ -7,6 +7,8 @@
  * @var \WP_Block $block      Block instance.
  */
 
+namespace Outstand\Forms;
+
 if ( empty( $block->context['osf/formId'] ) ) {
 	return;
 }

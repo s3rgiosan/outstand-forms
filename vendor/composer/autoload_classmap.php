@@ -26,5 +26,9 @@ return array(
     'Outstand\\Forms\\Fields\\Text' => $baseDir . '/includes/classes/Fields/Text.php',
     'Outstand\\Forms\\Fields\\Textarea' => $baseDir . '/includes/classes/Fields/Textarea.php',
     'Outstand\\Forms\\Fields\\URL' => $baseDir . '/includes/classes/Fields/URL.php',
+    'Outstand\\Forms\\FormBlockParser' => $baseDir . '/includes/classes/FormBlockParser.php',
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
+    'Outstand\\Forms\\REST\\V1\\AbstractRoute' => $baseDir . '/includes/classes/REST/V1/AbstractRoute.php',
+    'Outstand\\Forms\\REST\\V1\\Forms' => $baseDir . '/includes/classes/REST/V1/Forms.php',
+    'Outstand\\Forms\\Validation\\Validator' => $baseDir . '/includes/classes/Validation/Validator.php',
 );

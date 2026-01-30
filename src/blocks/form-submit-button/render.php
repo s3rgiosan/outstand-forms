@@ -7,6 +7,8 @@
  * @var \WP_Block $block      Block instance.
  */
 
+namespace Outstand\Forms;
+
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
 		'class' => 'osf-form__submit',

@@ -7,6 +7,8 @@
  * @var \WP_Block $block      Block instance.
  */
 
+namespace Outstand\Forms;
+
 if ( empty( $attributes['formId'] ) ) {
 	return;
 }
@@ -90,6 +92,7 @@ wp_interactivity_config(
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 	<input type="hidden" name="form_id" value="<?php echo esc_attr( $form_id ); ?>">
+	<input type="hidden" name="post_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
 	<input type="hidden" name="nonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
 
 	<?php do_action( 'osf_after_content', $form_id ); ?>

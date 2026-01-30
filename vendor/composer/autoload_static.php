@@ -45,7 +45,11 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Outstand\\Forms\\Fields\\Text' => __DIR__ . '/../..' . '/includes/classes/Fields/Text.php',
         'Outstand\\Forms\\Fields\\Textarea' => __DIR__ . '/../..' . '/includes/classes/Fields/Textarea.php',
         'Outstand\\Forms\\Fields\\URL' => __DIR__ . '/../..' . '/includes/classes/Fields/URL.php',
+        'Outstand\\Forms\\FormBlockParser' => __DIR__ . '/../..' . '/includes/classes/FormBlockParser.php',
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
+        'Outstand\\Forms\\REST\\V1\\AbstractRoute' => __DIR__ . '/../..' . '/includes/classes/REST/V1/AbstractRoute.php',
+        'Outstand\\Forms\\REST\\V1\\Forms' => __DIR__ . '/../..' . '/includes/classes/REST/V1/Forms.php',
+        'Outstand\\Forms\\Validation\\Validator' => __DIR__ . '/../..' . '/includes/classes/Validation/Validator.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

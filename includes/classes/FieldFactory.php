@@ -13,6 +13,7 @@ use Outstand\Forms\Fields\Textarea;
 use Outstand\Forms\Fields\URL;
 
 class FieldFactory {
+
 	/**
 	 * Field type mappings.
 	 *
@@ -39,11 +40,11 @@ class FieldFactory {
 	public function register( string $type, string $field_class ): void {
 
 		if ( ! class_exists( $field_class ) ) {
-			throw new InvalidArgumentException( esc_html( "Field class {$field_class} does not exist" ) );
+			throw new InvalidArgumentException( "Field class {$field_class} does not exist" ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		if ( ! is_subclass_of( $field_class, FieldInterface::class ) ) {
-			throw new InvalidArgumentException( 'Field class must implement FieldInterface' );
+			throw new InvalidArgumentException( 'Field class must implement FieldInterface' ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		$this->field_types[ $type ] = $field_class;
@@ -60,7 +61,7 @@ class FieldFactory {
 	public function create( string $type, array $attributes ): FieldInterface {
 
 		if ( ! isset( $this->field_types[ $type ] ) ) {
-			throw new InvalidArgumentException( esc_html( "Unsupported field type: {$type}" ) );
+			throw new InvalidArgumentException( "Unsupported field type: {$type}" ); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped
 		}
 
 		$field_class = $this->field_types[ $type ];

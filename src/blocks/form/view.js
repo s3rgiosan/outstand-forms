@@ -13,8 +13,7 @@ import {
 /**
  * Internal dependencies
  */
-import validationRegistry from './../../validation-registry';
-import './../../validators';
+import { validate } from './../../validation';
 
 const { state, actions } = store('osf/form', {
 	state: {
@@ -123,7 +122,7 @@ const { state, actions } = store('osf/form', {
 		handleFieldValidate() {
 			const context = getContext();
 			const { fieldId, value, validationRules } = context;
-			const { isValid, errors } = validationRegistry.validate(value, validationRules);
+			const { isValid, errors } = validate(value, validationRules);
 
 			context.isValid = isValid;
 			context.validationErrors = errors;
@@ -148,19 +147,20 @@ const { state, actions } = store('osf/form', {
 
 			const { ref: form } = getElement();
 
+			const handleValidated = withScope(() => {
+				if (state.isFormValid) {
+					form.submit();
+				}
+			});
+
+			form.addEventListener('osf-form-validated', handleValidated, { once: true });
+
 			actions.validateForm().then(() => {
 				const event = new CustomEvent('osf-form-validated');
 				form.dispatchEvent(event);
+			}).catch(() => {
+				form.removeEventListener('osf-form-validated', handleValidated);
 			});
-
-			form.addEventListener(
-				'osf-form-validated',
-				withScope(() => {
-					if (state.isFormValid) {
-						form.submit();
-					}
-				}),
-			);
 		}),
 		/**
 		 * Validate the form.
@@ -226,9 +226,12 @@ const { state, actions } = store('osf/form', {
 				return;
 			}
 
-			const { default: Inputmask } = await import('inputmask');
-			const im = new Inputmask(inputmask);
-			im.mask(ref);
+			try {
+				const { default: Inputmask } = await import('inputmask');
+				const im = new Inputmask(inputmask);
+				im.mask(ref);
+			} catch {
+			}
 		},
 	},
 });

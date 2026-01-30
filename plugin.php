@@ -35,6 +35,6 @@ PucFactory::buildUpdateChecker(
 	'https://github.com/s3rgiosan/outstand-forms/',
 	__FILE__,
 	'outstand-forms'
-)->setBranch( 'main' );
+);
 
 ( Plugin::get_instance() )->setup();

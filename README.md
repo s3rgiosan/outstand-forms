@@ -11,6 +11,7 @@ Outstand Forms is a WordPress plugin for building forms using the Block Editor. 
 
 - Fully block-based form builder.
 - Dynamic validation using JavaScript.
+- Server-side validation with matching PHP validators.
 - Field-level validation messages.
 - Input mask support via [Inputmask](https://robinherbots.github.io/Inputmask/).
 - Accessible markup with proper `aria` attributes.
@@ -64,7 +65,7 @@ Example:
 
 You can style forms using your theme’s styles or add custom styles targeting the `.osf-form`, `.osf-field`, and `.osf-field__input` classes.
 
-## Filters
+## Hooks & Extensibility
 
 ### `osf_validation_messages`
 
@@ -72,8 +73,8 @@ Override or extend the default validation messages passed to the Interactivity A
 
 ```php
 add_filter( 'osf_validation_messages', function( $messages, $form_id ) {
-	$messages['required'] = 'Custom required message.';
-	return $messages;
+    $messages['required'] = 'Custom required message.';
+    return $messages;
 }, 10, 2 );
 ```
 
