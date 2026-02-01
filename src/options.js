@@ -137,11 +137,11 @@ export const autocompleteOptions = [
 	},
 	{
 		label: __('City', 'outstand-forms'),
-		value: 'city',
+		value: 'address-level2',
 	},
 	{
-		label: __('State or region', 'outstand-forms'),
-		value: 'region',
+		label: __('State or province', 'outstand-forms'),
+		value: 'address-level1',
 	},
 	{
 		label: __('Phone number', 'outstand-forms'),
