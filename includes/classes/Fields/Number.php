@@ -22,24 +22,19 @@ class Number extends AbstractField {
 	public function get_validation_rules(): array {
 		$validation_rules = parent::get_validation_rules();
 
-		if ( isset( $this->attributes['minLength'] ) ) {
-			unset( $validation_rules['minLength'] );
-		}
-
-		if ( isset( $this->attributes['maxLength'] ) ) {
-			unset( $validation_rules['maxLength'] );
-		}
-
-		if ( isset( $this->attributes['pattern'] ) ) {
-			unset( $validation_rules['pattern'] );
+		$remove_list = [ 'minLength', 'maxLength', 'pattern' ];
+		foreach ( $remove_list as $rule ) {
+			if ( isset( $validation_rules[ $rule ] ) ) {
+				unset( $validation_rules[ $rule ] );
+			}
 		}
 
 		if ( ! empty( $this->attributes['min'] ) ) {
-			$validation_rules['min'] = (int) $this->attributes['min'];
+			$validation_rules['min'] = (float) $this->attributes['min'];
 		}
 
 		if ( ! empty( $this->attributes['max'] ) ) {
-			$validation_rules['max'] = (int) $this->attributes['max'];
+			$validation_rules['max'] = (float) $this->attributes['max'];
 		}
 
 		return $validation_rules;

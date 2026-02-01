@@ -22,7 +22,7 @@ class Email extends AbstractField {
 	public function get_validation_rules(): array {
 		$validation_rules = parent::get_validation_rules();
 
-		$validation_rules['email'] = $this->get_type();
+		$validation_rules['email'] = true;
 
 		return $validation_rules;
 	}

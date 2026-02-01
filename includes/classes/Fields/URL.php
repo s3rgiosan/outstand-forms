@@ -22,7 +22,7 @@ class URL extends AbstractField {
 	public function get_validation_rules(): array {
 		$validation_rules = parent::get_validation_rules();
 
-		$validation_rules['url'] = $this->get_type();
+		$validation_rules['url'] = true;
 
 		return $validation_rules;
 	}
