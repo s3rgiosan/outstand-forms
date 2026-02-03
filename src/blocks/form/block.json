@@ -46,7 +46,7 @@
   },
   "allowedBlocks": [
     "osf/form-fields",
-    "osf/form-submit-button"
+    "osf/form-actions"
   ],
   "supports": {
     "html": false,

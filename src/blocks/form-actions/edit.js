@@ -24,9 +24,9 @@ const TEMPLATE = [
 	],
 ];
 
-export default function FormSubmitEdit() {
+export default function FormActionsEdit() {
 	const blockProps = useBlockProps({
-		className: 'osf-form__submit',
+		className: 'osf-form__actions',
 	});
 
 	const innerBlocksProps = useInnerBlocksProps(blockProps, {

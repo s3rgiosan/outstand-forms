@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/form-submit-button",
+  "name": "osf/form-actions",
   "version": "0.1.0",
-  "title": "Submit Button",
+  "title": "Actions",
   "category": "osf",
   "icon": "",
   "description": "",
