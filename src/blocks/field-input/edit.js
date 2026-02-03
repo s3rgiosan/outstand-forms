@@ -168,17 +168,6 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
-					{'number' === type && (
-						<NumberControl
-							label={__('Step', 'outstand-forms')}
-							value={step}
-							min={1}
-							onChange={onStepChange}
-							help={__('The step value.', 'outstand-forms')}
-							__next40pxDefaultSize
-							__nextHasNoMarginBottom
-						/>
-					)}
 					<TextControl
 						label={__('Placeholder', 'outstand-forms')}
 						value={placeholder}
@@ -191,24 +180,89 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
-					<SelectControl
-						label={__('Autocomplete', 'outstand-forms')}
-						value={autocomplete}
-						options={autocompleteOptions}
-						onChange={onAutocompleteChange}
-						help={__('Define how browsers autofill this field.', 'outstand-forms')}
+					{'number' === type && (
+						<NumberControl
+							label={__('Step', 'outstand-forms')}
+							value={step}
+							min={1}
+							onChange={onStepChange}
+							help={__('The step value.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
+					{'number' === type && (
+						<NumberControl
+							label={__('Min Value', 'outstand-forms')}
+							value={min}
+							onChange={onMinChange}
+							help={__('Minimum value.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
+					{'number' === type && (
+						<NumberControl
+							label={__('Max Value', 'outstand-forms')}
+							value={max}
+							onChange={onMaxChange}
+							help={__('Maximum value.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
+					{'number' !== type && (
+						<NumberControl
+							label={__('Min Characters', 'outstand-forms')}
+							value={minLength}
+							min={0}
+							onChange={onMinLengthChange}
+							help={__('Minimum number of characters required.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
+					{'number' !== type && (
+						<NumberControl
+							label={__('Max Characters', 'outstand-forms')}
+							value={maxLength}
+							min={0}
+							onChange={onMaxLengthChange}
+							help={__('Maximum number of characters allowed.', 'outstand-forms')}
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+						/>
+					)}
+				</PanelBody>
+				<PanelBody title={__('Appearance', 'outstand-forms')} initialOpen={false}>
+					<ToggleGroupControl
+						label={__('Label Position', 'outstand-forms')}
+						value={labelPosition}
+						isBlock
+						onChange={onLabelPositionChange}
+						help={__('Select the position of the label.', 'outstand-forms')}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-					/>
-					<TextControl
-						label={__('ARIA Label', 'outstand-forms')}
-						value={ariaLabel || label}
-						onChange={onAriaLabelChange}
-						help={__('The ARIA label for accessibility.', 'outstand-forms')}
-						autoComplete="off"
+					>
+						{/* eslint-disable-next-line no-shadow */}
+						{labelPositionOptions.map(({ value, label }) => {
+							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+						})}
+					</ToggleGroupControl>
+					<ToggleGroupControl
+						label={__('Help Text Position', 'outstand-forms')}
+						value={helpTextPosition}
+						isBlock
+						onChange={onHelpTextPositionChange}
+						help={__('Select the position of the help text.', 'outstand-forms')}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
-					/>
+					>
+						{/* eslint-disable-next-line no-shadow */}
+						{helpTextPositionOptions.map(({ value, label }) => {
+							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+						})}
+					</ToggleGroupControl>
 				</PanelBody>
 			</InspectorControls>
 			<InspectorAdvancedControls>
@@ -220,76 +274,34 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>
-				<ToggleGroupControl
-					label={__('Label Position', 'outstand-forms')}
-					value={labelPosition}
-					isBlock
-					onChange={onLabelPositionChange}
-					help={__('Select the position of the label.', 'outstand-forms')}
+				<SelectControl
+					label={__('Autocomplete', 'outstand-forms')}
+					value={autocomplete}
+					options={autocompleteOptions}
+					onChange={onAutocompleteChange}
+					help={__('Define how browsers autofill this field.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-				>
-					{/* eslint-disable-next-line no-shadow */}
-					{labelPositionOptions.map(({ value, label }) => {
-						return <ToggleGroupControlOption key={value} value={value} label={label} />;
-					})}
-				</ToggleGroupControl>
-				<ToggleGroupControl
-					label={__('Help Text Position', 'outstand-forms')}
-					value={helpTextPosition}
-					isBlock
-					onChange={onHelpTextPositionChange}
-					help={__('Select the position of the help text.', 'outstand-forms')}
+				/>
+				<TextControl
+					label={__('ARIA Label', 'outstand-forms')}
+					value={ariaLabel || label}
+					onChange={onAriaLabelChange}
+					help={__('The ARIA label for accessibility.', 'outstand-forms')}
+					autoComplete="off"
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
-				>
-					{/* eslint-disable-next-line no-shadow */}
-					{helpTextPositionOptions.map(({ value, label }) => {
-						return <ToggleGroupControlOption key={value} value={value} label={label} />;
-					})}
-				</ToggleGroupControl>
+				/>
 				{'number' !== type && (
-					<NumberControl
-						label={__('Minimum Characters', 'outstand-forms')}
-						value={minLength}
-						min={0}
-						onChange={onMinLengthChange}
-						help={__('Minimum number of characters required.', 'outstand-forms')}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-					/>
-				)}
-				{'number' !== type && (
-					<NumberControl
-						type="number"
-						label={__('Maximum Characters', 'outstand-forms')}
-						value={maxLength}
-						min={0}
-						onChange={onMaxLengthChange}
-						help={__('Maximum number of characters allowed.', 'outstand-forms')}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-					/>
-				)}
-				{'number' === type && (
-					<NumberControl
-						label={__('Minimum', 'outstand-forms')}
-						value={min}
-						min={0}
-						onChange={onMinChange}
-						help={__('Minimum value.', 'outstand-forms')}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-					/>
-				)}
-				{'number' === type && (
-					<NumberControl
-						type="number"
-						label={__('Maximum', 'outstand-forms')}
-						value={max}
-						min={0}
-						onChange={onMaxChange}
-						help={__('Maximum value.', 'outstand-forms')}
+					<TextControl
+						label={__('Pattern', 'outstand-forms')}
+						value={pattern}
+						onChange={onPatternChange}
+						autoComplete="off"
+						help={__(
+							'Regular expression pattern for input validation.',
+							'outstand-forms',
+						)}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
@@ -301,20 +313,6 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 						onChange={onMaskChange}
 						autoComplete="off"
 						help={__('The mask that will be applied to the field.', 'outstand-forms')}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-					/>
-				)}
-				{'number' !== type && (
-					<TextControl
-						label={__('Pattern', 'outstand-forms')}
-						value={pattern}
-						onChange={onPatternChange}
-						autoComplete="off"
-						help={__(
-							'Regular expression pattern for input validation.',
-							'outstand-forms',
-						)}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>

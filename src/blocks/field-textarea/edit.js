@@ -165,21 +165,69 @@ export default function FieldTextareaEdit({ attributes, setAttributes, context }
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
-					<SelectControl
-						label={__('Autocomplete', 'outstand-forms')}
-						value={autocomplete}
-						options={autocompleteOptions}
-						onChange={onAutocompleteChange}
-						help={__('Define how browsers autofill this field.', 'outstand-forms')}
+					<NumberControl
+						label={__('Min Characters', 'outstand-forms')}
+						value={minLength}
+						min={0}
+						onChange={onMinLengthChange}
+						help={__('Minimum number of characters required.', 'outstand-forms')}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
-					<TextControl
-						label={__('ARIA Label', 'outstand-forms')}
-						value={ariaLabel || label}
-						onChange={onAriaLabelChange}
-						help={__('The ARIA label for accessibility.', 'outstand-forms')}
-						autoComplete="off"
+					<NumberControl
+						label={__('Max Characters', 'outstand-forms')}
+						value={maxLength}
+						min={0}
+						onChange={onMaxLengthChange}
+						help={__('Maximum number of characters allowed.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+				</PanelBody>
+				<PanelBody title={__('Appearance', 'outstand-forms')} initialOpen={false}>
+					<ToggleGroupControl
+						label={__('Label Position', 'outstand-forms')}
+						value={labelPosition}
+						isBlock
+						onChange={onLabelPositionChange}
+						help={__('Select the position of the label.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					>
+						{/* eslint-disable-next-line no-shadow */}
+						{labelPositionOptions.map(({ value, label }) => {
+							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+						})}
+					</ToggleGroupControl>
+					<ToggleGroupControl
+						label={__('Help Text Position', 'outstand-forms')}
+						value={helpTextPosition}
+						isBlock
+						onChange={onHelpTextPositionChange}
+						help={__('Select the position of the help text.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					>
+						{/* eslint-disable-next-line no-shadow */}
+						{helpTextPositionOptions.map(({ value, label }) => {
+							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+						})}
+					</ToggleGroupControl>
+					<NumberControl
+						label={__('Rows', 'outstand-forms')}
+						value={rows}
+						min={1}
+						onChange={onRowsChange}
+						help={__('Number of rows.', 'outstand-forms')}
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
+					<NumberControl
+						label={__('Columns', 'outstand-forms')}
+						value={cols}
+						min={1}
+						onChange={onColsChange}
+						help={__('Number of columns.', 'outstand-forms')}
 						__next40pxDefaultSize
 						__nextHasNoMarginBottom
 					/>
@@ -194,69 +242,21 @@ export default function FieldTextareaEdit({ attributes, setAttributes, context }
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>
-				<ToggleGroupControl
-					label={__('Label Position', 'outstand-forms')}
-					value={labelPosition}
-					isBlock
-					onChange={onLabelPositionChange}
-					help={__('Select the position of the label.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				>
-					{/* eslint-disable-next-line no-shadow */}
-					{labelPositionOptions.map(({ value, label }) => {
-						return <ToggleGroupControlOption key={value} value={value} label={label} />;
-					})}
-				</ToggleGroupControl>
-				<ToggleGroupControl
-					label={__('Help Text Position', 'outstand-forms')}
-					value={helpTextPosition}
-					isBlock
-					onChange={onHelpTextPositionChange}
-					help={__('Select the position of the help text.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				>
-					{/* eslint-disable-next-line no-shadow */}
-					{helpTextPositionOptions.map(({ value, label }) => {
-						return <ToggleGroupControlOption key={value} value={value} label={label} />;
-					})}
-				</ToggleGroupControl>
-				<NumberControl
-					label={__('Rows', 'outstand-forms')}
-					value={rows}
-					min={1}
-					onChange={onRowsChange}
-					help={__('Number of rows.', 'outstand-forms')}
+				<SelectControl
+					label={__('Autocomplete', 'outstand-forms')}
+					value={autocomplete}
+					options={autocompleteOptions}
+					onChange={onAutocompleteChange}
+					help={__('Define how browsers autofill this field.', 'outstand-forms')}
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>
-				<NumberControl
-					type="number"
-					label={__('Columns', 'outstand-forms')}
-					value={cols}
-					min={1}
-					onChange={onColsChange}
-					help={__('Number of columns.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
-				<NumberControl
-					label={__('Minimum Characters', 'outstand-forms')}
-					value={minLength}
-					min={0}
-					onChange={onMinLengthChange}
-					help={__('Minimum number of characters required.', 'outstand-forms')}
-					__next40pxDefaultSize
-					__nextHasNoMarginBottom
-				/>
-				<NumberControl
-					type="number"
-					label={__('Maximum Characters', 'outstand-forms')}
-					value={maxLength}
-					min={0}
-					onChange={onMaxLengthChange}
-					help={__('Maximum number of characters allowed.', 'outstand-forms')}
+				<TextControl
+					label={__('ARIA Label', 'outstand-forms')}
+					value={ariaLabel || label}
+					onChange={onAriaLabelChange}
+					help={__('The ARIA label for accessibility.', 'outstand-forms')}
+					autoComplete="off"
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 				/>
