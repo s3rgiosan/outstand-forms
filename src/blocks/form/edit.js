@@ -17,8 +17,8 @@ import {
 } from '@wordpress/block-editor';
 import {
 	TextControl,
-	SelectControl,
 	PanelBody,
+	SelectControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
@@ -38,7 +38,14 @@ import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
 import { getBlockId } from '../../utils';
 
 function FormEditContainer({ attributes, setAttributes, clientId }) {
-	const { formId, formAction, labelPosition, helpTextPosition, requiredIndicator } = attributes;
+	const {
+		formId,
+		formTitle,
+		formAction,
+		labelPosition,
+		helpTextPosition,
+		requiredIndicator,
+	} = attributes;
 
 	const newFormId = useMemo(() => getBlockId(), []);
 
@@ -81,12 +88,12 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 		templateLock: 'insert',
 	});
 
-	const onMethodChange = (value) => {
-		setAttributes({ method: value });
+	const onFormTitleChange = (value) => {
+		setAttributes({ formTitle: value });
 	};
 
-	const onActionChange = (value) => {
-		setAttributes({ action: value });
+	const onFormActionChange = (value) => {
+		setAttributes({ formAction: value });
 	};
 
 	const onLabelPositionChange = (value) => {
@@ -106,6 +113,14 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 			<div {...innerBlocksProps} />
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'outstand-forms')}>
+					<TextControl
+						label={__('Title', 'outstand-forms')}
+						value={formTitle}
+						onChange={onFormTitleChange}
+						autoComplete="off"
+						__next40pxDefaultSize
+						__nextHasNoMarginBottom
+					/>
 					<TextControl
 						type="url"
 						label={__('Action', 'outstand-forms')}

@@ -18,6 +18,10 @@
     "formId": {
       "type": "string"
     },
+    "formTitle": {
+      "type": "string",
+      "default": ""
+    },
     "formAction": {
       "type": "string"
     },
