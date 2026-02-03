@@ -18,11 +18,7 @@
     "formId": {
       "type": "string"
     },
-    "method": {
-      "type": "string",
-      "default": "post"
-    },
-    "action": {
+    "formAction": {
       "type": "string"
     },
     "requiredIndicator": {

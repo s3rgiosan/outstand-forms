@@ -14,8 +14,7 @@ if ( empty( $attributes['formId'] ) ) {
 }
 
 $form_id     = $attributes['formId'];
-$form_method = $attributes['method'] ?? 'post';
-$form_action = $attributes['action'] ?? '';
+$form_action = $attributes['formAction'] ?? '';
 
 if ( empty( $form_action ) ) {
 	$form_action = rest_url( 'osf/v1/forms/submit' );
@@ -32,11 +31,11 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	[
 		'id'                  => sprintf( 'osf-%s', $form_id ),
 		'class'               => implode( ' ', $wrapper_classes ),
-		'method'              => $form_method,
-		'action'              => esc_url( $form_action ),
 		'novalidate'          => '',
 		'data-wp-interactive' => 'osf/form',
 		'data-wp-on--submit'  => 'actions.handleFormSubmit',
+		'method'                       => 'post',
+		'action'                       => esc_url( $form_action ),
 	]
 );
 

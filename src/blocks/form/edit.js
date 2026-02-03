@@ -12,8 +12,8 @@ import {
 	useInnerBlocksProps,
 	InspectorControls,
 	InspectorAdvancedControls,
-	store as blockEditorStore,
 	__experimentalBlockVariationPicker as BlockVariationPicker,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 import {
 	TextControl,
@@ -38,8 +38,7 @@ import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
 import { getBlockId } from '../../utils';
 
 function FormEditContainer({ attributes, setAttributes, clientId }) {
-	const { formId, method, action, labelPosition, helpTextPosition, requiredIndicator } =
-		attributes;
+	const { formId, formAction, labelPosition, helpTextPosition, requiredIndicator } = attributes;
 
 	const newFormId = useMemo(() => getBlockId(), []);
 
@@ -107,29 +106,11 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 			<div {...innerBlocksProps} />
 			<InspectorControls>
 				<PanelBody title={__('Settings', 'outstand-forms')}>
-					<SelectControl
-						label={__('Method', 'outstand-forms')}
-						options={[
-							{
-								label: __('GET', 'outstand-forms'),
-								value: 'get',
-							},
-							{
-								label: __('POST', 'outstand-forms'),
-								value: 'post',
-							},
-						]}
-						value={method}
-						onChange={onMethodChange}
-						help={__('The HTTP method used to submit the form data.', 'outstand-forms')}
-						__next40pxDefaultSize
-						__nextHasNoMarginBottom
-					/>
 					<TextControl
 						type="url"
-						label={__('Form action', 'outstand-forms')}
-						value={action}
-						onChange={onActionChange}
+						label={__('Action', 'outstand-forms')}
+						value={formAction}
+						onChange={onFormActionChange}
 						autoComplete="off"
 						help={__(
 							'The URL where the form will be submitted. Leave blank to handle the submission automatically.',
