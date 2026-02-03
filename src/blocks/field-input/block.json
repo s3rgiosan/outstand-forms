@@ -13,7 +13,7 @@
   ],
   "attributes": {
     "fieldId": {
-      "type": "string"
+      "type": "integer"
     },
     "type": {
       "type": "string",

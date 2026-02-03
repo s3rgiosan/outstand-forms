@@ -7,7 +7,6 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import { blank, contactUs } from './icon';
-import { getBlockId } from '../../utils';
 
 const variations = [
 	{
@@ -16,6 +15,7 @@ const variations = [
 		isDefault: true,
 		attributes: {
 			type: 'inline',
+			nextFieldId: 2,
 		},
 		icon: blank,
 		innerBlocks: [
@@ -26,7 +26,7 @@ const variations = [
 					[
 						'osf/field-input',
 						{
-							fieldId: getBlockId(),
+							fieldId: 1,
 						},
 					],
 				],
@@ -38,7 +38,9 @@ const variations = [
 	{
 		name: 'contact-us',
 		title: __('Contact Us', 'outstand-forms'),
-		attributes: {},
+		attributes: {
+			nextFieldId: 4,
+		},
 		icon: contactUs,
 		innerBlocks: [
 			[
@@ -48,7 +50,7 @@ const variations = [
 					[
 						'osf/field-input',
 						{
-							fieldId: getBlockId(),
+							fieldId: 1,
 							name: 'name',
 							label: __('Name', 'outstand-forms'),
 							required: true,
@@ -59,7 +61,7 @@ const variations = [
 					[
 						'osf/field-input',
 						{
-							fieldId: getBlockId(),
+							fieldId: 2,
 							type: 'email',
 							name: 'email',
 							label: __('Email', 'outstand-forms'),
@@ -71,7 +73,7 @@ const variations = [
 					[
 						'osf/field-textarea',
 						{
-							fieldId: getBlockId(),
+							fieldId: 3,
 							name: 'message',
 							label: __('Message', 'outstand-forms'),
 							required: true,

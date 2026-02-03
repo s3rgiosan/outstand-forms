@@ -34,6 +34,7 @@ import './editor.css';
 import { TEMPLATE } from './constants';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
 import { useFieldBlocks } from '../../hooks/useFieldBlocks';
+import { useFieldId } from '../../hooks/useFieldId';
 import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
 import { getBlockId } from '../../utils';
 
@@ -45,6 +46,7 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 		labelPosition,
 		helpTextPosition,
 		requiredIndicator,
+		actions: formActions,
 	} = attributes;
 
 	const newFormId = useMemo(() => getBlockId(), []);
@@ -60,11 +62,12 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 
 			if (isDuplicate && !didResetFieldIds.current) {
 				fieldBlocks.forEach((block) => {
-					const newFieldId = getBlockId();
 					updateBlockAttributes(block.clientId, {
-						fieldId: newFieldId,
+						fieldId: null,
+						name: '',
 					});
 				});
+				setAttributes({ nextFieldId: 1 });
 				didResetFieldIds.current = true;
 			}
 		}
@@ -77,6 +80,8 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 		fieldBlocks,
 		updateBlockAttributes,
 	]);
+
+	useFieldId(attributes, setAttributes, fieldBlocks);
 
 	const blockProps = useBlockProps({
 		className: clsx('osf-form', `osf-form--${formId}`),

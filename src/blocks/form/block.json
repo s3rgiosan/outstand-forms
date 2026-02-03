@@ -25,6 +25,10 @@
     "formAction": {
       "type": "string"
     },
+    "nextFieldId": {
+      "type": "integer",
+      "default": 1
+    },
     "requiredIndicator": {
       "type": "string",
       "default": "*"

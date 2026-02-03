@@ -22,7 +22,6 @@ import {
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 	__experimentalNumberControl as NumberControl,
 } from '@wordpress/components';
-import { useEffect, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
 /**
@@ -30,10 +29,8 @@ import { __ } from '@wordpress/i18n';
  */
 import { labelPositionOptions, helpTextPositionOptions, autocompleteOptions } from '../../options';
 import Field from '../../fields';
-import { useIsDuplicateBlock } from '../../hooks/useIsDuplicateBlock';
-import { getBlockId } from '../../utils';
 
-export default function FieldInputEdit({ name, clientId, attributes, setAttributes, context }) {
+export default function FieldInputEdit({ attributes, setAttributes, context }) {
 	const {
 		'osf/labelPosition': defaultLabelPosition,
 		'osf/helpTextPosition': defaultHelpTextPosition,
@@ -60,15 +57,6 @@ export default function FieldInputEdit({ name, clientId, attributes, setAttribut
 		helpText,
 		helpTextPosition = defaultHelpTextPosition,
 	} = attributes;
-
-	const newFieldId = useMemo(() => getBlockId(), []);
-	const isDuplicate = useIsDuplicateBlock(name, clientId, attributes, 'osf/form-fields');
-
-	useEffect(() => {
-		if (!fieldId || isDuplicate) {
-			setAttributes({ fieldId: newFieldId, name: '' });
-		}
-	}, [fieldId, isDuplicate, setAttributes, newFieldId]);
 
 	const blockProps = useBlockProps({
 		className: clsx(
