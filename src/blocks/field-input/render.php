@@ -61,6 +61,7 @@ $context = wp_interactivity_data_wp_context(
 		'isValid'         => true,
 		'isFocused'       => false,
 		'fieldId'         => $field->get_field_id(),
+		'fieldName'       => $field->get_field_name(),
 		'helpTextId'      => $field->get_help_text_id(),
 		'errorId'         => $field->get_error_id(),
 		'validationRules' => $field->get_validation_rules(),
