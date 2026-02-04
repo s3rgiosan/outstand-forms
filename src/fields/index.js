@@ -1,4 +1,9 @@
 /**
+ * WordPress dependencies
+ */
+import { __, sprintf } from '@wordpress/i18n';
+
+/**
  * Internal dependencies
  */
 import Label from '../components/Label';
@@ -6,14 +11,23 @@ import HelpText from '../components/HelpText';
 import Input from '../components/Input';
 import Textarea from '../components/Textarea';
 
-export default function Field({ type = 'text', attributes, setAttributes, context }) {
+export default function Field({
+	type = 'text',
+	attributes,
+	setAttributes,
+	context,
+	showFieldId = false,
+}) {
 	const {
 		'osf/labelPosition': defaultLabelPosition,
 		'osf/helpTextPosition': defaultHelpTextPosition,
 	} = context;
 
-	const { labelPosition = defaultLabelPosition, helpTextPosition = defaultHelpTextPosition } =
-		attributes;
+	const {
+		fieldId,
+		labelPosition = defaultLabelPosition,
+		helpTextPosition = defaultHelpTextPosition,
+	} = attributes;
 
 	const hasInlineLabel = labelPosition === 'left' || labelPosition === 'right';
 
@@ -52,6 +66,16 @@ export default function Field({ type = 'text', attributes, setAttributes, contex
 
 	return (
 		<>
+			{showFieldId && fieldId && (
+				<span className="osf-field__id">
+					{sprintf(
+						/* translators: %s is the field ID */
+						__('ID: %s', 'outstand-forms'),
+						fieldId,
+					)}
+				</span>
+			)}
+
 			{labelPosition !== 'right' && label}
 			{!hasInlineLabel && helpTextPosition === 'top' && helpText}
 
