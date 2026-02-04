@@ -7,8 +7,8 @@ export const icon = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
+			width="16"
+			height="16"
 			fill="none"
 			stroke="currentColor"
 			strokeLinecap="round"
@@ -28,8 +28,8 @@ export const blank = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
+			width="16"
+			height="16"
 			fill="none"
 			stroke="currentColor"
 			strokeLinecap="round"
@@ -49,8 +49,8 @@ export const contactUs = () => {
 	return (
 		<SVG
 			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
+			width="16"
+			height="16"
 			fill="none"
 			stroke="currentColor"
 			strokeLinecap="round"

@@ -148,6 +148,7 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 					attributes={attributes}
 					setAttributes={setAttributes}
 					context={context}
+					showFieldId
 				/>
 			</div>
 			<InspectorControls>
@@ -246,7 +247,9 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 					>
 						{/* eslint-disable-next-line no-shadow */}
 						{labelPositionOptions.map(({ value, label }) => {
-							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+							return (
+								<ToggleGroupControlOption key={value} value={value} label={label} />
+							);
 						})}
 					</ToggleGroupControl>
 					<ToggleGroupControl
@@ -260,7 +263,9 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 					>
 						{/* eslint-disable-next-line no-shadow */}
 						{helpTextPositionOptions.map(({ value, label }) => {
-							return <ToggleGroupControlOption key={value} value={value} label={label} />;
+							return (
+								<ToggleGroupControlOption key={value} value={value} label={label} />
+							);
 						})}
 					</ToggleGroupControl>
 				</PanelBody>
