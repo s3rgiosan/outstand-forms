@@ -29,13 +29,13 @@ $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'id'                  => sprintf( 'osf-%s', $form_id ),
-		'class'               => implode( ' ', $wrapper_classes ),
-		'novalidate'          => '',
-		'data-wp-interactive' => 'osf/form',
-		'data-wp-on--submit'  => 'actions.handleFormSubmit',
+		'id'                           => sprintf( 'osf-%s', $form_id ),
+		'class'                        => implode( ' ', $wrapper_classes ),
 		'method'                       => 'post',
 		'action'                       => esc_url( $form_action ),
+		'novalidate'                   => '',
+		'data-wp-interactive'          => 'osf/form',
+		'data-wp-on--submit'           => 'actions.handleFormSubmit',
 	]
 );
 

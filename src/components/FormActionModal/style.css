@@ -1,0 +1,20 @@
+.osf-form__actions__action-message {
+	border-radius: 2px;
+	border: 1px solid #949494;
+	box-shadow: 0 0 0 transparent;
+	min-height: 100px;
+	padding-block: 6px;
+	padding-inline: 12px;
+	transition: box-shadow 0.1s linear;
+	width: 100%;
+}
+
+.osf-form__actions__action-message:focus {
+	border-color: var(--wp-admin-theme-color, #3858e9);
+	box-shadow: 0 0 0 0.5px var(--wp-admin-theme-color, #3858e9);
+	outline: 2px solid transparent;
+}
+
+body:has(.osf-form__actions__modal) .block-editor-rich-text__inline-format-toolbar {
+	z-index: 1000001;
+}

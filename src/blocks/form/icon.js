@@ -14,7 +14,7 @@ export const icon = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -35,7 +35,7 @@ export const blank = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -56,7 +56,7 @@ export const contactUs = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>

@@ -40,6 +40,37 @@
     "helpTextPosition": {
       "type": "string",
       "default": "bottom"
+    },
+    "actions": {
+      "type": "array",
+      "default": [
+        {
+          "id": "admin_notification",
+          "enabled": true,
+          "to": "{admin_email}",
+          "from": {
+            "email": "{admin_email}",
+            "name": ""
+          },
+          "replyTo": "",
+          "bcc": "",
+          "subject": "New submission from {form_title}",
+          "message": "{all_fields}"
+        },
+        {
+          "id": "user_notification",
+          "enabled": false,
+          "toFieldId": "",
+          "from": {
+            "email": "{admin_email}",
+            "name": ""
+          },
+          "replyTo": "",
+          "bcc": "",
+          "subject": "We have received your inquiry",
+          "message": "{all_fields}"
+        }
+      ]
     }
   },
   "providesContext": {

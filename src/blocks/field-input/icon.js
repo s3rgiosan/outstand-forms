@@ -14,7 +14,7 @@ export const text = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -34,7 +34,7 @@ export const email = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -55,7 +55,7 @@ export const hash = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -75,7 +75,7 @@ export const lock = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -96,7 +96,7 @@ export const phone = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>
@@ -116,7 +116,7 @@ export const link = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf__icon"
+			className="osf-icon"
 			viewBox="0 0 24 24"
 		>
 			<Path stroke="none" d="M0 0h24v24H0z"></Path>

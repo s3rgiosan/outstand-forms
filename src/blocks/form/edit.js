@@ -31,12 +31,14 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import './editor.css';
-import { TEMPLATE } from './constants';
+import { DEFAULT_ACTIONS, TEMPLATE } from './constants';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
 import { useFieldBlocks } from '../../hooks/useFieldBlocks';
 import { useFieldId } from '../../hooks/useFieldId';
+import { useEmailFieldOptions } from '../../hooks/useEmailFieldOptions';
 import { useIsDuplicateFormBlock } from '../../hooks/useIsDuplicateFormBlock';
 import { getBlockId } from '../../utils';
+import FormActions from '../../components/FormActions';
 
 function FormEditContainer({ attributes, setAttributes, clientId }) {
 	const {
@@ -99,6 +101,9 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 
 	const onFormActionChange = (value) => {
 		setAttributes({ formAction: value });
+		if (value) {
+			setAttributes({ actions: [...DEFAULT_ACTIONS] });
+		}
 	};
 
 	const onLabelPositionChange = (value) => {
@@ -111,6 +116,10 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 
 	const onRequiredIndicatorChange = (value) => {
 		setAttributes({ requiredIndicator: value });
+	};
+
+	const onUpdateActions = (updatedActions) => {
+		setAttributes({ actions: updatedActions });
 	};
 
 	return (
@@ -140,6 +149,15 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 						__nextHasNoMarginBottom
 					/>
 				</PanelBody>
+				{!formAction && (
+					<PanelBody title={__('Actions', 'outstand-forms')}>
+						<FormActions
+							actions={formActions || []}
+							onUpdateActions={onUpdateActions}
+							emailFieldOptions={emailFieldOptions}
+						/>
+					</PanelBody>
+				)}
 			</InspectorControls>
 			<InspectorAdvancedControls>
 				<ToggleGroupControl
