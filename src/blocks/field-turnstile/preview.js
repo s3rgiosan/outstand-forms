@@ -32,7 +32,7 @@ export default function TurnstilePreview({ theme, size }) {
 			<HStack direction={previewDirection}>
 				<HStack>
 					<Icon
-						icon={cfSuccessCheck(theme)}
+						icon={cfSuccessCheck(previewTheme)}
 						width="50"
 						height={size === 'normal' ? '50' : 'auto'}
 					/>
@@ -40,7 +40,7 @@ export default function TurnstilePreview({ theme, size }) {
 						as="span"
 						style={{
 							fontSize: '14px',
-							color: theme === 'dark' ? '#fff' : '#1a1a1a',
+							color: previewTheme === 'dark' ? '#fff' : '#1a1a1a',
 						}}
 					>
 						{__('Success!', 'outstand-forms')}
@@ -48,7 +48,7 @@ export default function TurnstilePreview({ theme, size }) {
 				</HStack>
 				<HStack justify="flex-end" expanded={size === 'compact'}>
 					<Icon
-						icon={cfLogo(theme)}
+						icon={cfLogo(previewTheme)}
 						width={size === 'normal' ? '100' : '70'}
 						height={size === 'normal' ? 'auto' : '25'}
 					/>
