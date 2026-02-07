@@ -2,7 +2,7 @@
 
 namespace Outstand\Forms;
 
-use Outstand\Forms\REST\V1\Forms;
+use Outstand\Forms\Settings;
 
 class Plugin {
 
@@ -33,7 +33,9 @@ class Plugin {
 	public function setup(): void {
 
 		$modules = [
-			new Forms(),
+			new Blocks\FieldTurnstile(),
+			new REST\V1\Forms(),
+			new Settings(),
 		];
 
 		foreach ( $modules as $module ) {
@@ -42,6 +44,7 @@ class Plugin {
 
 		add_action( 'init', [ $this, 'register_blocks' ] );
 		add_filter( 'block_categories_all', [ $this, 'register_block_categories' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'blocks_editor_scripts' ] );
 	}
 
 	/**
@@ -68,6 +71,30 @@ class Plugin {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Enqueue editor-only JavaScript for blocks.
+	 *
+	 * @return void
+	 */
+	public function blocks_editor_scripts(): void {
+		$settings      = get_option( Settings::OPTION_NAME, [] );
+		$site_key      = $settings['site_key'] ?? '';
+		$secret_key    = $settings['secret_key'] ?? '';
+		$is_configured = ! empty( $site_key ) && ! empty( $secret_key );
+
+		wp_localize_script(
+			'osf-form-editor-script',
+			'osfSettings',
+			[
+				'spam' => [
+					'turnstile' => [
+						'isConfigured' => $is_configured,
+					],
+				],
+			]
+		);
 	}
 
 	/**

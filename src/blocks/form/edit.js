@@ -18,7 +18,6 @@ import {
 import {
 	TextControl,
 	PanelBody,
-	SelectControl,
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
@@ -55,6 +54,7 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 
 	const isDuplicate = useIsDuplicateFormBlock(clientId, attributes);
 	const fieldBlocks = useFieldBlocks(clientId);
+	const emailFieldOptions = useEmailFieldOptions(fieldBlocks);
 	const { updateBlockAttributes } = useDispatch(blockEditorStore);
 	const didResetFieldIds = useRef(false);
 

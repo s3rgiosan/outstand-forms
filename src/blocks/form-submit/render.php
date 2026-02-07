@@ -1,6 +1,6 @@
 <?php
 /**
- * Form Actions
+ * Form Submit
  *
  * @var array     $attributes Block attributes.
  * @var string    $content    Block default content.
@@ -11,7 +11,7 @@ namespace Outstand\Forms;
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'osf-form__actions',
+		'class' => 'osf-form__submit',
 	]
 );
 

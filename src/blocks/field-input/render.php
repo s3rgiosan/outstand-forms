@@ -36,12 +36,13 @@ $field   = $factory->create( $field_type, $attributes );
 
 $wrapper_classes = [
 	'osf-field',
-	"osf-field--input-{$field_type}",
-	"osf-field--label-{$label_position}",
-	"osf-field--help-text-{$help_text_position}",
-	$required ? 'osf-field--required' : '',
-	$label ? 'osf-field--has-label' : '',
-	$help_text ? 'osf-field--has-help-text' : '',
+	'osf-field-input',
+	"osf-field-input--{$field_type}",
+	"osf-field-input--label-{$label_position}",
+	"osf-field-input--help-{$help_text_position}",
+	$required ? 'osf-field-input--required' : '',
+	$label ? 'osf-field-input--has-label' : '',
+	$help_text ? 'osf-field-input--has-help' : '',
 ];
 $wrapper_classes = array_filter( $wrapper_classes );
 $wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );

@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/form-actions",
-  "version": "0.1.0",
-  "title": "Actions",
+  "name": "osf/form-submit",
+  "version": "1.0.0",
+  "title": "Submit",
   "category": "osf",
   "icon": "",
   "description": "",
@@ -17,14 +17,16 @@
     "osf/formId"
   ],
   "allowedBlocks": [
+    "core/buttons",
     "core/button",
-    "core/buttons"
+    "osf/field-turnstile"
   ],
   "supports": {
     "html": false,
     "lock": false,
     "inserter": false,
     "reusable": false,
+    "className": false,
     "spacing": {
       "margin": [
         "top",

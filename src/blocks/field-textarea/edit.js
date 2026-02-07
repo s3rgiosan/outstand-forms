@@ -58,13 +58,13 @@ export default function FieldTextareaEdit({ attributes, setAttributes, context }
 	const blockProps = useBlockProps({
 		className: clsx(
 			'osf-field',
-			'osf-field--textarea',
-			`osf-field--label-${labelPosition}`,
-			`osf-field--help-text-${helpTextPosition}`,
+			'osf-field-textarea',
+			`osf-field-textarea--label-${labelPosition}`,
+			`osf-field-textarea--help-${helpTextPosition}`,
 			{
-				'osf-field--required': required,
-				'osf-field--has-label': !!label,
-				'osf-field--has-help-text': !!helpText,
+				'osf-field-textarea--required': required,
+				'osf-field-textarea--has-label': !!label,
+				'osf-field-textarea--has-help': !!helpText,
 			},
 		),
 	});

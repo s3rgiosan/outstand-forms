@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "osf/form",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "title": "Outstand Forms",
   "category": "common",
   "icon": "",
@@ -81,7 +81,7 @@
   },
   "allowedBlocks": [
     "osf/form-fields",
-    "osf/form-actions"
+    "osf/form-submit"
   ],
   "supports": {
     "html": false,

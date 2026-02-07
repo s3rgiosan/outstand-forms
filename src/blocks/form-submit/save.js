@@ -3,6 +3,6 @@
  */
 import { InnerBlocks } from '@wordpress/block-editor';
 
-export default function FormActionsSave() {
+export default function FormSubmitSave() {
 	return <InnerBlocks.Content />;
 }

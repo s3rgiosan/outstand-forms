@@ -61,13 +61,14 @@ export default function FieldInputEdit({ attributes, setAttributes, context }) {
 	const blockProps = useBlockProps({
 		className: clsx(
 			'osf-field',
-			`osf-field--input-${type}`,
-			`osf-field--label-${labelPosition}`,
-			`osf-field--help-text-${helpTextPosition}`,
+			'osf-field-input',
+			`osf-field-input--${type}`,
+			`osf-field-input--label-${labelPosition}`,
+			`osf-field-input--help-${helpTextPosition}`,
 			{
-				'osf-field--required': required,
-				'osf-field--has-label': !!label,
-				'osf-field--has-help-text': !!helpText,
+				'osf-field-input--required': required,
+				'osf-field-input--has-label': !!label,
+				'osf-field-input--has-help': !!helpText,
 			},
 		),
 	});
