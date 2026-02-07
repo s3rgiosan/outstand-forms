@@ -27,7 +27,7 @@ class FieldTurnstile extends AbstractBlock {
 
 		wp_register_script(
 			'cloudflare-turnstile',
-			'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=osfTurnstileReady',
+			'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=osfTurnstileReady',
 			[],
 			null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 			[
