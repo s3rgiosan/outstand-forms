@@ -28,6 +28,7 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Outstand\\Forms\\AbstractModule' => __DIR__ . '/../..' . '/includes/classes/AbstractModule.php',
         'Outstand\\Forms\\Blocks\\AbstractBlock' => __DIR__ . '/../..' . '/includes/classes/Blocks/AbstractBlock.php',
+        'Outstand\\Forms\\Blocks\\FieldTurnstile' => __DIR__ . '/../..' . '/includes/classes/Blocks/FieldTurnstile.php',
         'Outstand\\Forms\\Components\\AbstractComponent' => __DIR__ . '/../..' . '/includes/classes/Components/AbstractComponent.php',
         'Outstand\\Forms\\Components\\ComponentInterface' => __DIR__ . '/../..' . '/includes/classes/Components/ComponentInterface.php',
         'Outstand\\Forms\\Components\\Error' => __DIR__ . '/../..' . '/includes/classes/Components/Error.php',
@@ -49,6 +50,7 @@ class ComposerStaticInitecbecd45ee045ee9341d36cdeeec036b
         'Outstand\\Forms\\Plugin' => __DIR__ . '/../..' . '/includes/classes/Plugin.php',
         'Outstand\\Forms\\REST\\V1\\AbstractRoute' => __DIR__ . '/../..' . '/includes/classes/REST/V1/AbstractRoute.php',
         'Outstand\\Forms\\REST\\V1\\Forms' => __DIR__ . '/../..' . '/includes/classes/REST/V1/Forms.php',
+        'Outstand\\Forms\\Settings' => __DIR__ . '/../..' . '/includes/classes/Settings.php',
         'Outstand\\Forms\\Validation\\Validator' => __DIR__ . '/../..' . '/includes/classes/Validation/Validator.php',
     );
 

@@ -9,6 +9,7 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Outstand\\Forms\\AbstractModule' => $baseDir . '/includes/classes/AbstractModule.php',
     'Outstand\\Forms\\Blocks\\AbstractBlock' => $baseDir . '/includes/classes/Blocks/AbstractBlock.php',
+    'Outstand\\Forms\\Blocks\\FieldTurnstile' => $baseDir . '/includes/classes/Blocks/FieldTurnstile.php',
     'Outstand\\Forms\\Components\\AbstractComponent' => $baseDir . '/includes/classes/Components/AbstractComponent.php',
     'Outstand\\Forms\\Components\\ComponentInterface' => $baseDir . '/includes/classes/Components/ComponentInterface.php',
     'Outstand\\Forms\\Components\\Error' => $baseDir . '/includes/classes/Components/Error.php',
@@ -30,5 +31,6 @@ return array(
     'Outstand\\Forms\\Plugin' => $baseDir . '/includes/classes/Plugin.php',
     'Outstand\\Forms\\REST\\V1\\AbstractRoute' => $baseDir . '/includes/classes/REST/V1/AbstractRoute.php',
     'Outstand\\Forms\\REST\\V1\\Forms' => $baseDir . '/includes/classes/REST/V1/Forms.php',
+    'Outstand\\Forms\\Settings' => $baseDir . '/includes/classes/Settings.php',
     'Outstand\\Forms\\Validation\\Validator' => $baseDir . '/includes/classes/Validation/Validator.php',
 );

@@ -27,7 +27,7 @@ class Forms extends AbstractRoute {
 				[
 					'methods'             => 'POST',
 					'callback'            => [ $this, 'submit_form' ],
-					'permission_callback' => [ $this, 'submit_form_permissions_check' ],
+					'permission_callback' => '__return_true',
 					'args'                => $this->get_submit_args(),
 				],
 			]
@@ -40,7 +40,8 @@ class Forms extends AbstractRoute {
 	 * @return array
 	 */
 	protected function get_submit_args(): array {
-		return [
+
+		$args = [
 			'form_id' => [
 				'description'       => __( 'The form ID.', 'outstand-forms' ),
 				'type'              => 'string',
@@ -53,33 +54,17 @@ class Forms extends AbstractRoute {
 				'required'          => true,
 				'sanitize_callback' => 'absint',
 			],
-			'nonce'   => [
-				'description'       => __( 'Security nonce.', 'outstand-forms' ),
-				'type'              => 'string',
-				'required'          => true,
-				'sanitize_callback' => 'sanitize_text_field',
-			],
 		];
-	}
 
-	/**
-	 * Check if the user can submit forms.
-	 *
-	 * @param WP_REST_Request $request The request.
-	 * @return bool|WP_Error
-	 */
-	public function submit_form_permissions_check( WP_REST_Request $request ): bool|WP_Error {
-		$nonce = $request->get_param( 'nonce' );
+		/**
+		 * Filters additional REST endpoint arguments for form submission.
+		 *
+		 * @param array $additional_args Additional endpoint arguments.
+		 * @return array
+		 */
+		$additional_args = apply_filters( 'osf_rest_form_submit_args', [] );
 
-		if ( ! wp_verify_nonce( $nonce, 'wp_rest' ) ) {
-			return new WP_Error(
-				'rest_forbidden',
-				__( 'Invalid security token.', 'outstand-forms' ),
-				[ 'status' => 403 ]
-			);
-		}
-
-		return true;
+		return array_merge( $additional_args, $args );
 	}
 
 	/**
@@ -89,22 +74,53 @@ class Forms extends AbstractRoute {
 	 * @return WP_REST_Response|WP_Error
 	 */
 	public function submit_form( WP_REST_Request $request ): WP_REST_Response|WP_Error {
+
 		$form_id = $request->get_param( 'form_id' );
 		$post_id = $request->get_param( 'post_id' );
 		$params  = $request->get_params();
 
 		// Remove internal parameters.
-		unset( $params['form_id'], $params['nonce'], $params['post_id'] );
+		unset( $params['form_id'], $params['post_id'], $params['_wpnonce'] );
 
-		// Get field configurations by parsing block content.
-		$field_configs = $this->get_form_field_configs( $form_id, $post_id );
+		// Get field configurations and form attributes by parsing block content.
+		$parser    = new FormBlockParser();
+		$form_data = $parser->extract_form_data( $form_id, $post_id );
+
+		$field_configs = $form_data['field_configs'];
+
+		if ( empty( $field_configs ) ) {
+			return new WP_Error(
+				'invalid_form',
+				__( 'Form not found.', 'outstand-forms' ),
+				[ 'status' => 400 ]
+			);
+		}
+
+		/**
+		 * Filters pre-submission checks before field validation.
+		 *
+		 * Allows blocks to perform security or spam checks with full form context.
+		 * Return true to continue or WP_Error to abort.
+		 *
+		 * @param true|WP_Error   $result  The current check result.
+		 * @param WP_REST_Request $request The REST request.
+		 * @return true|WP_Error
+		 */
+		$pre_check = apply_filters( 'osf_form_pre_submission_check', true, $request );
+
+		if ( is_wp_error( $pre_check ) ) {
+			return $pre_check;
+		}
+
+		// Sanitize form data based on field configurations.
+		$sanitized_data = $this->sanitize_form_data( $params, $field_configs );
 
 		// Validate all fields.
 		$validator         = new Validator();
 		$validation_errors = [];
 
 		foreach ( $field_configs as $field_name => $config ) {
-			$value  = $params[ $field_name ] ?? null;
+			$value  = $sanitized_data[ $field_name ] ?? null;
 			$rules  = $config['validation_rules'] ?? [];
 			$result = $validator->validate( $value, $rules );
 
@@ -124,17 +140,15 @@ class Forms extends AbstractRoute {
 			);
 		}
 
-		// Sanitize field values.
-		$sanitized_data = $this->sanitize_form_data( $params, $field_configs );
-
 		/**
 		 * Fires when a form is submitted and validated successfully.
 		 *
 		 * @param string $form_id        The form ID.
+		 * @param int    $post_id        The post ID containing the form.
 		 * @param array  $sanitized_data The sanitized form data.
-		 * @param array  $field_configs  The field configurations.
+		 * @param array  $form_data      The parsed form data.
 		 */
-		do_action( 'osf_form_submitted', $form_id, $sanitized_data, $field_configs );
+		do_action( 'osf_form_submitted', $form_id, $post_id, $sanitized_data, $form_data );
 
 		$response = [
 			'success' => true,
@@ -145,33 +159,6 @@ class Forms extends AbstractRoute {
 	}
 
 	/**
-	 * Get field configurations for a form by parsing block content.
-	 *
-	 * @param string $form_id The form ID.
-	 * @param int    $post_id The post ID containing the form.
-	 * @return array
-	 */
-	protected function get_form_field_configs( string $form_id, int $post_id ): array {
-		$parser  = new FormBlockParser();
-		$configs = $parser->extract_field_configs( $post_id, $form_id );
-
-		/**
-		 * Filters the field configurations for a form.
-		 *
-		 * This filter allows plugins/themes to provide field configuration
-		 * including validation rules for server-side validation.
-		 *
-		 * @param array  $configs The field configurations keyed by field name.
-		 *                        Each config should include:
-		 *                        - 'type' (string) The field type.
-		 *                        - 'validation_rules' (array) The validation rules.
-		 * @param string $form_id The form ID.
-		 * @return array
-		 */
-		return apply_filters( 'osf_form_field_configs', $configs, $form_id );
-	}
-
-	/**
 	 * Sanitize form data based on field configurations.
 	 *
 	 * @param array $data          The form data.
@@ -179,9 +166,10 @@ class Forms extends AbstractRoute {
 	 * @return array
 	 */
 	protected function sanitize_form_data( array $data, array $field_configs ): array {
-		$sanitized = [];
 
+		$sanitized = [];
 		foreach ( $field_configs as $field_name => $config ) {
+
 			if ( ! array_key_exists( $field_name, $data ) ) {
 				continue;
 			}
