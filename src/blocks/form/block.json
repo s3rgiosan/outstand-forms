@@ -80,6 +80,7 @@
     "osf/requiredIndicator": "requiredIndicator"
   },
   "allowedBlocks": [
+    "osf/form-errors",
     "osf/form-fields",
     "osf/form-submit",
     "osf/form-message"

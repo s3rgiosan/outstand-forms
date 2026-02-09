@@ -12,10 +12,10 @@ export const icon = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf-icon osf-icon--submit"
+			className="osf-icon osf-icon--error"
 			viewBox="0 0 24 24"
 		>
-			<Path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11zM21.854 2.147l-10.94 10.939" />
+			<Path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76ZM12 8v4M12 16h.01" />
 		</SVG>
 	);
 };

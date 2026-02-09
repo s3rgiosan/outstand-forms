@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "osf/form-errors",
+  "version": "1.0.0",
+  "title": "Form Errors",
+  "category": "osf",
+  "icon": "",
+  "description": "",
+  "textdomain": "outstand-forms",
+  "ancestor": [
+    "osf/form"
+  ],
+  "attributes": {},
+  "usesContext": [
+    "osf/formId"
+  ],
+  "supports": {
+    "html": false,
+    "lock": false,
+    "inserter": false,
+    "reusable": false,
+    "interactivity": true
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

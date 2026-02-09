@@ -1,6 +1,6 @@
 <?php
 /**
- * Form Message
+ * Form Errors
  *
  * @var array     $attributes Block attributes.
  * @var string    $content    Block default content.
@@ -11,14 +11,13 @@ namespace Outstand\Forms;
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'role'                 => 'status',
-		'aria-live'            => 'polite',
-		'data-wp-bind--hidden' => '!context.isSubmitted',
+		'role'                 => 'alert',
+		'data-wp-bind--hidden' => '!context.hasSubmissionError',
 	]
 );
 
 ?>
 
 <div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<p data-wp-text="context.submissionMessage"></p>
 </div>

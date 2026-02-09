@@ -19,6 +19,7 @@ const variations = [
 		},
 		icon: blank,
 		innerBlocks: [
+			['osf/form-errors', {}],
 			[
 				'osf/form-fields',
 				{},
@@ -44,6 +45,7 @@ const variations = [
 		},
 		icon: contactUs,
 		innerBlocks: [
+			['osf/form-errors', {}],
 			[
 				'osf/form-fields',
 				{},
