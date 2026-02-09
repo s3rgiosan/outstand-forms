@@ -30,7 +30,7 @@ import { __ } from '@wordpress/i18n';
  * Internal dependencies
  */
 import './editor.css';
-import { DEFAULT_ACTIONS, TEMPLATE } from './constants';
+import { TEMPLATE } from './constants';
 import { labelPositionOptions, helpTextPositionOptions } from '../../options';
 import { useFieldBlocks } from '../../hooks/useFieldBlocks';
 import { useFieldId } from '../../hooks/useFieldId';
@@ -101,9 +101,6 @@ function FormEditContainer({ attributes, setAttributes, clientId }) {
 
 	const onFormActionChange = (value) => {
 		setAttributes({ formAction: value });
-		if (value) {
-			setAttributes({ actions: [...DEFAULT_ACTIONS] });
-		}
 	};
 
 	const onLabelPositionChange = (value) => {

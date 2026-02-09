@@ -1,13 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "osf/form-fields",
+  "name": "osf/form-message",
   "version": "1.0.0",
-  "title": "Form Fields",
+  "title": "Form Message",
   "category": "osf",
   "icon": "",
   "description": "",
-  "keywords": [],
   "textdomain": "outstand-forms",
   "ancestor": [
     "osf/form"
@@ -16,15 +15,15 @@
   "usesContext": [
     "osf/formId"
   ],
+  "allowedBlocks": [
+    "core/paragraph"
+  ],
   "supports": {
     "html": false,
     "lock": false,
     "inserter": false,
     "reusable": false,
-    "spacing": {
-      "margin": true,
-      "padding": true
-    }
+    "interactivity": true
   },
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css",

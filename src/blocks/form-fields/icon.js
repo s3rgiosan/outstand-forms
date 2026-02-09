@@ -12,7 +12,7 @@ export const icon = () => {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="1.5"
-			className="osf-icon"
+			className="osf-icon osf-icon--form"
 			viewBox="0 0 24 24"
 		>
 			<Path d="M4 14h6M4 2h10" />

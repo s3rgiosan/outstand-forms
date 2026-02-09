@@ -22,7 +22,11 @@ export const ACTION_LABELS = {
 	user_notification: __('User Email', 'outstand-forms'),
 };
 
-export default function FormActions({ actions, onUpdateActions, emailFieldOptions }) {
+export default function FormActions({
+	actions,
+	onUpdateActions,
+	emailFieldOptions,
+}) {
 	const [editingIndex, setEditingIndex] = useState(null);
 
 	const onToggle = (index, enabled) => {
@@ -55,7 +59,7 @@ export default function FormActions({ actions, onUpdateActions, emailFieldOption
 								label={label}
 								checked={!!action.enabled}
 								onChange={(value) => onToggle(index, value)}
-								className="osf-form__actions-toggle"
+								className="osf-action-list__toggle"
 							/>
 							{action.enabled && (
 								<Button variant="link" onClick={() => setEditingIndex(index)}>

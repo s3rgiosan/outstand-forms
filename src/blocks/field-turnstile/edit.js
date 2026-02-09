@@ -1,10 +1,5 @@
 /* global osfSettings */
 /**
- * External dependencies
- */
-import clsx from 'clsx';
-
-/**
  * WordPress dependencies
  */
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
@@ -22,9 +17,7 @@ export default function FieldTurnstileEdit({ attributes, setAttributes }) {
 	const { theme, size } = attributes;
 	const isTurnstileConfigured = osfSettings?.spam?.turnstile?.isConfigured ?? false;
 
-	const blockProps = useBlockProps({
-		className: clsx('osf-field', 'osf-field-turnstile'),
-	});
+	const blockProps = useBlockProps();
 
 	return (
 		<>
@@ -34,7 +27,7 @@ export default function FieldTurnstileEdit({ attributes, setAttributes }) {
 						<Notice
 							status="warning"
 							isDismissible={false}
-							className="osf-field-turnstile__notice"
+							className="wp-block-osf-field-turnstile__notice"
 						>
 							{createInterpolateElement(
 								__(

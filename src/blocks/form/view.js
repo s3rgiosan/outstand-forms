@@ -163,6 +163,37 @@ const { state, actions } = store('osf/form', {
 			});
 		}),
 		/**
+		 * Submit the form.
+		 */
+		async submitForm() {
+			const context = getContext('osf/form');
+			const { ref: form } = getElement();
+			const { submissionMessages = {} } = getConfig('osf/form');
+
+			// Reset state.
+			context.hasSubmissionError = false;
+			context.submissionMessage = '';
+			context.serverErrors = {};
+			context.isSubmitting = true;
+
+			try {
+				const formData = new FormData(form);
+
+				const response = await fetch(form.action, {
+					method: 'POST',
+					headers: {
+						'X-WP-Nonce': formData.get('_wpnonce'),
+					},
+					body: formData,
+					credentials: 'same-origin',
+				});
+
+				const data = await response.json();
+			} catch {
+			} finally {
+			}
+		},
+		/**
 		 * Validate the form.
 		 *
 		 * @return {Promise} A promise that resolves when the validation is complete.

@@ -35,17 +35,9 @@ wp_interactivity_config(
 	]
 );
 
-$wrapper_classes = [
-	'osf-field',
-	'osf-field-turnstile',
-	'cf-turnstile',
-];
-$wrapper_classes = array_filter( $wrapper_classes );
-$wrapper_classes = array_map( 'sanitize_html_class', $wrapper_classes );
-
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class'               => implode( ' ', $wrapper_classes ),
+		'class'               => 'cf-turnstile',
 		'data-wp-interactive' => 'osf/field-turnstile',
 		'data-wp-init'        => 'callbacks.init',
 	]

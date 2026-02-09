@@ -3,7 +3,7 @@
   "apiVersion": 3,
   "name": "osf/form-submit",
   "version": "1.0.0",
-  "title": "Submit",
+  "title": "Form Submit",
   "category": "osf",
   "icon": "",
   "description": "",
@@ -26,7 +26,6 @@
     "lock": false,
     "inserter": false,
     "reusable": false,
-    "className": false,
     "spacing": {
       "margin": [
         "top",
@@ -36,5 +35,6 @@
     "interactivity": true
   },
   "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
   "render": "file:./render.php"
 }

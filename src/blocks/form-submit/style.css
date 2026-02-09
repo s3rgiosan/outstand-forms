@@ -1,0 +1,5 @@
+.wp-block-osf-form-submit {
+	&[hidden] {
+		display: none;
+	}
+}

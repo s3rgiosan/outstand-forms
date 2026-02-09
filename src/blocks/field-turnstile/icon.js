@@ -5,7 +5,11 @@ import { SVG, Path } from '@wordpress/primitives';
 
 export const icon = () => {
 	return (
-		<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="osf-icon">
+		<SVG
+			xmlns="http://www.w3.org/2000/svg"
+			className="osf-icon osf-icon--turnstile"
+			viewBox="0 0 512 512"
+		>
 			<Path
 				fill="#f38020"
 				d="M331 326c11-26-4-38-19-38l-148-2c-4 0-4-6 1-7l150-2c17-1 37-15 43-33 0 0 10-21 9-24a97 97 0 0 0-187-11c-38-25-78 9-69 46-48 3-65 46-60 72 0 1 1 2 3 2h274c1 0 3-1 3-3z"

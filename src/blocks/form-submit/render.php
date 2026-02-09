@@ -11,7 +11,7 @@ namespace Outstand\Forms;
 
 $wrapper_attributes = get_block_wrapper_attributes(
 	[
-		'class' => 'osf-form__submit',
+		'data-wp-bind--hidden' => 'context.isSubmitted',
 	]
 );
 

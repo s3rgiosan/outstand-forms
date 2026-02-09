@@ -47,9 +47,7 @@ function getSubmitButtonState(innerBlocks) {
 }
 
 export default function FormSubmitEdit({ clientId }) {
-	const blockProps = useBlockProps({
-		className: 'osf-form__submit',
-	});
+	const blockProps = useBlockProps();
 
 	const innerBlocks = useSelect(
 		(select) => select(blockEditorStore).getBlocks(clientId),

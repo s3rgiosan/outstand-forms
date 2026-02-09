@@ -50,6 +50,21 @@ $context = wp_interactivity_data_wp_context(
 wp_interactivity_config(
 	'osf/form',
 	[
+		'submissionMessages' => [
+			'success' => wp_kses_post( $success_message ),
+			/**
+			 * Filters the form submission error message.
+			 *
+			 * @param string $message The error message.
+			 * @param string $form_id The form ID.
+			 * @return string
+			 */
+			'error'   => apply_filters(
+				'osf_submission_error_message',
+				__( 'There was a problem submitting the form. Please try again.', 'outstand-forms' ),
+				$form_id
+			),
+		],
 		/**
 		 * Filters the validation messages.
 		 *
@@ -86,7 +101,6 @@ wp_interactivity_config(
 	<?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 	<?php echo $context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 >
-	<?php do_action( 'osf_before_content', $form_id ); ?>
 
 	<?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
@@ -94,5 +108,4 @@ wp_interactivity_config(
 	<input type="hidden" name="post_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
 		<input type="hidden" name="_wpnonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
 
-	<?php do_action( 'osf_after_content', $form_id ); ?>
 </form>
