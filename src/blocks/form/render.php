@@ -51,7 +51,6 @@ wp_interactivity_config(
 	'osf/form',
 	[
 		'submissionMessages' => [
-			'success' => wp_kses_post( $success_message ),
 			/**
 			 * Filters the form submission error message.
 			 *
@@ -106,6 +105,5 @@ wp_interactivity_config(
 
 	<input type="hidden" name="form_id" value="<?php echo esc_attr( $form_id ); ?>">
 	<input type="hidden" name="post_id" value="<?php echo esc_attr( get_the_ID() ); ?>">
-		<input type="hidden" name="_wpnonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
-
+	<input type="hidden" name="_wpnonce" value="<?php echo esc_attr( wp_create_nonce( 'wp_rest' ) ); ?>">
 </form>

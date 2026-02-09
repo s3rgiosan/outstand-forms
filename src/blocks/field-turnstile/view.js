@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { store, getElement, getConfig, withScope } from '@wordpress/interactivity';
+import { store, getContext, getElement, getConfig, withScope } from '@wordpress/interactivity';
 
 // Global callback for Turnstile script load.
 window.osfTurnstileReady = () => {
@@ -14,7 +14,8 @@ store('osf/field-turnstile', {
 		 * Initialize the Turnstile widget.
 		 */
 		init() {
-			const { enabled, siteKey, mode, theme, size } = getConfig('osf/field-turnstile');
+			const { enabled, siteKey, mode } = getConfig('osf/field-turnstile');
+			const { theme, size } = getContext();
 			if (!enabled) {
 				return;
 			}

@@ -29,8 +29,6 @@ wp_interactivity_config(
 	[
 		'enabled' => true,
 		'siteKey' => $site_key,
-		'theme'   => $turnstile_theme,
-		'size'    => $turnstile_size,
 		'mode'    => 'always',
 	]
 );
@@ -43,8 +41,18 @@ $wrapper_attributes = get_block_wrapper_attributes(
 	]
 );
 
+$context = wp_interactivity_data_wp_context(
+	[
+		'theme' => $turnstile_theme,
+		'size'  => $turnstile_size,
+	]
+);
+
 ?>
 
-<div <?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+<div
+	<?php echo $wrapper_attributes; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+	<?php echo $context; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+>
 	<input type="hidden" name="cf-turnstile-response" value="" />
 </div>
